@@ -11,9 +11,7 @@
         <meta name="author" content="" />
         <title>CODE GROUP</title>
         <!-- Favicon-->
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
+       	<link rel="icon" type="image/x-icon" href="/resources/user/image/favicon.ico" />
         
     <!-- css -->
     <style type="text/css">
@@ -128,7 +126,7 @@
 	      <th scope="row"><input class="form-check-input" type="checkbox"></th>
 	      <td>42</td>
 	      <td>49</td>
-	      <td><a href="/resorces/codeGroupForm.html">호호</td>
+	      <td>호호</td>
 	      <td></td>
 	      <td>0</td>
 	      <td></td>
@@ -277,11 +275,9 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="template/js/scripts.js"></script>
 
 <!-- end -->
 
 <script src="https://kit.fontawesome.com/0089819b08.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>

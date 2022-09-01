@@ -2,6 +2,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -9,9 +10,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>CODE GROUP</title>
+        <title>CODE</title>
         <!-- Favicon-->
-       	<link rel="icon" type="image/x-icon" href="/resources/user/image/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/resources/user/image/favicon.ico" />
         
     <!-- css -->
     <style type="text/css">
@@ -36,7 +37,7 @@
 
 <!-- start -->
 <div class="container-fluid" style="width: 84%">
-	<a href="/resources/user/main/main.html"><img src="/resources/user/image/cou.jpg" style="width: 200px;"></a>
+	<a href="../user/main/main.html"><img src="/resources/user/image/cou.jpg" style="width: 200px;"></a>
 </div>
 
 <div class="container-fluid" style="width: 84%">
@@ -68,7 +69,7 @@
 
 
 <hr>
-<div class="container-fluid" style="width: 84%; font-size: 24px;">코드그룹 관리</div>
+<div class="container-fluid" style="width: 84%; font-size: 24px;">코드 관리</div>
 <br>
 <div class="container-fluid" style="width: 84%;">
 	<form class="row g-3 needs-validation" novalidate>
@@ -106,7 +107,7 @@
 <br><br>
 
 
-<div class="container-fluid" style="width: 84%;">Total: 42</div>
+<div class="container-fluid" style="width: 84%;">Total: 106</div>
 <div class="container-fluid" style="width: 84%;">	
 	<table class="table table-bordered border-gray">
 	  <thead>
@@ -115,8 +116,10 @@
 	      <th scope="col">#</th>
 	      <th scope="col">코드그룹 코드</th>
 	      <th scope="col">코드그룹 이름 (한글)</th>
-	      <th scope="col">코드그룹 이름 (영문)</th>
-	      <th scope="col">코드갯수</th>
+	      <th scope="col">코드 이름(한글)</th>
+	      <th scope="col">코드 이름(영문)</th>
+	      <th scope="col">사용</th>
+	      <th scope="col">순서</th>
 	      <th scope="col">등록일</th>
 	      <th scope="col">수정일</th>
 	    </tr>
@@ -126,49 +129,12 @@
 	    <tr>
 	      <th scope="row"><input class="form-check-input" type="checkbox"></th>
 	      <td><c:out value="${list.seq }"/></td>
-	      <td><c:out value="${list.seq }"/></td>
+	      <td><c:out value="${list.ccg_seq }"/></td>
 	      <td><c:out value="${list.codeGroup }"/></td>
-	      <td><c:out value="${list.codeGroupEn }"/></td>
-	      <td><c:out value="${list.cnt }"/></td>
-	      <td><c:out value="${list.reg_date }"/></td>
-	      <td><c:out value="${list.mod_date }"/></td>
-	    </tr>
-	    </c:forEach>
-	    
-	   <c:forEach items="${list}" var="list" varStatus="status">
-	    <tr>
-	      <th scope="row"><input class="form-check-input" type="checkbox"></th>
-	      <td><c:out value="${list.seq }"/></td>
-	      <td><c:out value="${list.seq }"/></td>
-	      <td><c:out value="${list.codeGroup }"/></td>
-	      <td><c:out value="${list.codeGroupEn }"/></td>
-	      <td><c:out value="${list.cnt }"/></td>
-	      <td><c:out value="${list.reg_date }"/></td>
-	      <td><c:out value="${list.mod_date }"/></td>
-	    </tr>
-	   </c:forEach>
-	   
-	   <c:forEach items="${list}" var="list" varStatus="status">
-	    <tr>
-	      <th scope="row"><input class="form-check-input" type="checkbox"></th>
-	      <td><c:out value="${list.seq }"/></td>
-	      <td><c:out value="${list.seq }"/></td>
-	      <td><c:out value="${list.codeGroup }"/></td>
-	      <td><c:out value="${list.codeGroupEn }"/></td>
-	      <td><c:out value="${list.cnt }"/></td>
-	      <td><c:out value="${list.reg_date }"/></td>
-	      <td><c:out value="${list.mod_date }"/></td>
-	    </tr>
-	   </c:forEach>
-	   
-	   <c:forEach items="${list}" var="list" varStatus="status">
-	    <tr>
-	      <th scope="row"><input class="form-check-input" type="checkbox"></th>
-	      <td><c:out value="${list.seq }"/></td>
-	      <td><c:out value="${list.seq }"/></td>
-	      <td><c:out value="${list.codeGroup }"/></td>
-	      <td><c:out value="${list.codeGroupEn }"/></td>
-	      <td><c:out value="${list.cnt }"/></td>
+	      <td><c:out value="${list.codeName }"/></td>
+	      <td><c:out value="${list.codeNameEn }"/></td>
+	      <td><c:out value="${list.useNy }"/></td>
+	      <td><c:out value="${list.sort }"/></td>
 	      <td><c:out value="${list.reg_date }"/></td>
 	      <td><c:out value="${list.mod_date }"/></td>
 	    </tr>
@@ -213,21 +179,21 @@
 		    </div>
 		  </div>
 		</div>
-	<a href="codeGroupRegForm.html"><button type="button" class="btn btn-dark btn-sm" id="plus"><i class="fa-solid fa-plus"></i></button></a>
+	<a href="codeListForm.html"><button type="button" class="btn btn-dark btn-sm" id="plus"><i class="fa-solid fa-plus"></i></button></a>
 	<a href="memberModForm.html"><button type="button" class="btn btn-dark btn-sm" id="change">수정</button></a>
 </div>
-
 
 <br><br>
 
  <!-- Footer-->
+ 	
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Coupang</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-
+    
 <!-- end -->
 
 <script src="https://kit.fontawesome.com/0089819b08.js" crossorigin="anonymous"></script>

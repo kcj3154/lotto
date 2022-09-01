@@ -9,11 +9,17 @@
     <resultMap id="resultMapObj" type="com.mayfw.infra.modules.codegroup.CodeGroup"></resultMap>
 	
 	<select id="selectList" resultMap="resultMapObj">
-		SELECT
-			a.*
+			SELECT
+			a.seq
+			,a.codeGroup
+			,a.codeGroupEn
+			,a.useNy
+			,a.reg_date
+			,a.mod_date
+			,COUNT(*) cnt
 		FROM ccg a
-		WHERE 1=1
-			AND useNy = 1
+		LEFT JOIN cc b on a.seq = b.ccg_seq
+		GROUP BY a.seq
 	</select>
 
 </mapper>	

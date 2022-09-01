@@ -1,26 +1,30 @@
-package com.mayfw.infra.modules.codegroup;
+package com.mayfw.infra.modules.code;
 
 import java.util.Date;
 
-public class CodeGroup {
+public class Code {
+	
 	private String seq;
+	private String ccg_seq;
 	private String codeGroup;
-	private String codeGroupEn;
+	private String codeName;
+	private String codeNameEn;
 	private Integer useNy;
+	private Integer sort;
 	private Date reg_date;
 	private Date mod_date;
-	private Integer cnt;
-	public Integer getCnt() {
-		return cnt;
-	}
-	public void setCnt(Integer cnt) {
-		this.cnt = cnt;
-	}
 	public String getSeq() {
 		return seq;
 	}
+	
 	public void setSeq(String seq) {
 		this.seq = seq;
+	}
+	public String getCcg_seq() {
+		return ccg_seq;
+	}
+	public void setCcg_seq(String ccg_seq) {
+		this.ccg_seq = ccg_seq;
 	}
 	public String getCodeGroup() {
 		return codeGroup;
@@ -28,17 +32,29 @@ public class CodeGroup {
 	public void setCodeGroup(String codeGroup) {
 		this.codeGroup = codeGroup;
 	}
-	public String getCodeGroupEn() {
-		return codeGroupEn;
+	public String getCodeName() {
+		return codeName;
 	}
-	public void setCodeGroupEn(String codeGroupEn) {
-		this.codeGroupEn = codeGroupEn;
+	public void setCodeName(String codeName) {
+		this.codeName = codeName;
+	}
+	public String getCodeNameEn() {
+		return codeNameEn;
+	}
+	public void setCodeNameEn(String codeNameEn) {
+		this.codeNameEn = codeNameEn;
 	}
 	public Integer getUseNy() {
 		return useNy;
 	}
 	public void setUseNy(Integer useNy) {
 		this.useNy = useNy;
+	}
+	public Integer getSort() {
+		return sort;
+	}
+	public void setSort(Integer sort) {
+		this.sort = sort;
 	}
 	public Date getReg_date() {
 		return reg_date;
@@ -52,9 +68,6 @@ public class CodeGroup {
 	public void setMod_date(Date mod_date) {
 		this.mod_date = mod_date;
 	}
-	
-	
-	
 	
 
 }
