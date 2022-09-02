@@ -20,6 +20,8 @@
 		FROM ccg a
 		LEFT JOIN cc b on a.seq = b.ccg_seq
 		GROUP BY a.seq
+		having 1=1
+			AND a.codeGroup LIKE CONCAT('%' , #{shName}, '%')
 	</select>
 
 </mapper>	

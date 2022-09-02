@@ -1,7 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ page session="false" %>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -71,7 +75,7 @@
 <div class="container-fluid" style="width: 84%; font-size: 24px;">코드그룹 관리</div>
 <br>
 <div class="container-fluid" style="width: 84%;">
-	<form class="row g-3 needs-validation" novalidate>
+	<form class="row g-3 needs-validation" method="post" action="/codeGroup/codeGroupList">
 	  <div class="col-md-1">
 	    <select class="form-select">
 	      <option>N</option>
@@ -99,14 +103,16 @@
 	      <option>코드그룹 코드갯수</option>
 	    </select>
 	  </div>
-     <button type="button" class="btn btn-dark btn-sm" style="width: 40px;"><i class="fa-solid fa-magnifying-glass"></i></button>
+	  <div class="col-md-2">
+    	<input type="text" class="form-control" id="shName" name="shName" value="<c:out value="${vo.shName }"/>" placeholder="검색어">
+   	  </div>
+     <button class="btn btn-dark btn-sm" style="width: 40px;"><i class="fa-solid fa-magnifying-glass"></i></button>
 	</form>
 </div>
 
 <br><br>
 
 
-<div class="container-fluid" style="width: 84%;">Total: 42</div>
 <div class="container-fluid" style="width: 84%;">	
 	<table class="table table-bordered border-gray">
 	  <thead>
@@ -122,58 +128,27 @@
 	    </tr>
 	  </thead>
 	   <tbody class="table" align="center">
-	   <c:forEach items="${list}" var="list" varStatus="status">
-	    <tr>
-	      <th scope="row"><input class="form-check-input" type="checkbox"></th>
-	      <td><c:out value="${list.seq }"/></td>
-	      <td><c:out value="${list.seq }"/></td>
-	      <td><c:out value="${list.codeGroup }"/></td>
-	      <td><c:out value="${list.codeGroupEn }"/></td>
-	      <td><c:out value="${list.cnt }"/></td>
-	      <td><c:out value="${list.reg_date }"/></td>
-	      <td><c:out value="${list.mod_date }"/></td>
-	    </tr>
-	    </c:forEach>
-	    
-	   <c:forEach items="${list}" var="list" varStatus="status">
-	    <tr>
-	      <th scope="row"><input class="form-check-input" type="checkbox"></th>
-	      <td><c:out value="${list.seq }"/></td>
-	      <td><c:out value="${list.seq }"/></td>
-	      <td><c:out value="${list.codeGroup }"/></td>
-	      <td><c:out value="${list.codeGroupEn }"/></td>
-	      <td><c:out value="${list.cnt }"/></td>
-	      <td><c:out value="${list.reg_date }"/></td>
-	      <td><c:out value="${list.mod_date }"/></td>
-	    </tr>
-	   </c:forEach>
-	   
-	   <c:forEach items="${list}" var="list" varStatus="status">
-	    <tr>
-	      <th scope="row"><input class="form-check-input" type="checkbox"></th>
-	      <td><c:out value="${list.seq }"/></td>
-	      <td><c:out value="${list.seq }"/></td>
-	      <td><c:out value="${list.codeGroup }"/></td>
-	      <td><c:out value="${list.codeGroupEn }"/></td>
-	      <td><c:out value="${list.cnt }"/></td>
-	      <td><c:out value="${list.reg_date }"/></td>
-	      <td><c:out value="${list.mod_date }"/></td>
-	    </tr>
-	   </c:forEach>
-	   
-	   <c:forEach items="${list}" var="list" varStatus="status">
-	    <tr>
-	      <th scope="row"><input class="form-check-input" type="checkbox"></th>
-	      <td><c:out value="${list.seq }"/></td>
-	      <td><c:out value="${list.seq }"/></td>
-	      <td><c:out value="${list.codeGroup }"/></td>
-	      <td><c:out value="${list.codeGroupEn }"/></td>
-	      <td><c:out value="${list.cnt }"/></td>
-	      <td><c:out value="${list.reg_date }"/></td>
-	      <td><c:out value="${list.mod_date }"/></td>
-	    </tr>
-	   </c:forEach>
-	   
+		   <c:choose>
+			<c:when test="${fn:length(list) eq 0}">
+				<tr>
+					<td class="text-center" colspan="9">데이터 없다 돌아가거라</td>
+				</tr>
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${list}" var="list" varStatus="status">	
+				 <tr>
+			      <th scope="row"><input class="form-check-input" type="checkbox"></th>
+			      <td><c:out value="${list.seq }"/></td>
+			      <td><c:out value="${list.seq }"/></td>
+			      <td><c:out value="${list.codeGroup }"/></td>
+			      <td><c:out value="${list.codeGroupEn }"/></td>
+			      <td><c:out value="${list.cnt }"/></td>
+			      <td><c:out value="${list.reg_date }"/></td>
+			      <td><c:out value="${list.mod_date }"/></td>
+			    </tr>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
 	  </tbody>
 	</table>
 </div>
