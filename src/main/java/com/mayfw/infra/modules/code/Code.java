@@ -9,7 +9,7 @@ public class Code {
 	private String codeGroup;
 	private String codeName;
 	private String codeNameEn;
-	private Integer useNy;
+	private String useNy;
 	private Integer sort;
 	private Date reg_date;
 	private Date mod_date;
@@ -44,10 +44,10 @@ public class Code {
 	public void setCodeNameEn(String codeNameEn) {
 		this.codeNameEn = codeNameEn;
 	}
-	public Integer getUseNy() {
+	public String getUseNy() {
 		return useNy;
 	}
-	public void setUseNy(Integer useNy) {
+	public void setUseNy(String useNy) {
 		this.useNy = useNy;
 	}
 	public Integer getSort() {
