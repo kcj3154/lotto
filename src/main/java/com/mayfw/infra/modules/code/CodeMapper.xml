@@ -22,8 +22,8 @@
 		FROM cc c
 		where 1=1
 			
-			<if test="shDate ==5">and c.reg_date between {shDateSt} and {shDateFi}</if>
-			<if test="shDate ==6">and c.mod_date between {shDateSt} and {shDateFi}</if>
+			<if test="shDate ==5">and c.reg_date between #{shDateSt} and #{shDateFi}</if>
+			<if test="shDate ==6">and c.mod_date between #{shDateSt} and #{shDateFi}</if>
 			
 		<choose>
 			<when test="shId ==1">and c.ccg_seq = #{shName}</when> 
