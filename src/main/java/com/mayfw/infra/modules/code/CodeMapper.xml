@@ -12,13 +12,13 @@
 			SELECT
 			c.seq
 			,c.ccg_seq
+			,(select codeGroup from ccg d where d.seq = c.ccg_seq) as codeGroup
 			,c.codeName
 			,c.codeNameEn
 			,c.useNy
             ,c.sort
             ,c.reg_date
             ,c.mod_date
-			,(select codeGroup from ccg d where d.seq = c.ccg_seq) as codeGroup
 		FROM cc c
 		where 1=1
 			
