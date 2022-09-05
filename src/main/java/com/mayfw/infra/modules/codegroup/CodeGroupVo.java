@@ -44,7 +44,11 @@ public class CodeGroupVo {
 	public void setShDateFi(String shDateFi) {
 		this.shDateFi = shDateFi;
 	}
-
+	
+	
+	
+	
+	
 	
 }
 
