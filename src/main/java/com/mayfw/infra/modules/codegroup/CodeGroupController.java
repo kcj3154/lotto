@@ -21,6 +21,10 @@ public class CodeGroupController {
 		
 		System.out.println("vo.getShId(): " + vo.getShId());
 		System.out.println("vo.getShName(): " + vo.getShName());
+		System.out.println("vo.getShUseNy(): " + vo.getShUseNy());
+		System.out.println("vo.getShDate(): " + vo.getShDate());
+		System.out.println("vo.getShDateSt(): " + vo.getShDateSt());
+		System.out.println("vo.getShDateFi(): " + vo.getShDateFi());
 		
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);

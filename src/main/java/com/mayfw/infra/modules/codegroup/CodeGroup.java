@@ -6,16 +6,10 @@ public class CodeGroup {
 	private String seq;
 	private String codeGroup;
 	private String codeGroupEn;
-	private Integer useNy;
+	private String useNy;
 	private Date reg_date;
 	private Date mod_date;
 	private Integer cnt;
-	public Integer getCnt() {
-		return cnt;
-	}
-	public void setCnt(Integer cnt) {
-		this.cnt = cnt;
-	}
 	public String getSeq() {
 		return seq;
 	}
@@ -34,10 +28,10 @@ public class CodeGroup {
 	public void setCodeGroupEn(String codeGroupEn) {
 		this.codeGroupEn = codeGroupEn;
 	}
-	public Integer getUseNy() {
+	public String getUseNy() {
 		return useNy;
 	}
-	public void setUseNy(Integer useNy) {
+	public void setUseNy(String useNy) {
 		this.useNy = useNy;
 	}
 	public Date getReg_date() {
@@ -52,6 +46,13 @@ public class CodeGroup {
 	public void setMod_date(Date mod_date) {
 		this.mod_date = mod_date;
 	}
+	public Integer getCnt() {
+		return cnt;
+	}
+	public void setCnt(Integer cnt) {
+		this.cnt = cnt;
+	}
+	
 	
 	
 	

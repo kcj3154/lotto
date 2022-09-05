@@ -12,17 +12,27 @@
 			SELECT
 			c.seq
 			,c.ccg_seq
-			,d.codeGroup
 			,c.codeName
 			,c.codeNameEn
 			,c.useNy
-			,c.sort
-			,c.reg_date
-			,c.mod_date
-			from cc c
-			left join ccg d on c.ccg_seq = d.seq
-			order by d.seq asc
-			;
+            ,c.sort
+            ,c.reg_date
+            ,c.mod_date
+			,(select codeGroup from ccg d where d.seq = c.ccg_seq) as codeGroup
+		FROM cc c
+		where 1=1
+			
+			<if test="shDate ==5">and c.reg_date between {shDateSt} and {shDateFi}</if>
+			<if test="shDate ==6">and c.mod_date between {shDateSt} and {shDateFi}</if>
+			
+		<choose>
+			<when test="shId ==1">and c.ccg_seq = #{shName}</when> 
+			<when test="shId ==2">and c.codeName LIKE CONCAT('%', #{shName}, '%')</when>
+			<when test="shId ==3">and c.codeNameEn LIKE CONCAT('%', #{shName}, '%')</when>
+			<when test="shId ==4">and c.codeGroup LIKE CONCAT('%', #{shName}, '%') </when>
+			<when test="shUseNy ==0">and c.useNy = #{shUseNy}</when>
+			<when test="shUseNy ==1">and c.useNy = #{shUseNy}</when>
+		</choose>
 	</select>
 
 </mapper>	

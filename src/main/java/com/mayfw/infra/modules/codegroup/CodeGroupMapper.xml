@@ -16,12 +16,25 @@
 			,a.useNy
 			,a.reg_date
 			,a.mod_date
-			,COUNT(*) cnt
+			,(select count(b.seq) from cc b where b.ccg_seq = a.seq) as cnt
 		FROM ccg a
-		LEFT JOIN cc b on a.seq = b.ccg_seq
-		GROUP BY a.seq
-		having 1=1
-			AND a.codeGroup LIKE CONCAT('%' , #{shName}, '%')
+		where 1=1
+		
+				<if test="shDate ==5">and a.reg_date between #{shDateSt} and #{shDateFi}</if>
+				<if test="shDate ==6">and a.mod_date between #{shDateSt} and #{shDateFi}</if>
+		
+			<choose>
+				<when test="shId ==1">and a.seq = #{shName}</when>
+				<when test="shId ==2">and a.codeGroup LIKE CONCAT('%', #{shName}, '%')</when>
+				<when test="shId ==3">and a.codeGroupEn LIKE CONCAT('%', #{shName}, '%')</when>
+				<when test="shId ==4">and cnt = #{shName}</when>
+				<when test="shUseNy ==0">and a.useNy = #{shUseNy}</when>
+				<when test="shUseNy ==1">and a.useNy = #{shUseNy}</when>
+				
+			</choose>
 	</select>
+	
+	
+	
 
 </mapper>	

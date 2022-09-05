@@ -74,40 +74,43 @@
 <div class="container-fluid" style="width: 84%;">
 	<form class="row g-3 needs-validation" novalidate>
 	  <div class="col-md-1">
-	    <select class="form-select">
-	      <option>N</option>
-	      <option>Y</option>
+	    <select class="form-select" name="shUseNy">
+	      <option selected disabled value="">사용여부</option>
+	      <option value="0">N</option>
+	      <option value="1">Y</option>	    
 	    </select>
 	  </div>
 	  <div class="col-md-2">
-	    <select class="form-select">
-	      <option>수정일</option>
-	      <option>등록일</option>
+	    <select class="form-select" name="shDate">
+	      <option value="5">등록일</option>
+	      <option value="6">수정일</option>
 	    </select>
 	  </div>
 	  <div class="col-md-2">
-    	<input type="text" class="form-control" placeholder="시작일">
+    	<input type="date" class="form-control" name="shDateSt">
    	  </div>
    	  <div class="col-md-2">
-    	<input type="text" class="form-control" placeholder="종료일">
+    	<input type="date" class="form-control" name="shDateFi">
    	  </div>
    	  <div class="col-md-2">
-	    <select class="form-select">
-	      <option>검색구분</option>
-	      <option>코드그룹 코드</option>
-	      <option>코드그룹 이름 (한글)</option>
-	      <option>코드그룹 이름 (영문)</option>
-	      <option>코드그룹 코드갯수</option>
+	    <select class="form-select" name="shId">
+	      <option selected disabled value="">검색구분</option>
+	      <option value="1">코드그룹 코드</option>
+	      <option value="2">코드 이름(한글)</option>
+	      <option value="3">코드 이름(영문)</option>
+	      <option value="4">코드그룹 이름(한글)</option>
 	    </select>
 	  </div>
-     <button type="button" class="btn btn-dark btn-sm" style="width: 40px;"><i class="fa-solid fa-magnifying-glass"></i></button>
+	  <div class="col-md-2">
+    	<input type="text" class="form-control" id="shName" name="shName" value="<c:out value="${vo.shName }"/>" placeholder="검색어">
+   	  </div>
+     <button class="btn btn-dark btn-sm" style="width: 40px;"><i class="fa-solid fa-magnifying-glass"></i></button>
 	</form>
 </div>
 
 <br><br>
 
 
-<div class="container-fluid" style="width: 84%;">Total: 106</div>
 <div class="container-fluid" style="width: 84%;">	
 	<table class="table table-bordered border-gray">
 	  <thead>
@@ -125,20 +128,22 @@
 	    </tr>
 	  </thead>
 	   <tbody class="table" align="center">
-	   <c:forEach items="${list}" var="list" varStatus="status">
-	    <tr>
-	      <th scope="row"><input class="form-check-input" type="checkbox"></th>
-	      <td><c:out value="${list.seq }"/></td>
-	      <td><c:out value="${list.ccg_seq }"/></td>
-	      <td><c:out value="${list.codeGroup }"/></td>
-	      <td><c:out value="${list.codeName }"/></td>
-	      <td><c:out value="${list.codeNameEn }"/></td>
-	      <td><c:out value="${list.useNy }"/></td>
-	      <td><c:out value="${list.sort }"/></td>
-	      <td><c:out value="${list.reg_date }"/></td>
-	      <td><c:out value="${list.mod_date }"/></td>
-	    </tr>
-	   </c:forEach>
+	   
+		   <c:forEach items="${list}" var="list" varStatus="status">
+		    <tr>
+		      <th scope="row"><input class="form-check-input" type="checkbox"></th>
+		      <td><c:out value="${list.seq }"/></td>
+		      <td><c:out value="${list.ccg_seq }"/></td>
+		      <td><c:out value="${list.codeGroup }"/></td>
+		      <td><c:out value="${list.codeName }"/></td>
+		      <td><c:out value="${list.codeNameEn }"/></td>
+		      <td><c:out value="${list.useNy }"/></td>
+		      <td><c:out value="${list.sort }"/></td>
+		      <td><fmt:formatDate value="${list.reg_date }" pattern="yy-MM-dd HH:mm:ss"/></td>
+		      <td><fmt:formatDate value="${list.mod_date }" pattern="yy-MM-dd HH:mm:ss"/></td>
+		    </tr>
+		   </c:forEach>
+	   
 	   
 	  </tbody>
 	</table>

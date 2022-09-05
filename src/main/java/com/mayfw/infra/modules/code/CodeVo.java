@@ -1,6 +1,6 @@
-package com.mayfw.infra.modules.codegroup;
+package com.mayfw.infra.modules.code;
 
-public class CodeGroupVo {
+public class CodeVo {
 	
 	private String shName;
 	private String shId;
@@ -44,10 +44,6 @@ public class CodeGroupVo {
 	public void setShDateFi(String shDateFi) {
 		this.shDateFi = shDateFi;
 	}
-
 	
+
 }
-
-	
-
-
