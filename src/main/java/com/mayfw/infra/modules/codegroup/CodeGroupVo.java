@@ -6,8 +6,8 @@ public class CodeGroupVo {
 	private String shId;
 	private String shUseNy;
 	private String shDate;
-	private String shDateSt;
-	private String shDateFi;
+	private String startDate;
+	private String endDate;
 	public String getShName() {
 		return shName;
 	}
@@ -32,19 +32,18 @@ public class CodeGroupVo {
 	public void setShDate(String shDate) {
 		this.shDate = shDate;
 	}
-	public String getShDateSt() {
-		return shDateSt;
+	public String getStartDate() {
+		return startDate;
 	}
-	public void setShDateSt(String shDateSt) {
-		this.shDateSt = shDateSt;
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
-	public String getShDateFi() {
-		return shDateFi;
+	public String getEndDate() {
+		return endDate;
 	}
-	public void setShDateFi(String shDateFi) {
-		this.shDateFi = shDateFi;
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
 	}
-	
 	
 	
 	

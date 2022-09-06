@@ -4,37 +4,62 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.mayfw.infra.modules.codegroup.CodeGroupMapper">
+<mapper
+	namespace="com.mayfw.infra.modules.codegroup.CodeGroupMapper">
 
-    <resultMap id="resultMapObj" type="com.mayfw.infra.modules.codegroup.CodeGroup"></resultMap>
-	
+	<resultMap id="resultMapObj"
+		type="com.mayfw.infra.modules.codegroup.CodeGroup"></resultMap>
+
 	<select id="selectList" resultMap="resultMapObj">
-			SELECT
-			a.seq
-			,a.codeGroup
-			,a.codeGroupEn
-			,a.useNy
-			,a.reg_date
-			,a.mod_date
-			,(select count(b.seq) from cc b where b.ccg_seq = a.seq) as cnt
+		SELECT
+		a.seq
+		,a.codeGroup
+		,a.codeGroupEn
+		,a.useNy
+		,a.reg_date
+		,a.mod_date
+		,(select count(b.seq) from cc b where b.ccg_seq = a.seq) as cnt
 		FROM ccg a
 		where 1=1
-		
-				<if test="shDate ==5">and a.reg_date between #{shDateSt} and #{shDateFi}</if>
-				<if test="shDate ==6">and a.mod_date between #{shDateSt} and #{shDateFi}</if>
-		
-			<choose>
-				<when test="shId ==1">and a.seq = #{shName}</when>
-				<when test="shId ==2">and a.codeGroup LIKE CONCAT('%', #{shName}, '%')</when>
-				<when test="shId ==3">and a.codeGroupEn LIKE CONCAT('%', #{shName}, '%')</when>
-				<when test="shId ==4">and cnt = #{shName}</when>
-				<when test="shUseNy ==0">and a.useNy = #{shUseNy}</when>
-				<when test="shUseNy ==1">and a.useNy = #{shUseNy}</when>
-				
-			</choose>
+
+		<if test="shDate ==5">and a.reg_date between #{startDate} and #{endDate}</if>
+		<if test="shDate ==6">and a.mod_date between #{startDate} and #{endDate}</if>
+
+
+		<choose>
+			<when test="shId ==1">and a.seq = #{shName}</when>
+			<when test="shId ==2">and a.codeGroup LIKE CONCAT('%', #{shName}, '%')
+			</when>
+			<when test="shId ==3">and a.codeGroupEn LIKE CONCAT('%', #{shName}, '%')
+			</when>
+			<when test="shId ==4">and cnt = #{shName}</when>
+			<when test="shUseNy ==0">and a.useNy = #{shUseNy}</when>
+			<when test="shUseNy ==1">and a.useNy = #{shUseNy}</when>
+			<otherwise></otherwise>
+		</choose>
 	</select>
+
 	
+	<insert id="insert">
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+		insert into ccg(
+			codeGroup
+		    ,codeGroupEn
+		    ,useNy
+		    ,reg_date
+		)
+		values(
+			#{codeGroup}
+			,#{codeGroupEn}
+			,#{useNy}
+			,now()
+		)
+	</insert>
 	
+
 	
+
 
 </mapper>	

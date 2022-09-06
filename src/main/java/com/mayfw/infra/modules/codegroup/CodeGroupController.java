@@ -23,12 +23,26 @@ public class CodeGroupController {
 		System.out.println("vo.getShName(): " + vo.getShName());
 		System.out.println("vo.getShUseNy(): " + vo.getShUseNy());
 		System.out.println("vo.getShDate(): " + vo.getShDate());
-		System.out.println("vo.getShDateSt(): " + vo.getShDateSt());
-		System.out.println("vo.getShDateFi(): " + vo.getShDateFi());
+		System.out.println("vo.getStartDate(): " + vo.getStartDate());
+		System.out.println("vo.getEndDate(): " + vo.getEndDate());
 		
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
 		return "infra/codegroup/xdmin/codeGroupList";
+	}
+	
+	@RequestMapping(value = "codeGroupRegForm")
+	public String codeGroupRegForm() throws Exception {
+		return "infra/codegroup/xdmin/codeGroupRegForm";
+	}
+	
+	@RequestMapping(value = "codeGroupInst")
+	public String codeGroupInst(CodeGroup dto) throws Exception {
+		
+		int result = service.insert(dto);
+		System.out.println("controller result: " + result);
+		
+		return "redirect:/codeGroup/codeGroupList";
 	}
 }

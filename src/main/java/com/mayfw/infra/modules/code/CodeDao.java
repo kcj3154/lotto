@@ -24,4 +24,16 @@ public class CodeDao {
 		List<Code> list = sqlSession.selectList(namespace + ".selectList", vo);
 		return list;
 	}
+	
+	public List<Code> selectListA(CodeVo vo) {
+//		List<Code> list = sqlSession.selectList(namespace + ".selectList", vo);
+		List<Code> list = sqlSession.selectList(namespace + ".selectListA", vo);
+		return list;
+	}
+	
+	public int insert(Code dto) {
+		int result = sqlSession.insert(namespace + ".insert", dto);
+		System.out.println("dao result: " + result);
+		return result;
+	}
 }

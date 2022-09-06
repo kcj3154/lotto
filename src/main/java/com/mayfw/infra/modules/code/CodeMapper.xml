@@ -6,33 +6,68 @@
 
 <mapper namespace="com.mayfw.infra.modules.code.CodeMapper">
 
-    <resultMap id="resultMapObj" type="com.mayfw.infra.modules.code.Code"></resultMap>
-	
+	<resultMap id="resultMapObj"
+		type="com.mayfw.infra.modules.code.Code"></resultMap>
+
 	<select id="selectList" resultMap="resultMapObj">
-			SELECT
-			c.seq
-			,c.ccg_seq
-			,(select codeGroup from ccg d where d.seq = c.ccg_seq) as codeGroup
-			,c.codeName
-			,c.codeNameEn
-			,c.useNy
-            ,c.sort
-            ,c.reg_date
-            ,c.mod_date
+		SELECT
+		c.seq
+		,c.ccg_seq
+		,(select codeGroup from ccg d where d.seq = c.ccg_seq) as codeGroup
+		,c.codeName
+		,c.codeNameEn
+		,c.useNy
+		,c.sort
+		,c.reg_date
+		,c.mod_date
 		FROM cc c
 		where 1=1
-			
-			<if test="shDate ==5">and c.reg_date between #{shDateSt} and #{shDateFi}</if>
-			<if test="shDate ==6">and c.mod_date between #{shDateSt} and #{shDateFi}</if>
-			
+
+		<if test="shDate ==5">and c.reg_date between #{startDate} and #{endDate}</if>
+		<if test="shDate ==6">and c.mod_date between #{startDate} and #{endDate}</if>
+
 		<choose>
-			<when test="shId ==1">and c.ccg_seq = #{shName}</when> 
-			<when test="shId ==2">and c.codeName LIKE CONCAT('%', #{shName}, '%')</when>
-			<when test="shId ==3">and c.codeNameEn LIKE CONCAT('%', #{shName}, '%')</when>
-			<when test="shId ==4">and c.codeGroup LIKE CONCAT('%', #{shName}, '%') </when>
+			<when test="shId ==1">and c.ccg_seq = #{shName}</when>
+			<when test="shId ==2">and c.codeName LIKE CONCAT('%', #{shName}, '%')
+			</when>
+			<when test="shId ==3">and c.codeNameEn LIKE CONCAT('%', #{shName}, '%')
+			</when>
+			<when test="shId ==4">and c.codeGroup LIKE CONCAT('%', #{shName}, '%')
+			</when>
 			<when test="shUseNy ==0">and c.useNy = #{shUseNy}</when>
 			<when test="shUseNy ==1">and c.useNy = #{shUseNy}</when>
+			<otherwise></otherwise>
 		</choose>
 	</select>
+
+	<select id="selectListA" resultMap="resultMapObj">
+		select
+		seq
+		,codeGroup
+		from ccg
+	</select>
+
+	<insert id="insert">
+		<selectKey resultType="String" keyProperty="seq"
+			order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+		insert into cc(
+		ccg_seq
+		,codeName
+		,codeNameEn
+		,useNy
+		,reg_date
+		)
+		values(
+		#{ccg_seq}
+		,#{codeName}
+		,#{codeNameEn}
+		,#{useNy}
+		,now()
+		)
+	</insert>
+
+
 
 </mapper>	

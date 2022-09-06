@@ -23,12 +23,34 @@ public class CodeController {
 		System.out.println("vo.getShName(): " + vo.getShName());
 		System.out.println("vo.getShUseNy(): " + vo.getShUseNy());
 		System.out.println("vo.getShDate(): " + vo.getShDate());
-		System.out.println("vo.getShDateSt(): " + vo.getShDateSt());
-		System.out.println("vo.getShDateFi(): " + vo.getShDateFi());
+		System.out.println("vo.getStartDate(): " + vo.getStartDate());
+		System.out.println("vo.getEndDate(): " + vo.getEndDate());
 
 		List<Code> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
 		return "infra/code/xdmin/codeList";
+	}
+	
+	@RequestMapping(value = "codeRegForm")
+	public String codeRegForm(Model model, CodeVo vo) throws Exception {
+		
+		List<Code> list = service.selectListA(vo);
+		model.addAttribute("list", list);
+		return "infra/code/xdmin/codeRegForm";
+	}
+	
+	/*
+	 * @RequestMapping(value = "codeRegForm") public String codeRegForm() throws
+	 * Exception { return "infra/code/xdmin/codeRegForm"; }
+	 */
+	
+	@RequestMapping(value = "codeInst")
+	public String codeInst(Code dto) throws Exception {
+		
+		int result = service.insert(dto);
+		System.out.println("controller result: " + result);
+		
+		return "redirect:/code/codeList";
 	}
 }

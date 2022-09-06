@@ -16,7 +16,27 @@
         <title>CODE GROUP</title>
         <!-- Favicon-->
        	<link rel="icon" type="image/x-icon" href="/resources/user/image/favicon.ico" />
-        
+       	
+       	<!-- Datepicker -->
+   		 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
+    	 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+    	 <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css">
+		 <script type="text/javascript">
+         $(function() {
+            $('.date-picker').datepicker( {
+            changeMonth: true,
+            changeYear: true,
+            changeDay: true,
+            showButtonPanel: true,
+            dateFormat: 'yy-mm-dd',
+            onClose: function(dateText, inst) { 
+                $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, inst.selectedDay));
+            }
+            });
+         });
+    </script>
+		
+
     <!-- css -->
     <style type="text/css">
     	#page {
@@ -85,15 +105,16 @@
 	  </div>
 	  <div class="col-md-2">
 	    <select class="form-select" name="shDate">
+	      <option value="">선택</option>
 	      <option value="5">등록일</option>
 	      <option value="6">수정일</option>
 	    </select>
 	  </div>
 	  <div class="col-md-2">
-    	<input type="date" class="form-control" name="shDateSt">
+	  	<input type="text" name="startDate" id="startDate" class="date-picker form-select" placeholder="시작일"/>
    	  </div>
    	  <div class="col-md-2">
-    	<input type="date" class="form-control" name="shDateFi">
+    	<input type="text" name="endDate" id="endDate" class="date-picker form-select" placeholder="종료일"/>
    	  </div>
    	  <div class="col-md-2">
 	    <select class="form-select" name="shId">
@@ -144,8 +165,8 @@
 			      <td><c:out value="${list.codeGroup }"/></td>
 			      <td><c:out value="${list.codeGroupEn }"/></td>
 			      <td><c:out value="${list.cnt }"/></td>
-			      <td><fmt:formatDate value="${list.reg_date }" pattern="yy-MM-dd HH:mm:ss"/></td>
-			      <td><fmt:formatDate value="${list.mod_date }" pattern="yy-MM-dd HH:mm:ss"/></td>
+			      <td><fmt:formatDate value="${list.reg_date }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+			      <td><fmt:formatDate value="${list.mod_date }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 			    </tr>
 				</c:forEach>
 			</c:otherwise>
@@ -189,8 +210,8 @@
 		    </div>
 		  </div>
 		</div>
-	<a href="codeGroupRegForm.html"><button type="button" class="btn btn-dark btn-sm" id="plus"><i class="fa-solid fa-plus"></i></button></a>
-	<a href="memberModForm.html"><button type="button" class="btn btn-dark btn-sm" id="change">수정</button></a>
+	<a href="/codeGroup/codeGroupRegForm"><button type="button" class="btn btn-dark btn-sm" id="plus"><i class="fa-solid fa-plus"></i></button></a>
+	<button type="button" class="btn btn-dark btn-sm" id="change">수정</button>
 </div>
 
 
@@ -205,6 +226,7 @@
         <!-- Core theme JS-->
 
 <!-- end -->
+
 
 <script src="https://kit.fontawesome.com/0089819b08.js" crossorigin="anonymous"></script>
 </body>
