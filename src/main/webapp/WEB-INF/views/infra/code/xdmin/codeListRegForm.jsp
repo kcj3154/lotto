@@ -15,7 +15,7 @@
         <meta name="author" content="" />
         <title>CODE</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="../user/main/template/assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/resources/user/image/favicon.ico" />
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
@@ -23,7 +23,7 @@
 
 <!-- start -->
 <div class="container-fluid" style="width: 84%">
-	<a href="../user/main/main.html"><img src="../user/image/cou.jpg" style="width: 200px;"></a>
+	<a href="../user/main/main.html"><img src="/resources/user/image/cou.jpg" style="width: 200px;"></a>
 </div>
 
 <div class="container-fluid" style="width: 84%">
@@ -154,7 +154,7 @@
 			<input type="text" class="form-control">
 		</div>
 	</div>
-	<br>
+	<br><br><br>
 	<a href="/code/codeRegForm"><button class="btn btn-dark btn-sm">저장</button></a>
 </div>
 </div>

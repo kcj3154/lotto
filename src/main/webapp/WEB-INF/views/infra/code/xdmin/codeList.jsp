@@ -207,8 +207,8 @@
 		    </div>
 		  </div>
 		</div>
-	<a href="/code/codeRegForm"><button type="button" class="btn btn-dark btn-sm" id="plus"><i class="fa-solid fa-plus"></i></button></a>
-	<a href="memberModForm.html"><button type="button" class="btn btn-dark btn-sm" id="change">수정</button></a>
+	<a href="/code/codeListRegForm"><button type="button" class="btn btn-dark btn-sm" id="plus"><i class="fa-solid fa-plus"></i></button></a>
+	<a href="/code/codeListModForm"><button type="button" class="btn btn-dark btn-sm" id="change">수정</button></a>
 </div>
 
 <br><br>

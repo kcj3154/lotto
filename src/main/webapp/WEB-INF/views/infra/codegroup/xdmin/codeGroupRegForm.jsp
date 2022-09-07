@@ -15,7 +15,7 @@
         <meta name="author" content="" />
         <title>CODE GROUP</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="../user/main/template/assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/resources/user/image/favicon.ico" />
         
         <!--  css  -->
     	<style type="text/css">
@@ -34,7 +34,7 @@
 
 <!-- start -->
 <div class="container-fluid" style="width: 84%">
-	<a href="../user/main/main.html"><img src="../user/image/cou.jpg" style="width: 200px;"></a>
+	<a href="../user/main/main.html"><img src="/resources/user/image/cou.jpg" style="width: 200px;"></a>
 </div>
 
 <div class="container-fluid" style="width: 84%">
@@ -66,43 +66,45 @@
 
 
 <hr>
-<form method="post" action="/codeGroup/codeGroupInst">
+<!-- 데이터 넘기려면 action 안 넘기려면 onsubmit -->
+<form method="post" onsubmit="/codeGroup/codeGroupInst"> 
 <div class="container-fluid" style="width: 84%; font-size: 24px;">코드그룹 관리</div>
 <br>
 <div class="container-fluid" style="width: 84%;"><br>
 	<div class="row">
 		<div class="col-6">
   			<label for="CodeGroupCode" class="form-label">코드그룹 코드</label>
-  			<input type="text" class="form-control" value="자동설정" readonly>
+  			<input type="text" id="codeGroupCode" class="form-control" value="자동설정" readonly>
 		</div>
 		<div class="col-6">
 			<label for="codeGroupCodeAnother" class="form-label">코드그룹 코드(Another)</label>
-  			<input type="text" class="form-control" placeholder="영문(대소문자),숫자">
+  			<input type="text" id="codeGroupCodeAnother" class="form-control" placeholder="영문(대소문자),숫자">
 		</div>
 	</div>
+	
 	<br>
 	<div class="row">
 		<div class="col-6">
 			<label for="codeGroupNameKr" class="form-label">코드그룹 이름 (한글)</label>
-  			<input type="text" name="codeGroup" class="form-control">
+  			<input type="text" id="codeGroup" name="codeGroup" class="form-control">
 		</div>
 		<div class="col-6">
 			<label for="codeGroupNameEng" class="form-label">코드그룹 이름 (영문)</label>
-  			<input type="text" name="codeGroupEn" class="form-control" placeholder="영문(대소문자),숫자">
+  			<input type="text" id="codeGroupEn" name="codeGroupEn" class="form-control" placeholder="영문(대소문자),숫자">
 		</div>
 	</div>
 	<br>
 	<div class="row">
 		<div class="col-6">
 			<label for="useNy" class="form-Label">사용여부</label>
-			<select class="form-select" name="useNy">
+			<select class="form-select" name="useNy" id="">
 				<option value="0">N</option>
 				<option value="1">Y</option>
 			</select>
 		</div>
 		<div class="col-6">
 			<label for="seq" class="form-Label">순서</label>
-			<input type="text" class="form-control" placeholder="숫자">
+			<input type="text" class="form-control" placeholder="숫자" id="sort">
 		</div>
 	</div>
 	<br>
@@ -149,6 +151,20 @@
 		</div>
 	</div>
 	
+	
+			<select name="telecom" id="telecom">
+				<option>선택하세요</option>
+				<option value="1">skt</option>
+				<option value="2">kt</option>
+				<option value="3">lgt</option>
+			</select>
+	
+			<input type="radio" id="gender1" name="gender" value="1">남성
+			<input type="radio" id="gender2" name="gender" value="2">여성
+			<input type="radio" id="gender3" name="gender" value="3">기타
+	
+	
+	
 	<br><br><br>
 
     <div class="container-fluid">
@@ -171,10 +187,13 @@
 		  </div>
 		</div>
 	</div>
-	
-	<a href="/codeGroup/codeGroupRegForm"><button class="btn btn-dark btn-sm">저장</button></a>
+</div>
+
+	<a href="/codeGroup/codeGroupRegForm"><button class="btn btn-dark btn-sm" onclick="aaa(); return false;">저장</button></a>
 </div>   
+
 </form>
+
 		
 		<br><br>
 		
@@ -191,7 +210,25 @@
 		<script src="template/js/scripts.js"></script>
 
 <!-- end -->
-
-<script src="https://kit.fontawesome.com/0089819b08.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+	function aaa() {
+		
+		if(document.getElementById("codeGroup").value == '' || document.getElementById("codeGroup").value == null){
+			alert("입력안하냐");
+			document.getElementById("codeGroup").value="";
+			document.getElementById("codeGroup").focus();
+		}
+		
+		alert(document.getElementById('telecom').value);
+		alert(document.querySelector("input[name='gender']:checked").value);;
+		
+		return false;
+		
+		
+		
+	}
+	</script>
+<script src="https://kit.fontawesome.com/0089819b08.js"></script>
 </body>
 </html>

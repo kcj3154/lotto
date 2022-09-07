@@ -21,6 +21,7 @@
 		,c.reg_date
 		,c.mod_date
 		FROM cc c
+		LEFT JOIN ccg d on c.ccg_seq = d.seq
 		where 1=1
 
 		<if test="shDate ==5">and c.reg_date between #{startDate} and #{endDate}</if>
@@ -32,7 +33,7 @@
 			</when>
 			<when test="shId ==3">and c.codeNameEn LIKE CONCAT('%', #{shName}, '%')
 			</when>
-			<when test="shId ==4">and c.codeGroup LIKE CONCAT('%', #{shName}, '%')
+			<when test="shId ==4">and codeGroup LIKE CONCAT('%', #{shName}, '%')
 			</when>
 			<when test="shUseNy ==0">and c.useNy = #{shUseNy}</when>
 			<when test="shUseNy ==1">and c.useNy = #{shUseNy}</when>

@@ -32,12 +32,12 @@ public class CodeController {
 		return "infra/code/xdmin/codeList";
 	}
 	
-	@RequestMapping(value = "codeRegForm")
+	@RequestMapping(value = "codeListRegForm")
 	public String codeRegForm(Model model, CodeVo vo) throws Exception {
 		
 		List<Code> list = service.selectListA(vo);
 		model.addAttribute("list", list);
-		return "infra/code/xdmin/codeRegForm";
+		return "infra/code/xdmin/codeListRegForm";
 	}
 	
 	/*

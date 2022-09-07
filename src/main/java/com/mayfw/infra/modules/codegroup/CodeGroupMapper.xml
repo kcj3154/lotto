@@ -32,7 +32,6 @@
 			</when>
 			<when test="shId ==3">and a.codeGroupEn LIKE CONCAT('%', #{shName}, '%')
 			</when>
-			<when test="shId ==4">and cnt = #{shName}</when>
 			<when test="shUseNy ==0">and a.useNy = #{shUseNy}</when>
 			<when test="shUseNy ==1">and a.useNy = #{shUseNy}</when>
 			<otherwise></otherwise>
