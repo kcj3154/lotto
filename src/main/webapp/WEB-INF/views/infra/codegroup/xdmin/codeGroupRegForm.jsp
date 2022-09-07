@@ -187,9 +187,9 @@
 		  </div>
 		</div>
 	</div>
+	<a href="/codeGroup/codeGroupRegForm"><button class="btn btn-dark btn-sm" onclick="aaa(); return false;">저장</button></a>
 </div>
 
-	<a href="/codeGroup/codeGroupRegForm"><button class="btn btn-dark btn-sm" onclick="aaa(); return false;">저장</button></a>
 </div>   
 
 </form>
