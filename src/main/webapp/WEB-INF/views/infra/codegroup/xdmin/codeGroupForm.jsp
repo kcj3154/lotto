@@ -74,11 +74,11 @@
 	<div class="row">
 		<div class="col-6">
   			<label for="CodeGroupCode" class="form-label">코드그룹 코드</label>
-  			<input type="text" id="codeGroupCode" class="form-control" value="자동설정" readonly>
+  			<input type="text" id="codeGroupCode" class="form-control" value="<c:out value="${item.seq }"/>" readonly>
 		</div>
 		<div class="col-6">
 			<label for="codeGroupCodeAnother" class="form-label">코드그룹 코드(Another)</label>
-  			<input type="text" id="codeGroupCodeAnother" class="form-control" placeholder="영문(대소문자),숫자">
+  			<input type="text" id="codeGroupCodeAnother" class="form-control" placeholder="영문(대소문자),숫자" value="<c:out value="${item.seq }"/>" readonly>
 		</div>
 	</div>
 	
@@ -86,20 +86,20 @@
 	<div class="row">
 		<div class="col-6">
 			<label for="codeGroupNameKr" class="form-label">코드그룹 이름 (한글)</label>
-  			<input type="text" id="codeGroup" name="codeGroup" class="form-control">
+  			<input type="text" id="codeGroup" name="codeGroup" class="form-control" value="<c:out value="${item.codeGroup }"/>" readonly>
 		</div>
 		<div class="col-6">
 			<label for="codeGroupNameEng" class="form-label">코드그룹 이름 (영문)</label>
-  			<input type="text" id="codeGroupEn" name="codeGroupEn" class="form-control" placeholder="영문(대소문자),숫자">
+  			<input type="text" id="codeGroupEn" name="codeGroupEn" class="form-control" value="<c:out value="${item.codeGroupEn }"/>" readonly>
 		</div>
 	</div>
 	<br>
 	<div class="row">
 		<div class="col-6">
 			<label for="useNy" class="form-Label">사용여부</label>
-			<select class="form-select" name="useNy" id="">
-				<option value="0">N</option>
+			<select class="form-select" name="useNy" id="" value="<c:out value="${item.useNy }"/>" disabled>
 				<option value="1">Y</option>
+				<option value="0">N</option>
 			</select>
 		</div>
 		<div class="col-6">
@@ -111,7 +111,7 @@
 	<div class="row">
 		<div class="col-6">
 			<label for="explanation" class="form-Label">설명</label>
-			<textarea style="width: 775px; height: 70px"></textarea>
+			<textarea style="width: 775px; height: 70px" disabled></textarea>
 		</div>
 	</div>
 	<br>

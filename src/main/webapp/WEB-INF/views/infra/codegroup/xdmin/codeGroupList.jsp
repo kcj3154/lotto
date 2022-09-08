@@ -15,7 +15,7 @@
         <meta name="author" content="" />
         <title>CODE GROUP</title>
         <!-- Favicon-->
-       	<link rel="icon" type="image/x-icon" href="/resources/user/image/favicon.ico" />
+       	<link rel="icon" type="image/x-icon" href="/resources/user/main/image/favicon.ico" />
        	
        	<!-- Datepicker -->
    		 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
@@ -60,7 +60,7 @@
 
 <!-- start -->
 <div class="container-fluid" style="width: 84%">
-	<a href="/resources/user/main/main.html"><img src="/resources/user/image/cou.jpg" style="width: 200px;"></a>
+	<a href="/resources/user/main/main.html"><img src="/resources/user/main/image/cou.jpg" style="width: 200px;"></a>
 </div>
 
 <div class="container-fluid" style="width: 84%">
@@ -119,10 +119,10 @@
    	  <div class="col-md-2">
 	    <select class="form-select" name="shId">
 	      <option selected disabled value="">검색구분</option>
-	      <option value="1"><c:if test="${vo.shId}">selected</c:if>코드그룹 코드</option>
-	      <option value="2"><c:if test="${vo.shId}">selected</c:if>코드그룹 이름 (한글)</option>
-	      <option value="3"><c:if test="${vo.shId}">selected</c:if>코드그룹 이름 (영문)</option>
-	      <option value="4"><c:if test="${vo.shId}">selected</c:if>코드그룹 코드갯수</option>
+	      <option value="1"<c:if test="${vo.shId == 1}">selected</c:if>>코드그룹 코드</option>
+	      <option value="2"<c:if test="${vo.shId == 2}">selected</c:if>>코드그룹 이름 (한글)</option>
+	      <option value="3"<c:if test="${vo.shId == 3}">selected</c:if>>코드그룹 이름 (영문)</option>
+	      <option value="4"<c:if test="${vo.shId == 4}">selected</c:if>>코드그룹 코드갯수</option>
 	    </select>
 	  </div>
 	  <div class="col-md-2">
@@ -158,11 +158,16 @@
 			</c:when>
 			<c:otherwise>
 				<c:forEach items="${list}" var="list" varStatus="status">	
-				 <tr>
+				<tr style="cursor: pointer;" onclick="location.href='/codeGroup/codeGroupView?shSeq=<c:out value="${list.seq }"/>'" >
+				 <%-- <tr onclick="location.href='/codeGroup/codeGroupView?shSeq=<c:out value="${list.seq }"/>'"> --%>
 			      <th scope="row"><input class="form-check-input" type="checkbox"></th>
 			      <td><c:out value="${list.seq }"/></td>
 			      <td><c:out value="${list.seq }"/></td>
-			      <td><c:out value="${list.codeGroup }"/></td>
+			      <td>
+			      	<a >
+				      	<c:out value="${list.codeGroup }"/>
+			      	</a>
+			      </td>
 			      <td><c:out value="${list.codeGroupEn }"/></td>
 			      <td><c:out value="${list.cnt }"/></td>
 			      <td><fmt:formatDate value="${list.reg_date }" pattern="yyyy-MM-dd HH:mm:ss"/></td>

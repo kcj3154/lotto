@@ -67,7 +67,7 @@
 
 <hr>
 <!-- 데이터 넘기려면 action 안 넘기려면 onsubmit -->
-<form method="post" action="/codeGroup/codeGroupInst"> 
+<form method="post" onsubmit="/codeGroup/codeGroupInst"> 
 <div class="container-fluid" style="width: 84%; font-size: 24px;">코드그룹 관리</div>
 <br>
 <div class="container-fluid" style="width: 84%;"><br>
@@ -152,7 +152,16 @@
 	</div>
 	
 	
-			
+			<select name="telecom" id="telecom">
+				<option>선택하세요</option>
+				<option value="1">skt</option>
+				<option value="2">kt</option>
+				<option value="3">lgt</option>
+			</select>
+	
+			<input type="radio" id="gender1" name="gender" value="1">남성
+			<input type="radio" id="gender2" name="gender" value="2">여성
+			<input type="radio" id="gender3" name="gender" value="3">기타
 	
 	
 	
@@ -203,7 +212,22 @@
 <!-- end -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
-	
+	function aaa() {
+		
+		if(document.getElementById("codeGroup").value == '' || document.getElementById("codeGroup").value == null){
+			alert("입력안하냐");
+			document.getElementById("codeGroup").value="";
+			document.getElementById("codeGroup").focus();
+		}
+		
+		alert(document.getElementById('telecom').value);
+		alert(document.querySelector("input[name='gender']:checked").value);;
+		
+		return false;
+		
+		
+		
+	}
 	</script>
 <script src="https://kit.fontawesome.com/0089819b08.js"></script>
 </body>

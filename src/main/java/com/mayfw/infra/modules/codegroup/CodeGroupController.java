@@ -28,6 +28,7 @@ public class CodeGroupController {
 		
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
+		model.addAttribute("vo", vo);
 		
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
@@ -44,5 +45,12 @@ public class CodeGroupController {
 		System.out.println("controller result: " + result);
 		
 		return "redirect:/codeGroup/codeGroupList";
+	}
+	
+	@RequestMapping(value = "codeGroupView")
+	public String codeGroupView(CodeGroupVo vo, Model model) throws Exception {
+		CodeGroup result = service.selectOne(vo);
+		model.addAttribute("item", result);
+		return "infra/codegroup/xdmin/codeGroupForm";
 	}
 }

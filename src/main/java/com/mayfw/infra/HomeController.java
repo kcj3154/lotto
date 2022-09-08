@@ -18,11 +18,11 @@ public class HomeController {
 	
 	
 		
-		private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+		/*private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 		
-		/**
+		*//**
 		 * Simply selects the home view to render by returning its name.
-		 */
+		 *//*
 		@RequestMapping(value = "/", method = RequestMethod.GET)
 		public String home(Locale locale, Model model) {
 			logger.info("Welcome home! The client locale is {}.", locale);
@@ -35,47 +35,18 @@ public class HomeController {
 			model.addAttribute("serverTime", formattedDate );
 			
 			return "home";
+		}*/
+	
+		@RequestMapping(value = "/", method = RequestMethod.GET)
+		public String home() {
+			
+			return "home";
 		}
 		
-		@RequestMapping(value = "/a", method = RequestMethod.GET)
-		public String a(Locale locale, Model model) {
-			
-			return "a";
-		}
 		
-		@RequestMapping(value = "/b", method = RequestMethod.GET)
-		public String b(Locale locale, Model model) {
-			
-			return "b";
-		}	
-			
-		@RequestMapping(value = "/c", method = RequestMethod.GET)
-		public String c(Locale locale, Model model) {
-			
-			return "c";
-		}
-		
-		@RequestMapping(value = "/d", method = RequestMethod.GET)
-		public String d(Locale locale, Model model) {
-			
-			return "d";
-		}
-		
-		@RequestMapping(value = "/e", method = RequestMethod.GET)
-		public String e(Locale locale, Model model) {
-			
-			return "e";
-		}
-		
-		@RequestMapping(value = "/codeGroupList", method = RequestMethod.GET)
-		public String codeGroupList(Locale locale, Model model) {
-			
-			return "codeGroupList";
 		}
 		
 		
 		
 		
-}
-
 

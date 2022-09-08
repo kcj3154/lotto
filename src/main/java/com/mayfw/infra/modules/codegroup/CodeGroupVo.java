@@ -8,6 +8,7 @@ public class CodeGroupVo {
 	private String shDate;
 	private String startDate;
 	private String endDate;
+	private String shSeq;
 	public String getShName() {
 		return shName;
 	}
@@ -44,8 +45,12 @@ public class CodeGroupVo {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-	
-	
+	public String getShSeq() {
+		return shSeq;
+	}
+	public void setShSeq(String shSeq) {
+		this.shSeq = shSeq;
+	}
 	
 	
 	
