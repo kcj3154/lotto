@@ -15,7 +15,7 @@
         <meta name="author" content="" />
         <title>CODE GROUP</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="/resources/user/image/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/resources/user/main/image/favicon.ico" />
         
         <!--  css  -->
     	<style type="text/css">
@@ -34,7 +34,7 @@
 
 <!-- start -->
 <div class="container-fluid" style="width: 84%">
-	<a href="../user/main/main.html"><img src="/resources/user/image/cou.jpg" style="width: 200px;"></a>
+	<a href="../user/main/main.html"><img src="/resources/user/main/image/cou.jpg" style="width: 200px;"></a>
 </div>
 
 <div class="container-fluid" style="width: 84%">
@@ -178,7 +178,7 @@
 		  </div>
 		</div>
 	</div>
-	<a href="/codeGroup/codeGroupRegForm"><button class="btn btn-dark btn-sm" onclick="aaa(); return false;">저장</button></a>
+	<button class="btn btn-dark btn-sm" onclick="aaa(); return false;">저장</button>
 </div>
 
 </div>   

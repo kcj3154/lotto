@@ -71,6 +71,15 @@
 		)
 	</insert>
 	
+	<update id="update">
+		UPDATE ccg SET  
+			codeGroup = #{codeGroup}
+			,codeGroupEn = #{codeGroupEn}
+			,useNy = #{useNy}
+			,reg_date = now()
+		WHERE 1=1
+			AND seq = #{seq}
+	</update>
 
 	
 

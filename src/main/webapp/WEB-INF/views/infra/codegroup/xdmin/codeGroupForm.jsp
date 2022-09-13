@@ -67,18 +67,20 @@
 
 <hr>
 <!-- 데이터 넘기려면 action 안 넘기려면 onsubmit -->
-<form method="post" action="/codeGroup/codeGroupInst"> 
+<form name="form" method="post" action="/codeGroup/codeGroupUpdt">
+		<!-- <form name="form" method="post" > -->
+		<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
 <div class="container-fluid" style="width: 84%; font-size: 24px;">코드그룹 관리</div>
 <br>
 <div class="container-fluid" style="width: 84%;"><br>
 	<div class="row">
 		<div class="col-6">
   			<label for="CodeGroupCode" class="form-label">코드그룹 코드</label>
-  			<input type="text" id="codeGroupCode" class="form-control" value="<c:out value="${item.seq }"/>" readonly>
+  			<input type="text" id="codeGroupCode" name="codeGroupCode"  class="form-control" value="<c:out value="${item.seq }"/>" readonly>
 		</div>
 		<div class="col-6">
 			<label for="codeGroupCodeAnother" class="form-label">코드그룹 코드(Another)</label>
-  			<input type="text" id="codeGroupCodeAnother" class="form-control" placeholder="영문(대소문자),숫자" value="<c:out value="${item.seq }"/>" readonly>
+  			<input type="text" id="codeGroupCodeAn" name="codeGroupCodeAn"class="form-control" value="<c:out value="${item.seq}"/>" readonly>
 		</div>
 	</div>
 	
@@ -86,18 +88,18 @@
 	<div class="row">
 		<div class="col-6">
 			<label for="codeGroupNameKr" class="form-label">코드그룹 이름 (한글)</label>
-  			<input type="text" id="codeGroup" name="codeGroup" class="form-control" value="<c:out value="${item.codeGroup }"/>" readonly>
+  			<input type="text" id="codeGroup" name="codeGroup" class="form-control" value="<c:out value="${item.codeGroup}"/>">
 		</div>
 		<div class="col-6">
 			<label for="codeGroupNameEng" class="form-label">코드그룹 이름 (영문)</label>
-  			<input type="text" id="codeGroupEn" name="codeGroupEn" class="form-control" value="<c:out value="${item.codeGroupEn }"/>" readonly>
+  			<input type="text" id="codeGroupEn" name="codeGroupEn" class="form-control" value="<c:out value="${item.codeGroupEn}"/>">
 		</div>
 	</div>
 	<br>
 	<div class="row">
 		<div class="col-6">
 			<label for="useNy" class="form-Label">사용여부</label>
-			<select class="form-select" name="useNy" id="" value="<c:out value="${item.useNy }"/>" disabled>
+			<select class="form-select" id="useNy" name="useNy" value="<c:out value="${item.useNy }"/>">
 				<option value="1">Y</option>
 				<option value="0">N</option>
 			</select>
@@ -115,45 +117,6 @@
 		</div>
 	</div>
 	<br>
-	<div class="row">
-		<div class="col-6">
-			<label for="reserveVarchar1" class="form-Label">예비1 (varchar type)</label>
-			<input type="text" class="form-control" placeholder="영문(대소문자),숫자">
-		</div>
-		<div class="col-6">
-			<label for="reserveVarchar2" class="form-Label">예비2 (varchar type)</label>
-			<input type="text" class="form-control" placeholder="영문(대소문자),숫자">
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-6">
-			<label for="reserveVarchar3" class="form-Label">예비3(varchar type)</label>
-			<input type="text" class="form-control" placeholder="영문(대소문자),숫자">
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-6">
-			<label for="reserveInt1" class="form-Label">예비1 (int type)</label>
-			<input type="text" class="form-control" placeholder="숫자">
-		</div>
-		<div class="col-6">
-			<label for="reserveInt2" class="form-Label">예비2 (int type)</label>
-			<input type="text" class="form-control" placeholder="숫자">
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-6">
-			<label for="reserveInt3" class="form-Label">예비3(int type)</label>
-			<input type="text" class="form-control" placeholder="숫자">
-		</div>
-	</div>
-	
-	
-			
-	
 	
 	
 	<br><br><br>
@@ -178,7 +141,7 @@
 		  </div>
 		</div>
 	</div>
-	<a href="/codeGroup/codeGroupRegForm"><button class="btn btn-dark btn-sm" onclick="aaa(); return false;">저장</button></a>
+	<button class="btn btn-dark btn-sm">저장</button></a>
 </div>
 
 </div>   
@@ -201,6 +164,33 @@
 		<script src="template/js/scripts.js"></script>
 
 <!-- end -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
+    var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
+	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
+	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
+	
+	var seq = $("input:hidden[name=seq]");				/* #-> */
+	
+	var form = $("form[name=form]");
+	var formVo = $("form[name=formVo]");
+	
+	
+	$("#btnSave").on("click", function(){
+		if (seq.val() == "0" || seq.val() == ""){
+	   		// insert
+	   		if (validationInst() == false) return false;
+	   		form.attr("action", goUrlInst).submit();
+	   	} else {
+	   		// update
+	   		/* keyName.val(atob(keyName.val())); */
+	   		if (validationUpdt() == false) return false;
+	   		form.attr("action", goUrlUpdt).submit();
+	   	}
+	}); 
+	
+	</script>
+	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 	

@@ -30,7 +30,7 @@
 					<button id="btnSearch" name="btnSearch" class="btn btn-outline-secondary" type="button">
 						<i class="bi bi-search"></i>
 					</button>
-                    <a class="nav-link link-dark" href="/resources/user/main//resources/user/main/loginForm.html" style="height: 50px; width: 80px;"><p style="font-size: 12px;">로그인</p></a>
+                    <a class="nav-link link-dark" href="login" style="height: 50px; width: 80px;"><p style="font-size: 12px;">로그인</p></a>
                     <a class="nav-link link-dark" href="/resources/user/main/member/signupForm.html" style="height: 50px; width: 80px;"><p style="font-size: 12px;">회원가입</p></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -71,7 +71,7 @@
                            	</div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/resources/user/main/product/icis/productView.html">상품 보러가기</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/productView/">상품 보러가기</a></div>
                             </div>
                         </div>
                     </div>

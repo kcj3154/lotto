@@ -36,5 +36,9 @@ public class CodeGroupDao {
 		System.out.println("dao result: " + result);
 		return result;
 	}
+	
+	public int update(CodeGroup dto) {return sqlSession.update(namespace + ".update", dto); }
+	
+	
 
 }
