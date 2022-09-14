@@ -13,11 +13,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>CODE GROUP</title>
+        <title>CODE</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="/resources/user/main/image/favicon.ico" />
-        
-        <!--  css  -->
+    	
+    	 <!--  css  -->
     	<style type="text/css">
     	
     	
@@ -26,8 +26,8 @@
     	}
     	
     	
-    </style>
-       
+    	</style>
+    	
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -36,7 +36,7 @@
 
 <!-- start -->
 <div class="container-fluid" style="width: 84%">
-	<a href="../user/main/main.html"><img src="/resources/user/main/image/cou.jpg" style="width: 200px;"></a>
+	<img src="/resources/user/main/image/cou.jpg" style="width: 200px;"></a>
 </div>
 
 <div class="container-fluid" style="width: 84%">
@@ -58,60 +58,61 @@
 	</nav>
 </div>
 
-
 <hr>
-<!-- 데이터 넘기려면 action 안 넘기려면 onsubmit -->
-<form name="form" method="post">
-		<!-- <form name="form" method="post" > -->
-		<input type="hidden" name="Sseq" value="<c:out value="${item.seq }"/>">
-<div class="container-fluid" style="width: 84%; font-size: 24px;">코드그룹 관리</div>
+<form method="post" action="/code/codeInst">
+<div class="container-fluid" style="width: 84%; font-size: 24px;">코드 관리</div>
 <br>
 <div class="container-fluid" style="width: 84%;"><br>
 	<div class="row">
 		<div class="col-6">
-  			<label for="CodeGroupCode" class="form-label">코드그룹 코드</label>
-  			<input type="text" id="codeGroupCode" name="seq" class="form-control" value="<c:out value="${item.seq}"/>" readonly>
+			<label for="reserveVarchar2" class="form-Label">코드그룹 이름(한글)</label>
+			<input type="text" id="codeGroup" name="codeGroup" class="form-control" value="<c:out value="${item.codeGroup}"/>" readonly>
 		</div>
 		<div class="col-6">
-			<label for="codeGroupCodeAnother" class="form-label">코드그룹 코드(Another)</label>
-  			<input type="text" id="codeGroupCodeAn" name="" class="form-control" value="<c:out value="${item.seq}"/>" readonly>
+			<label for="code" class="">코드그룹 코드</label>
+  			<input type="text" id="ccd_seq" name="seq" class="form-control" value="<c:out value="${item.seq}"/>" readonly>
 		</div>
 	</div>
-	
 	<br>
 	<div class="row">
 		<div class="col-6">
-			<label for="codeGroupNameKr" class="form-label">코드그룹 이름 (한글)</label>
-  			<input type="text" id="codeGroup" name="codeGroup" class="form-control" value="<c:out value="${item.codeGroup}"/>">
+			<label for="codeNameKr" class="form-Label">코드 이름(한글)</label>
+			<input type="text" name="codeName" class="form-control" value="<c:out value="${item.codeName}"/>">
 		</div>
 		<div class="col-6">
-			<label for="codeGroupNameEng" class="form-label">코드그룹 이름 (영문)</label>
-  			<input type="text" id="codeGroupEn" name="codeGroupEn" class="form-control" value="<c:out value="${item.codeGroupEn}"/>">
+			<label for="codeNameEng" class="form-Label">코드 이름(영문)</label>
+			<input type="text" name="codeNameEn" class="form-control" value="<c:out value="${item.codeNameEn}"/>">
 		</div>
 	</div>
 	<br>
 	<div class="row">
 		<div class="col-6">
 			<label for="useNy" class="form-Label">사용여부</label>
-			<select class="form-select" id="useNy" name="useNy" value="<c:out value="${item.useNy }"/>">
-				<option value="1">Y</option>
+			<select class="form-select" name="useNy" value="<c:out value="${item.useNy}"/>">
 				<option value="0">N</option>
+				<option value="1">Y</option>
 			</select>
 		</div>
 		<div class="col-6">
 			<label for="seq" class="form-Label">순서</label>
-			<input type="text" class="form-control" placeholder="숫자" id="sort">
+			<input type="text" class="form-control" value="<c:out value="${item.sort}"/>">
 		</div>
 	</div>
 	<br>
 	<div class="row">
 		<div class="col-6">
 			<label for="explanation" class="form-Label">설명</label>
-			<textarea style="width: 775px; height: 70px" disabled></textarea>
+			<input type="text" class="form-control" readonly>
+		</div>
+		<div class="col-6">
+			<label for="reserveVarchar2" class="form-Label">삭제여부</label>
+			<select class="form-select" name="delNy" value="<c:out value="${item.delNy}"/>">
+				<option value="0">N</option>
+				<option value="1">Y</option>
+			</select>
 		</div>
 	</div>
 	<br>
-	
 	
 	<br><br><br>
 
@@ -138,15 +139,15 @@
 	<button type="button" class="btn btn-dark btn-sm" id="btnSave">저장</button>
 </div>
 
-</div>   
+</div>
+
 
 </form>
 
-		
-		<br><br>
-		
-		
-		 <!-- Footer-->
+	
+	<br><br>
+
+ <!-- Footer-->
 
 
         <footer class="py-5 bg-dark">
@@ -156,43 +157,11 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
 		<script src="template/js/scripts.js"></script>
+ 
+        
 
 <!-- end -->
 
-
-
-
-
-	
-<script type="text/javascript">
-
-	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
-	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
-	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
-	
-	var seq = $("input:hidden[name=Sseq]");				/* #-> */
-	
-	var form = $("form[name=form]");
-	var formVo = $("form[name=formVo]");
-	
-	
-	$("#btnSave").on("click", function(){
-	   		
-		if (seq.val() == "0" || seq.val() == ""){
-	   		// insert
-/* if (validationInst() == false) return false;
- */	   		form.attr("action", goUrlInst).submit();
-	   	} else {
-	   		// update
-	   		/* keyName.val(atob(keyName.val())); */
-	   		
-// 	   		if (validationUpdt() == false) return false;
-	   		
-	   		form.attr("action", goUrlUpdt).submit();
-	   	}
-	}); 
-
-</script>
-<script src="https://kit.fontawesome.com/0089819b08.js"></script>
+<script src="https://kit.fontawesome.com/0089819b08.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.mayfw.infra.modules.codegroup.CodeGroup;
+
 @Repository
 public class CodeDao {
 	
@@ -25,9 +27,9 @@ public class CodeDao {
 		return list;
 	}
 	
-	public List<Code> selectListA(CodeVo vo) {
+	public Code selectListA(CodeVo vo) {
 //		List<Code> list = sqlSession.selectList(namespace + ".selectList", vo);
-		List<Code> list = sqlSession.selectList(namespace + ".selectListA", vo);
+		Code list = sqlSession.selectOne(namespace + ".selectListA", vo);
 		return list;
 	}
 	
@@ -36,4 +38,6 @@ public class CodeDao {
 		System.out.println("dao result: " + result);
 		return result;
 	}
+	
+	public int update(Code dto) {return sqlSession.update(namespace + ".update", dto); }
 }

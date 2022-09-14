@@ -10,13 +10,12 @@ public class Code {
 	private String codeName;
 	private String codeNameEn;
 	private String useNy;
-	private Integer sort;
+	private String delNy;
+	private String sort;
 	private Date reg_date;
-	private Date mod_date;
 	public String getSeq() {
 		return seq;
 	}
-	
 	public void setSeq(String seq) {
 		this.seq = seq;
 	}
@@ -50,10 +49,16 @@ public class Code {
 	public void setUseNy(String useNy) {
 		this.useNy = useNy;
 	}
-	public Integer getSort() {
+	public String getDelNy() {
+		return delNy;
+	}
+	public void setDelNy(String delNy) {
+		this.delNy = delNy;
+	}
+	public String getSort() {
 		return sort;
 	}
-	public void setSort(Integer sort) {
+	public void setSort(String sort) {
 		this.sort = sort;
 	}
 	public Date getReg_date() {
@@ -68,6 +73,10 @@ public class Code {
 	public void setMod_date(Date mod_date) {
 		this.mod_date = mod_date;
 	}
+	private Date mod_date;
+	
+	
+	
 	
 
 }

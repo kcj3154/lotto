@@ -5,9 +5,30 @@ public class CodeVo {
 	private String shName;
 	private String shId;
 	private String shUseNy;
+	private	String shDelNy;
+	public String getShDelNy() {
+		return shDelNy;
+	}
+	public void setShDelNy(String shDelNy) {
+		this.shDelNy = shDelNy;
+	}
 	private String shDate;
 	private String startDate;
 	private String endDate;
+	private String shSeq;
+	private String Sseq;
+	public String getShSeq() {
+		return shSeq;
+	}
+	public void setShSeq(String shSeq) {
+		this.shSeq = shSeq;
+	}
+	public String getSseq() {
+		return Sseq;
+	}
+	public void setSseq(String sseq) {
+		Sseq = sseq;
+	}
 	public String getShName() {
 		return shName;
 	}

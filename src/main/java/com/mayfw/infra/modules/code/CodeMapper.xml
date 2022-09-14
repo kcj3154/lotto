@@ -17,6 +17,7 @@
 		,c.codeName
 		,c.codeNameEn
 		,c.useNy
+		,c.delNy
 		,c.sort
 		,c.reg_date
 		,c.mod_date
@@ -46,6 +47,8 @@
 		seq
 		,codeGroup
 		from ccg
+		where 1=1
+			AND seq = #{shSeq}
 	</select>
 
 	<insert id="insert">
@@ -58,6 +61,7 @@
 		,codeName
 		,codeNameEn
 		,useNy
+		,delNy
 		,reg_date
 		)
 		values(
@@ -65,6 +69,7 @@
 		,#{codeName}
 		,#{codeNameEn}
 		,#{useNy}
+		,#{delNy}
 		,now()
 		)
 	</insert>

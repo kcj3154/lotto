@@ -15,7 +15,7 @@
         <meta name="author" content="" />
         <title>CODE</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="/resources/user/image/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/resources/user/main/image/favicon.ico" />
         
         <!-- Datepicker -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
@@ -59,29 +59,21 @@
 
 <!-- start -->
 <div class="container-fluid" style="width: 84%">
-	<a href="../user/main/main.html"><img src="/resources/user/image/cou.jpg" style="width: 200px;"></a>
+	<a href="../user/main/main.html"><img src="/resources/user/main/image/cou.jpg" style="width: 200px;"></a>
 </div>
 
 <div class="container-fluid" style="width: 84%">
 	<nav class="navbar navbar-expand-lg" style="background-color: #d4e7f8;">
-	  <div class="container-fluid">
-	    <a class="navbar-brand" href="#">Navbar</a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon"></span>
-	    </button>
 	    <div class="collapse navbar-collapse" id="navbarNav">
 	      <ul class="navbar-nav">
 	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="#">회원관리</a>
+	          <a class="nav-link" aria-current="page" href="#">회원관리</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">서비스관리</a>
+	          <a class="nav-link" href="#">코드그룹관리</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">사이트관리</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link disabled">로그관리</a>
+	          <a class="nav-link" href="#">코드관리</a>
 	        </li>
 	      </ul>
 	    </div>
@@ -94,7 +86,7 @@
 <div class="container-fluid" style="width: 84%; font-size: 24px;">코드 관리</div>
 <br>
 <div class="container-fluid" style="width: 84%;">
-	<form class="row g-3 needs-validation" novalidate>
+	<form class="row g-3 needs-validation" method="post" action="/codeGroup/codeGroupList">
 	  <div class="col-md-1">
 	    <select class="form-select" name="shUseNy">
 	      <option selected disabled value="">사용여부</option>
@@ -151,22 +143,29 @@
 	    </tr>
 	  </thead>
 	   <tbody class="table" align="center">
-	   
-		   <c:forEach items="${list}" var="list" varStatus="status">
-		    <tr>
-		      <th scope="row"><input class="form-check-input" type="checkbox"></th>
-		      <td><c:out value="${list.seq }"/></td>
-		      <td><c:out value="${list.ccg_seq }"/></td>
-		      <td><c:out value="${list.codeGroup }"/></td>
-		      <td><c:out value="${list.codeName }"/></td>
-		      <td><c:out value="${list.codeNameEn }"/></td>
-		      <td><c:out value="${list.useNy }"/></td>
-		      <td><c:out value="${list.sort }"/></td>
-		      <td><fmt:formatDate value="${list.reg_date }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-		      <td><fmt:formatDate value="${list.mod_date }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-		    </tr>
-		   </c:forEach>
-	   
+	   	<c:choose>
+			<c:when test="${fn:length(list) eq 0}">
+				<tr>
+					<td class="text-center" colspan="9"></td>
+				</tr>
+			</c:when>
+			<c:otherwise>
+			   <c:forEach items="${list}" var="list" varStatus="status">
+			    <tr>
+			      <th scope="row"><input class="form-check-input" type="checkbox"></th>
+			      <td><c:out value="${list.seq }"/></td>
+			      <td><c:out value="${list.ccg_seq }"/></td>
+			      <td><c:out value="${list.codeGroup }"/></td>
+			      <td><c:out value="${list.codeName }"/></td>
+			      <td><c:out value="${list.codeNameEn }"/></td>
+			      <td><c:out value="${list.useNy }"/></td>
+			      <td><c:out value="${list.sort }"/></td>
+			      <td><fmt:formatDate value="${list.reg_date }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+			      <td><fmt:formatDate value="${list.mod_date }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+			    </tr>
+			   </c:forEach>
+			 </c:otherwise>
+		  </c:choose>
 	   
 	  </tbody>
 	</table>
@@ -207,8 +206,8 @@
 		    </div>
 		  </div>
 		</div>
-	<a href="/code/codeListRegForm"><button type="button" class="btn btn-dark btn-sm" id="plus"><i class="fa-solid fa-plus"></i></button></a>
-	<a href="/code/codeListModForm"><button type="button" class="btn btn-dark btn-sm" id="change">수정</button></a>
+	<a href="/code/codeForm"><button type="button" class="btn btn-dark btn-sm" id="plus"><i class="fa-solid fa-plus"></i></button></a>
+	
 </div>
 
 <br><br>
