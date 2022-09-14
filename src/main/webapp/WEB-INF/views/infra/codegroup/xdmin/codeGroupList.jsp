@@ -65,24 +65,16 @@
 
 <div class="container-fluid" style="width: 84%">
 	<nav class="navbar navbar-expand-lg" style="background-color: #d4e7f8;">
-	  <div class="container-fluid">
-	    <a class="navbar-brand" href="#">Navbar</a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon"></span>
-	    </button>
 	    <div class="collapse navbar-collapse" id="navbarNav">
 	      <ul class="navbar-nav">
 	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="#">회원관리</a>
+	          <a class="nav-link" aria-current="page" href="#">회원관리</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">서비스관리</a>
+	          <a class="nav-link" href="#">코드그룹관리</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">사이트관리</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link disabled">로그관리</a>
+	          <a class="nav-link" href="#">코드관리</a>
 	        </li>
 	      </ul>
 	    </div>

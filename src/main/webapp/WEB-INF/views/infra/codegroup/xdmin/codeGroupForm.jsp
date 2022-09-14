@@ -29,6 +29,8 @@
     </style>
        
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 </head>
 <body>
 
@@ -183,7 +185,7 @@
 	
 	
 	$("#btnSave").on("click", function(){
-	   		alert("조건1");
+	   		
 		if (seq.val() == "0" || seq.val() == ""){
 	   		// insert
 /* if (validationInst() == false) return false;
