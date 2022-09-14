@@ -9,7 +9,7 @@ public class CodeGroupVo {
 	private String startDate;
 	private String endDate;
 	private String shSeq;
-	private String seq;
+	private String Sseq;
 	public String getShName() {
 		return shName;
 	}
@@ -52,17 +52,12 @@ public class CodeGroupVo {
 	public void setShSeq(String shSeq) {
 		this.shSeq = shSeq;
 	}
-	public String getSeq() {
-		return seq;
+	public String getSseq() {
+		return Sseq;
 	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setSseq(String sseq) {
+		Sseq = sseq;
 	}
-	
-	
-	
-
-	
 		
 	
 }

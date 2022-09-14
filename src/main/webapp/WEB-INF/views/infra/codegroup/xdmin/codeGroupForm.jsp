@@ -15,7 +15,7 @@
         <meta name="author" content="" />
         <title>CODE GROUP</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="/resources/user/image/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/resources/user/main/image/favicon.ico" />
         
         <!--  css  -->
     	<style type="text/css">
@@ -34,7 +34,7 @@
 
 <!-- start -->
 <div class="container-fluid" style="width: 84%">
-	<a href="../user/main/main.html"><img src="/resources/user/image/cou.jpg" style="width: 200px;"></a>
+	<a href="../user/main/main.html"><img src="/resources/user/main/image/cou.jpg" style="width: 200px;"></a>
 </div>
 
 <div class="container-fluid" style="width: 84%">
@@ -67,20 +67,20 @@
 
 <hr>
 <!-- 데이터 넘기려면 action 안 넘기려면 onsubmit -->
-<form name="form" method="post" action="/codeGroup/codeGroupUpdt">
+<form name="form" method="post">
 		<!-- <form name="form" method="post" > -->
-		<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
+		<input type="hidden" name="Sseq" value="<c:out value="${item.seq }"/>">
 <div class="container-fluid" style="width: 84%; font-size: 24px;">코드그룹 관리</div>
 <br>
 <div class="container-fluid" style="width: 84%;"><br>
 	<div class="row">
 		<div class="col-6">
   			<label for="CodeGroupCode" class="form-label">코드그룹 코드</label>
-  			<input type="text" id="codeGroupCode" name="codeGroupCode"  class="form-control" value="<c:out value="${item.seq }"/>" readonly>
+  			<input type="text" id="codeGroupCode" name="seq"  class="form-control" value="<c:out value="${item.seq}"/>" readonly>
 		</div>
 		<div class="col-6">
 			<label for="codeGroupCodeAnother" class="form-label">코드그룹 코드(Another)</label>
-  			<input type="text" id="codeGroupCodeAn" name="codeGroupCodeAn"class="form-control" value="<c:out value="${item.seq}"/>" readonly>
+  			<input type="text" id="codeGroupCodeAn" name="" class="form-control" value="<c:out value="${item.seq}"/>" readonly>
 		</div>
 	</div>
 	
@@ -141,7 +141,7 @@
 		  </div>
 		</div>
 	</div>
-	<button class="btn btn-dark btn-sm">저장</button></a>
+	<button type="button" class="btn btn-dark btn-sm" id="btnSave">저장</button>
 </div>
 
 </div>   
@@ -165,36 +165,40 @@
 
 <!-- end -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
-    var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
+
+
+
+
+	
+<script type="text/javascript">
+
+	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
 	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
 	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
 	
-	var seq = $("input:hidden[name=seq]");				/* #-> */
+	var seq = $("input:hidden[name=Sseq]");				/* #-> */
 	
 	var form = $("form[name=form]");
 	var formVo = $("form[name=formVo]");
 	
 	
 	$("#btnSave").on("click", function(){
+	   		alert("조건1");
 		if (seq.val() == "0" || seq.val() == ""){
 	   		// insert
-	   		if (validationInst() == false) return false;
-	   		form.attr("action", goUrlInst).submit();
+/* if (validationInst() == false) return false;
+ */	   		form.attr("action", goUrlInst).submit();
 	   	} else {
 	   		// update
 	   		/* keyName.val(atob(keyName.val())); */
-	   		if (validationUpdt() == false) return false;
+	   		
+// 	   		if (validationUpdt() == false) return false;
+	   		
 	   		form.attr("action", goUrlUpdt).submit();
 	   	}
 	}); 
-	
-	</script>
-	
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript">
-	
-	</script>
+
+</script>
 <script src="https://kit.fontawesome.com/0089819b08.js"></script>
 </body>
 </html>

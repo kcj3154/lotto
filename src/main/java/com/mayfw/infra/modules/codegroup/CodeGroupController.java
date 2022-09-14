@@ -19,7 +19,7 @@ public class CodeGroupController {
 	
 
 	@RequestMapping(value = "codeGroupList")
-	public String codeGroupList(Model model, CodeGroupVo vo) throws Exception {
+	public String codeGroupList(Model model, @ModelAttribute("vo") CodeGroupVo vo) throws Exception {
 		
 		System.out.println("vo.getShId(): " + vo.getShId());
 		System.out.println("vo.getShName(): " + vo.getShName());
@@ -30,7 +30,7 @@ public class CodeGroupController {
 		
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
-		model.addAttribute("vo", vo);
+		
 		
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
@@ -45,7 +45,7 @@ public class CodeGroupController {
 
 		int result = service.insert(dto);
 		System.out.println("controller result: " + result);
-		System.out.println(dto.getCodeGroup());
+		System.out.println(dto.getSeq());
 
 		return "redirect:/codeGroup/codeGroupList";
 	}
@@ -60,7 +60,7 @@ public class CodeGroupController {
 	@RequestMapping(value = "codeGroupForm")
 	public String codeGroupForm(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 		
-		System.out.println("vo.getSeq(): " + vo.getSeq());
+		System.out.println("vo.getSseq(): " + vo.getSseq());
 		CodeGroup result = service.selectOne(vo);
 		model.addAttribute("item", result);
 		return "infra/codegroup/xdmin/codeGroupForm";

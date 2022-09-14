@@ -29,6 +29,7 @@ public class CodeController {
 		List<Code> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
+		
 		return "infra/code/xdmin/codeList";
 	}
 	

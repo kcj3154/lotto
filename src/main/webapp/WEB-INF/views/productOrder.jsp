@@ -370,7 +370,7 @@
 									<td class="px-2">
 										17,140
 										원
-										<input type="hidden" name="totalMoney" value="43120">
+										<input type="hidden" name="totalMoney" value="17,140">
 									</td>
 								</tr>
 								<tr>
@@ -402,7 +402,7 @@
 				<div class="row">
 					<div class="col text-center">
 						<a class="lh-lg btn btn-outline-dark rounded-0"  style="width: 200px;">취소</a>
-						<a class="lh-lg btn btn-outline-dark rounded-0"  style="width: 200px;">결제하기</a>
+						<a class="lh-lg btn btn-outline-dark rounded-0" href="javascript:goPurchase();"  style="width: 200px;">결제하기</a>
 					</div>
 				</div>
 			</div>
@@ -422,6 +422,10 @@
 
 	
 <!-- end -->
+
+
+ 
+	
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
