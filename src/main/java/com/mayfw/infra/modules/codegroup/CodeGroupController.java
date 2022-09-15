@@ -44,7 +44,7 @@ public class CodeGroupController {
 	
 	public void setSearchAndPaging(CodeGroupVo vo) throws Exception{
 		vo.setParamsPaging(service.selectOneCount(vo));
-	}
+}
 	
 	@RequestMapping(value = "codeGroupInst")
 	public String codeGroupInst(CodeGroup dto) throws Exception {
