@@ -47,8 +47,24 @@
 		seq
 		,codeGroup
 		from ccg
+	</select>
+
+	<select id="selectOne" resultMap="resultMapObj">
+		select
+		c.seq
+		,c.ccg_seq
+		,(select codeGroup from ccg d where d.seq = c.ccg_seq) as codeGroup
+		,c.codeName
+		,c.codeNameEn
+		,c.useNy
+		,c.delNy
+		,c.sort
+		,c.reg_date
+		,c.mod_date
+		from cc c
 		where 1=1
-			AND seq = #{shSeq}
+			and c.seq = #{shSeq}
+		
 	</select>
 
 	<insert id="insert">

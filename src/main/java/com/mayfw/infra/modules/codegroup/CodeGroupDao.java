@@ -40,5 +40,7 @@ public class CodeGroupDao {
 	public int update(CodeGroup dto) {return sqlSession.update(namespace + ".update", dto); }
 	
 	
+	
+	public int selectOneCount(CodeGroupVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
 
 }

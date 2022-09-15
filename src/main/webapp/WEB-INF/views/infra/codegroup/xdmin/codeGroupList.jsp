@@ -68,13 +68,13 @@
 	    <div class="collapse navbar-collapse" id="navbarNav">
 	      <ul class="navbar-nav">
 	        <li class="nav-item">
-	          <a class="nav-link" aria-current="page" href="#">회원관리</a>
+	          <a class="nav-link" aria-current="page" href="login">회원관리</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">코드그룹관리</a>
+	          <a class="nav-link" href="/codeGroup/codeGroupList">코드그룹관리</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">코드관리</a>
+	          <a class="nav-link" href="/code/codeList">코드관리</a>
 	        </li>
 	      </ul>
 	    </div>
@@ -87,7 +87,9 @@
 <div class="container-fluid" style="width: 84%; font-size: 24px;">코드그룹 관리</div>
 <br>
 <div class="container-fluid" style="width: 84%;">
-	<form class="row g-3 needs-validation" method="post" action="/codeGroup/codeGroupList">
+	<form class="row g-3 needs-validation" method="post" action="/codeGroup/codeGroupList" name="formList">
+	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
+	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
 	  <div class="col-md-1">
 	    <select class="form-select" name="shUseNy">
 	      <option selected disabled value="">사용여부</option>
@@ -121,7 +123,6 @@
     	<input type="text" class="form-control" id="shName" name="shName" value="<c:out value="${vo.shName }"/>" placeholder="검색어">
    	  </div>
      <button class="btn btn-dark btn-sm" style="width: 40px;"><i class="fa-solid fa-magnifying-glass"></i></button>
-	</form>
 </div>
 
 <br><br>
@@ -169,17 +170,7 @@
 
 <br><br>
 
-<div class="container-fluid" style="width: 84%;">
-	<nav aria-label="Page navigation example" id="page">
-	  <ul class="pagination">
-	    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-	    <li class="page-item"><a class="page-link" href="#">1</a></li>
-	    <li class="page-item"><a class="page-link" href="#">2</a></li>
-	    <li class="page-item"><a class="page-link" href="#">3</a></li>
-	    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-	  </ul>
-	</nav>
-</div>
+
 
 <br><br><br>
 
@@ -206,6 +197,12 @@
 	
 </div>
 
+<!-- pagination s -->
+<%@include file="../../../common/xdmin/includeV1/pagination.jsp"%>
+<!-- pagination e -->
+
+</form>
+
 
 <br><br>
 
@@ -219,6 +216,18 @@
 
 <!-- end -->
 
+
+<script type="text/javascript">
+
+	var goUrlList = "/codeGroup/codeGroupList";
+	var form = $("form[name=formList]");
+
+	goList = function(thisPage){
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action", goUrlList).submit();
+	}
+
+</script>
 
 <script src="https://kit.fontawesome.com/0089819b08.js" crossorigin="anonymous"></script>
 </body>

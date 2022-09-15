@@ -7,6 +7,13 @@ public class CodeGroup {
 	private String codeGroup;
 	private String codeGroupEn;
 	private String useNy;
+	private String delNy;
+	public String getDelNy() {
+		return delNy;
+	}
+	public void setDelNy(String delNy) {
+		this.delNy = delNy;
+	}
 	private Date reg_date;
 	private Date mod_date;
 	private Integer cnt;

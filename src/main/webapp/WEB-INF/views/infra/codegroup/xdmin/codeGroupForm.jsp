@@ -44,13 +44,13 @@
 	    <div class="collapse navbar-collapse" id="navbarNav">
 	      <ul class="navbar-nav">
 	        <li class="nav-item">
-	          <a class="nav-link" aria-current="page" href="#">회원관리</a>
+	          <a class="nav-link" aria-current="page" href="memberList">회원관리</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">코드그룹관리</a>
+	          <a class="nav-link" href="/codeGroup/codeGroup">코드그룹관리</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">코드관리</a>
+	          <a class="nav-link" href="/code/codeList">코드관리</a>
 	        </li>
 	      </ul>
 	    </div>
@@ -93,14 +93,17 @@
 	<div class="row">
 		<div class="col-6">
 			<label for="useNy" class="form-Label">사용여부</label>
-			<select class="form-select" id="useNy" name="useNy" value="<c:out value="${item.useNy }"/>">
-				<option value="1">Y</option>
-				<option value="0">N</option>
+			<select class="form-select" id="useNy" name="useNy">
+				<option value="1" <c:if test="${item.useNy == 1}">selected</c:if>>Y</option>
+				<option value="0" <c:if test="${item.useNy == 0}">selected</c:if>>N</option>
 			</select>
 		</div>
 		<div class="col-6">
-			<label for="seq" class="form-Label">순서</label>
-			<input type="text" class="form-control" placeholder="숫자" id="sort">
+			<label for="delNy" class="form-Label">삭제여부</label>
+			<select class="form-select" id="delNy" name="delNy">
+				<option value="1" <c:if test="${item.delNy == 1}">selected</c:if>>Y</option>
+				<option value="0" <c:if test="${item.delNy == 0}">selected</c:if>>N</option>
+			</select>
 		</div>
 	</div>
 	<br>

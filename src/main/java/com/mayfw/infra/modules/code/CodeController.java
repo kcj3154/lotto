@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.mayfw.infra.modules.codegroup.CodeGroup;
+import com.mayfw.infra.modules.codegroup.CodeGroupVo;
+
 @Controller
 @RequestMapping(value = "/code/")
 public class CodeController {
@@ -38,9 +41,10 @@ public class CodeController {
 	@RequestMapping(value = "codeForm")
 	public String codeForm(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
 		
-//		System.out.println("vo.getSseq(): " + vo.getSseq());
-		Code result = service.selectListA(vo);
-		
+		System.out.println("vo.getSseq(): " + vo.getSseq());
+		Code result = service.selectOne(vo);
+		List<Code> list = service.selectListA();
+		model.addAttribute("list", list);
 		model.addAttribute("item", result);
 		return "infra/code/xdmin/codeForm";
 	}

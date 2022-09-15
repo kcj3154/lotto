@@ -44,4 +44,10 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 		return result;
 	}
 	
+	@Override
+	public int selectOneCount(CodeGroupVo vo) throws Exception {
+		
+		return dao.selectOneCount(vo);
+	}
+	
 }

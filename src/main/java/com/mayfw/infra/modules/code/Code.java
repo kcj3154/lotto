@@ -13,6 +13,7 @@ public class Code {
 	private String delNy;
 	private String sort;
 	private Date reg_date;
+	private Date mod_date;
 	public String getSeq() {
 		return seq;
 	}
@@ -73,9 +74,7 @@ public class Code {
 	public void setMod_date(Date mod_date) {
 		this.mod_date = mod_date;
 	}
-	private Date mod_date;
-	
-	
+
 	
 	
 

@@ -70,10 +70,10 @@
 	          <a class="nav-link" aria-current="page" href="#">회원관리</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">코드그룹관리</a>
+	          <a class="nav-link" href="/codeGroup/codeGroupList">코드그룹관리</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">코드관리</a>
+	          <a class="nav-link" href="/code/codeList">코드관리</a>
 	        </li>
 	      </ul>
 	    </div>
@@ -109,11 +109,11 @@
    	  </div>
    	  <div class="col-md-2">
 	    <select class="form-select" name="shId">
-	      <option selected disabled value="">검색구분</option>
-	      <option value="1">코드그룹 코드</option>
-	      <option value="2">코드 이름(한글)</option>
-	      <option value="3">코드 이름(영문)</option>
-	      <option value="4">코드그룹 이름(한글)</option>
+	      <option value=""<c:if test="${empty vo.shId}">selected</c:if>>검색구분</option>
+	      <option value="1"<c:if test="${vo.shId == 1}">selected</c:if>>코드그룹 코드</option>
+	      <option value="2"<c:if test="${vo.shId == 2}">selected</c:if>>코드 이름(한글)</option>
+	      <option value="3"<c:if test="${vo.shId == 3}">selected</c:if>>코드 이름(영문)</option>
+	      <option value="4"<c:if test="${vo.shId == 4}">selected</c:if>>코드그룹 이름(한글)</option>
 	    </select>
 	  </div>
 	  <div class="col-md-2">

@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping(value = "/codeGroup/")
 public class CodeGroupController {
-
+	
 
 	@Autowired
 	CodeGroupServiceImpl service;
@@ -28,14 +28,23 @@ public class CodeGroupController {
 		System.out.println("vo.getStartDate(): " + vo.getStartDate());
 		System.out.println("vo.getEndDate(): " + vo.getEndDate());
 		
-		List<CodeGroup> list = service.selectList(vo);
-		model.addAttribute("list", list);
+		setSearchAndPaging(vo);
+		
+		if (vo.getTotalRows() > 0) {
+			List<CodeGroup> list = service.selectList(vo);
+			model.addAttribute("list", list);
+		}
+		
+		
+		
 		
 		
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
 	
-	
+	public void setSearchAndPaging(CodeGroupVo vo) throws Exception{
+		vo.setParamsPaging(service.selectOneCount(vo));
+	}
 	
 	@RequestMapping(value = "codeGroupInst")
 	public String codeGroupInst(CodeGroup dto) throws Exception {

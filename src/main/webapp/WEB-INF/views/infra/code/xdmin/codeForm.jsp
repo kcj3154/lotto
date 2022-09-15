@@ -47,10 +47,10 @@
 	          <a class="nav-link" aria-current="page" href="#">회원관리</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">코드그룹관리</a>
+	          <a class="nav-link" href="/codeGroup/codeGroupList">코드그룹관리</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">코드관리</a>
+	          <a class="nav-link" href="/code/codeList">코드관리</a>
 	        </li>
 	      </ul>
 	    </div>
@@ -66,7 +66,12 @@
 	<div class="row">
 		<div class="col-6">
 			<label for="reserveVarchar2" class="form-Label">코드그룹 이름(한글)</label>
-			<input type="text" id="codeGroup" name="codeGroup" class="form-control" value="<c:out value="${item.codeGroup}"/>" readonly>
+			<select class="form-select" name="ccg_seq">
+			<c:forEach items="${list}" var="list" varStatus="status"> 
+ 				<option value="<c:out value="${list.seq }"/>"><c:out value="${list.codeGroup }"/></option> 
+ 			</c:forEach> 
+			</select>
+<%-- 			<input type="text" id="codeGroup" name="codeGroup" class="form-control" value="<c:out value="${item.codeGroup}"/>" readonly> --%>
 		</div>
 		<div class="col-6">
 			<label for="code" class="">코드그룹 코드</label>

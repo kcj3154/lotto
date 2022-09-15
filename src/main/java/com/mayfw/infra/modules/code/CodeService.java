@@ -2,10 +2,14 @@ package com.mayfw.infra.modules.code;
 
 import java.util.List;
 
+import com.mayfw.infra.modules.codegroup.CodeGroup;
+import com.mayfw.infra.modules.codegroup.CodeGroupVo;
+
 public interface CodeService {
 
 	public List<Code> selectList(CodeVo vo ) throws Exception; 
-	public Code selectListA(CodeVo vo) throws Exception; 
+	public List<Code> selectListA() throws Exception; 
+	public Code selectOne(CodeVo vo) throws Exception; 
 	public int insert(Code dto) throws Exception;
 	public int update(Code dto) throws Exception;
 }

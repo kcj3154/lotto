@@ -4,28 +4,20 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper
-	namespace="com.mayfw.infra.modules.codegroup.CodeGroupMapper">
+<mapper namespace="com.mayfw.infra.modules.codegroup.CodeGroupMapper">
 
 	<resultMap id="resultMapObj"
 		type="com.mayfw.infra.modules.codegroup.CodeGroup"></resultMap>
-
-	<select id="selectList" resultMap="resultMapObj">
-		SELECT
-		a.seq
-		,a.codeGroup
-		,a.codeGroupEn
-		,a.useNy
-		,a.reg_date
-		,a.mod_date
-		,(select count(b.seq) from cc b where b.ccg_seq = a.seq) as cnt
+		
+		
+	<sql id="selectCommon">
 		FROM ccg a
 		where 1=1
-
-		<if test="shDate ==5">and a.reg_date between #{startDate} and #{endDate}</if>
-		<if test="shDate ==6">and a.mod_date between #{startDate} and #{endDate}</if>
-
-
+		<choose>
+			<when test="shDate == 5">and a.reg_date between #{startDate} and #{endDate}</when>
+			<when test="shDate == 6">and a.mod_date between #{startDate} and #{endDate}</when>
+			<otherwise></otherwise>
+		</choose>
 		<choose>
 			<when test="shId ==1">and a.seq = #{shName}</when>
 			<when test="shId ==2">and a.codeGroup LIKE CONCAT('%', #{shName}, '%')
@@ -36,6 +28,26 @@
 			<when test="shUseNy ==1">and a.useNy = #{shUseNy}</when>
 			<otherwise></otherwise>
 		</choose>
+	</sql>
+		
+		
+		
+		
+
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+		SELECT
+		a.seq
+		,a.codeGroup
+		,a.codeGroupEn
+		,a.useNy
+		,a.delNy
+		,a.reg_date
+		,a.mod_date
+		,(select count(b.seq) from cc b where b.ccg_seq = a.seq) as cnt
+		<include refid="selectCommon" />
+		<include refid="Base.selectListLowerForMysql" />
+		
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
@@ -44,6 +56,7 @@
 		,a.codeGroup
 		,a.codeGroupEn
 		,a.useNy
+		,a.delNy
 		,a.reg_date
 		,a.mod_date
 		,(select count(b.seq) from cc b where b.ccg_seq = a.seq) as cnt
@@ -51,7 +64,13 @@
 		where 1=1
 			AND a.seq = #{shSeq}
 	</select>
+	
 
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
 	
 	<insert id="insert">
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
@@ -61,12 +80,14 @@
 			codeGroup
 		    ,codeGroupEn
 		    ,useNy
+		    ,delNy
 		    ,reg_date
 		)
 		values(
 			#{codeGroup}
 			,#{codeGroupEn}
 			,#{useNy}
+			,#{delNy}
 			,now()
 		)
 	</insert>
@@ -76,6 +97,7 @@
 			codeGroup = #{codeGroup}
 			,codeGroupEn = #{codeGroupEn}
 			,useNy = #{useNy}
+			,delNy = #{delNy}
 			,mod_date = now()
 		WHERE 1=1
 			AND seq = #{seq}

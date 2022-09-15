@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.mayfw.infra.modules.codegroup.CodeGroup;
+import com.mayfw.infra.modules.codegroup.CodeGroupVo;
 
 @Repository
 public class CodeDao {
@@ -27,10 +28,17 @@ public class CodeDao {
 		return list;
 	}
 	
-	public Code selectListA(CodeVo vo) {
-//		List<Code> list = sqlSession.selectList(namespace + ".selectList", vo);
-		Code list = sqlSession.selectOne(namespace + ".selectListA", vo);
+	public List<Code> selectListA() {
+		List<Code> list = sqlSession.selectList(namespace + ".selectListA");
+//		Code list = sqlSession.selectOne(namespace + ".selectListA", vo);
 		return list;
+	}
+	
+	
+	public Code selectOne(CodeVo vo) {
+		Code result = sqlSession.selectOne(namespace + ".selectOne", vo);
+		System.out.println("dao result: " + result);
+		return result;
 	}
 	
 	public int insert(Code dto) {

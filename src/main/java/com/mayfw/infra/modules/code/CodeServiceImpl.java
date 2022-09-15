@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mayfw.infra.modules.codegroup.CodeGroup;
-
 @Service
 public class CodeServiceImpl implements CodeService {
 	
@@ -25,11 +23,18 @@ public class CodeServiceImpl implements CodeService {
 	}
 	
 	@Override
-	public Code selectListA(CodeVo vo) throws Exception {
-		Code list = dao.selectListA(vo);
+	public List<Code> selectListA() throws Exception {
+		List<Code> list = dao.selectListA();
 		return list;
 	}
 	
+	@Override
+	public Code selectOne(CodeVo vo) throws Exception {
+		Code result = dao.selectOne(vo);
+		System.out.println("service result: " + result);
+		return result;
+	}
+
 	@Override
 	public int insert(Code dto) throws Exception {
 		int result = dao.insert(dto);
