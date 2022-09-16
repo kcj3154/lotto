@@ -35,25 +35,30 @@ public class CodeGroupController {
 			model.addAttribute("list", list);
 		}
 		
-		
-		
-		
-		
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
 	
 	public void setSearchAndPaging(CodeGroupVo vo) throws Exception{
+		
+		vo.setShUseNy(vo.getShUseNy() == null ? "1" : vo.getShUseNy());
+//		vo.setShDate(vo.getShDate() == null ? "6" : vo.getShDate());
+//		vo.setShId(vo.getShId() == null ? "2" : vo.getShId());
+//		vo.setShDateStart(vo.getShDateStart() == null || vo.getShDateStart() == "" ? null : UtilDateTime.add00TimeString(vo.getShDateStart()));
+//		vo.setShDateEnd(vo.getShDateEnd() == null || vo.getShDateEnd() == "" ? null : UtilDateTime.add59TimeString(vo.getShDateEnd()));
+		
 		vo.setParamsPaging(service.selectOneCount(vo));
 }
 	
 	@RequestMapping(value = "codeGroupInst")
-	public String codeGroupInst(CodeGroup dto) throws Exception {
+	public String codeGroupInst(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
 
 		int result = service.insert(dto);
 		System.out.println("controller result: " + result);
 		System.out.println(dto.getSeq());
-
-		return "redirect:/codeGroup/codeGroupList";
+		vo.setShSeq(dto.getSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/codeGroup/codeGroupForm";
 	}
 	
 	/*
@@ -67,8 +72,8 @@ public class CodeGroupController {
 	public String codeGroupForm(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 		
 		System.out.println("vo.getSseq(): " + vo.getSseq());
-		CodeGroup result = service.selectOne(vo);
-		model.addAttribute("item", result);
+		CodeGroup item = service.selectOne(vo);
+		model.addAttribute("item", item);
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}
 	

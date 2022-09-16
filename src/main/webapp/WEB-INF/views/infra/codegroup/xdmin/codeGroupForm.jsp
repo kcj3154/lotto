@@ -44,7 +44,7 @@
 	    <div class="collapse navbar-collapse" id="navbarNav">
 	      <ul class="navbar-nav">
 	        <li class="nav-item">
-	          <a class="nav-link" aria-current="page" href="memberList">회원관리</a>
+	          <a class="nav-link" href="/memberList/">회원관리</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="/codeGroup/codeGroup">코드그룹관리</a>
@@ -61,7 +61,7 @@
 
 <hr>
 <!-- 데이터 넘기려면 action 안 넘기려면 onsubmit -->
-<form name="form" method="post">
+<form name="form" id="form" method="post">
 		<!-- <form name="form" method="post" > -->
 		<input type="hidden" name="Sseq" value="<c:out value="${item.seq }"/>">
 <div class="container-fluid" style="width: 84%; font-size: 24px;">코드그룹 관리</div>
@@ -138,13 +138,18 @@
 		  </div>
 		</div>
 	</div>
+	<button type="button" class="btn btn-dark btn-sm" id="btnList">뒤로가기</button>
 	<button type="button" class="btn btn-dark btn-sm" id="btnSave">저장</button>
 </div>
-
-</div>   
+  
 
 </form>
 
+<form name="formVo" id="formVo" method="post">
+<!-- *Vo.jsp s -->
+<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
+<!-- *Vo.jsp e -->
+</form>
 		
 		<br><br>
 		
@@ -194,6 +199,10 @@
 	   		form.attr("action", goUrlUpdt).submit();
 	   	}
 	}); 
+	
+	$("#btnList").on("click", function(){
+		formVo.attr("action", goUrlList).submit();
+	});
 
 </script>
 <script src="https://kit.fontawesome.com/0089819b08.js"></script>

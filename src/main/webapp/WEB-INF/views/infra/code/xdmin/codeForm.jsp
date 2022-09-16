@@ -44,7 +44,7 @@
 	    <div class="collapse navbar-collapse" id="navbarNav">
 	      <ul class="navbar-nav">
 	        <li class="nav-item">
-	          <a class="nav-link" aria-current="page" href="#">회원관리</a>
+	          <a class="nav-link" href="/memberList/">회원관리</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="/codeGroup/codeGroupList">코드그룹관리</a>

@@ -55,6 +55,8 @@
     </style>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 </head>
 <body>
 
@@ -68,7 +70,7 @@
 	    <div class="collapse navbar-collapse" id="navbarNav">
 	      <ul class="navbar-nav">
 	        <li class="nav-item">
-	          <a class="nav-link" aria-current="page" href="login">회원관리</a>
+	          <a class="nav-link" href="/memberList/">회원관리</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="/codeGroup/codeGroupList">코드그룹관리</a>
@@ -87,21 +89,24 @@
 <div class="container-fluid" style="width: 84%; font-size: 24px;">코드그룹 관리</div>
 <br>
 <div class="container-fluid" style="width: 84%;">
-	<form class="row g-3 needs-validation" method="post" action="/codeGroup/codeGroupList" name="formList">
+	<form class="row g-3 needs-validation" method="post" action="/codeGroup/codeGroupList" name="formList" id="formList">
+	<input type="hidden" name="shSeq" value="<c:out value="${vo.shSeq}"/>"/>
+	<input type="hidden" name="mainKey">
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
+	<input type="hidden" name="checkboxSeqArray" >
 	  <div class="col-md-1">
 	    <select class="form-select" name="shUseNy">
-	      <option selected disabled value="">사용여부</option>
-	      <option value="0">N</option>
-	      <option value="1">Y</option>
+	      <option value="" <c:if test="${empty vo.shUseNy }">selected</c:if>>사용여부</option>
+	      <option value="0" <c:if test="${vo.shUseNy ==0 }">selected</c:if>>N</option>
+	      <option value="1" <c:if test="${vo.shUseNy ==1 }">selected</c:if>>Y</option>
 	    </select>
 	  </div>
 	  <div class="col-md-2">
 	    <select class="form-select" name="shDate">
 	      <option value="">선택</option>
-	      <option value="5">등록일</option>
-	      <option value="6">수정일</option>
+	      <option value="5" <c:if test="${vo.shDate ==5 }">selected</c:if>>등록일</option>
+	      <option value="6" <c:if test="${vo.shDate ==6 }">selected</c:if>>수정일</option>
 	    </select>
 	  </div>
 	  <div class="col-md-2">
@@ -123,6 +128,7 @@
     	<input type="text" class="form-control" id="shName" name="shName" value="<c:out value="${vo.shName }"/>" placeholder="검색어">
    	  </div>
      <button class="btn btn-dark btn-sm" style="width: 40px;"><i class="fa-solid fa-magnifying-glass"></i></button>
+     <button class="btn btn-danger btn-sm" style="width: 40px;"><i class="fa-solid fa-rotate-right"></i></button>
 </div>
 
 <br><br>
@@ -193,7 +199,8 @@
 		    </div>
 		  </div>
 		</div>
-	<a href="/codeGroup/codeGroupForm"><button type="button" class="btn btn-dark btn-sm" id="plus"><i class="fa-solid fa-plus"></i></button></a>
+	<button type="button" class="btn btn-dark btn-sm" id="btnForm"><i class="fa-solid fa-plus"></i></button>
+	
 	
 </div>
 
@@ -202,6 +209,8 @@
 <!-- pagination e -->
 
 </form>
+
+
 
 
 <br><br>
@@ -218,14 +227,33 @@
 
 
 <script type="text/javascript">
-
+	
 	var goUrlList = "/codeGroup/codeGroupList";
 	var form = $("form[name=formList]");
 
 	goList = function(thisPage){
 		$("input:hidden[name=thisPage]").val(thisPage);
 		form.attr("action", goUrlList).submit();
-	}
+	};
+	
+</script>
+
+<script type="text/javascript">
+
+	var goUrlForm = "/codeGroup/codeGroupForm";
+	var seq = $("input:hidden[name=shSeq]");
+	
+	var form = $("form[name=formList]");
+	
+	$('#btnForm').on("click", function() {
+		form.attr("action", goUrlForm).submit();              
+	});
+	
+	 goForm = function(keyValue) {
+		/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+		seq.val(keyValue);
+		form.attr("action", goUrlForm).submit();
+	}; 
 
 </script>
 
