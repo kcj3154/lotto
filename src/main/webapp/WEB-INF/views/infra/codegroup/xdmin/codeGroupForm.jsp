@@ -21,9 +21,17 @@
     	<style type="text/css">
     	
     	
+    	<style type="text/css">
+    	
     	#trash {
+    		float: left;
+    	}
+    	
+    	#btnList, #btnSave {
     		float: right;
     	}
+    	
+    </style>
     	
     	
     </style>
@@ -180,7 +188,7 @@
 	
 	var seq = $("input:hidden[name=Sseq]");				/* #-> */
 	
-	var form = $("form[name=form]");
+	var form = $("form[name=form]"); 
 	var formVo = $("form[name=formVo]");
 	
 	
@@ -203,6 +211,8 @@
 	$("#btnList").on("click", function(){
 		formVo.attr("action", goUrlList).submit();
 	});
+	
+	
 
 </script>
 <script src="https://kit.fontawesome.com/0089819b08.js"></script>

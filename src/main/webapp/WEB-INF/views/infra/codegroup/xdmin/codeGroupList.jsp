@@ -39,22 +39,18 @@
 
     <!-- css -->
     <style type="text/css">
-    	#page {
-    		float: right;
-    		position: relative;
-    		left: -42%;
-    	}
     	
-    	#trash {
+    	#btnDelete {
     		float: left;
     	}
     	
-    	#plus, #change {
+    	#btnForm {
     		float: right;
     	}
+    	
     </style>
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 </head>
@@ -181,7 +177,7 @@
 <br><br><br>
 
 <div class="container-fluid" style="width: 84%;">
-	<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-dark btn-sm" id="trash"><i class="fa-solid fa-trash-can"></i></button>
+	<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-dark btn-sm" id="btnDelete"><i class="fa-solid fa-trash-can"></i></button>
 		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
@@ -200,8 +196,6 @@
 		  </div>
 		</div>
 	<button type="button" class="btn btn-dark btn-sm" id="btnForm"><i class="fa-solid fa-plus"></i></button>
-	
-	
 </div>
 
 <!-- pagination s -->
@@ -239,7 +233,7 @@
 </script>
 
 <script type="text/javascript">
-
+	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
 	var goUrlForm = "/codeGroup/codeGroupForm";
 	var seq = $("input:hidden[name=shSeq]");
 	
@@ -254,10 +248,19 @@
 		seq.val(keyValue);
 		form.attr("action", goUrlForm).submit();
 	}; 
+	
+	$("#btnDelete").on("click", function(){
+		$("input:hidden[name=exDeleteType]").val(2);
+		$(".modal-title").text("확 인");
+		$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
+		$("#btnModalUelete").hide();
+		$("#btnModalDelete").show();
+		$("#modalConfirm").modal("show");
+	});
 
 </script>
 
-<script src="https://kit.fontawesome.com/0089819b08.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/0089819b08.js"></script>
 </body>
 </html>
 
