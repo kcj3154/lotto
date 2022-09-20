@@ -8,6 +8,9 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.mayfw.infra.modules.codegroup.CodeGroup;
+import com.mayfw.infra.modules.codegroup.CodeGroupVo;
+
 @Repository
 public class MemberDao {
 	
@@ -25,5 +28,27 @@ public class MemberDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public int insert(Member dto) {
+		int result = sqlSession.insert(namespace + ".insert", dto);
+		System.out.println("dao result: " + result);
+		return result;
+	}
+	
+	public Member selectOne(MemberVo vo) {
+		Member result = sqlSession.selectOne(namespace + ".selectOne", vo);
+		System.out.println("dao result: " + result);
+		return result;
+	}
+	
+	public int update(Member dto) {return sqlSession.update(namespace + ".update", dto); }
+	
+	public int delete(Member dto) {return sqlSession.delete(namespace + ".delete", dto); }
+	
+	public int selectOneCount(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
+	
+//	for cache
+	public List<Member> selectListCachedCodeArrayList(){ return sqlSession.selectList(namespace + ".selectListCachedCodeArrayList", null); }
+
 
 }
