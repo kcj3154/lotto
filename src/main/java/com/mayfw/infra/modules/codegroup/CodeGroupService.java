@@ -8,6 +8,7 @@ public interface CodeGroupService {
 	public int insert(CodeGroup dto) throws Exception;
 	public CodeGroup selectOne(CodeGroupVo vo) throws Exception;
 	public int update(CodeGroup dto) throws Exception;
+	public int delete(CodeGroup dto) throws Exception;
 	public int selectOneCount(CodeGroupVo vo) throws Exception;
 	
 }

@@ -6,6 +6,8 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ page session="false" %>
 
+<jsp:useBean id="CodeGroupServiceImpl" class="com.mayfw.infra.modules.codegroup.CodeGroupServiceImpl"/>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -154,7 +156,7 @@
 			<c:otherwise>
 				<c:forEach items="${list}" var="list" varStatus="status">	
 				 <%-- <tr onclick="location.href='/codeGroup/codeGroupView?shSeq=<c:out value="${list.seq }"/>'"> --%>
-			      <th scope="row"><input class="form-check-input" type="checkbox"></th>
+			      <th scope="row"><input class="form-check-input" value="<c:out value="${list.seq}"/>" type="checkbox"></th>
 			      <td><c:out value="${list.seq }"/></td>
 			      <td><c:out value="${list.seq }"/></td>
 			      <td><a href="/codeGroup/codeGroupForm?shSeq=<c:out value="${list.seq}"/>"><c:out value="${list.codeGroup}"/></a></td>
@@ -172,7 +174,7 @@
 
 <br><br>
 
-
+<!-- test -->
 
 <br><br><br>
 
@@ -190,7 +192,7 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">취소</button>
-		        <button type="button" class="btn btn-dark">삭제</button>
+		        <button type="button" class="btn btn-dark" id="btnModalDelete">삭제</button>
 		      </div>
 		    </div>
 		  </div>
@@ -233,7 +235,7 @@
 </script>
 
 <script type="text/javascript">
-	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+				/* #-> */
 	var goUrlForm = "/codeGroup/codeGroupForm";
 	var seq = $("input:hidden[name=shSeq]");
 	
@@ -249,14 +251,7 @@
 		form.attr("action", goUrlForm).submit();
 	}; 
 	
-	$("#btnDelete").on("click", function(){
-		$("input:hidden[name=exDeleteType]").val(2);
-		$(".modal-title").text("확 인");
-		$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
-		$("#btnModalUelete").hide();
-		$("#btnModalDelete").show();
-		$("#modalConfirm").modal("show");
-	});
+	
 
 </script>
 

@@ -1,12 +1,18 @@
 package com.mayfw.infra.modules.codegroup;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mayfw.infra.modules.member.MemberVo;
+
 @Service
 public class CodeGroupServiceImpl implements CodeGroupService {
+	
 	
 	@Autowired
 	CodeGroupDao dao;
@@ -49,5 +55,51 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 		
 		return dao.selectOneCount(vo);
 	}
+	
+	@Override
+	public int delete(CodeGroup dto) throws Exception {
+		int result = dao.delete(dto);
+		return result;
+	}
+	
+	@PostConstruct
+	public void selectListCachedCodeGroupArrayList() throws Exception {
+		List<CodeGroup> codeGroupListFromDb = (ArrayList<CodeGroup>) dao.selectListCachedCodeGroupArrayList();
+//		codeListFromDb = (ArrayList<Code>) dao.selectListCachedCodeArrayList();
+		CodeGroup.cachedCodeGroupArrayList.clear(); 
+		CodeGroup.cachedCodeGroupArrayList.addAll(codeGroupListFromDb);
+		System.out.println("cachedCodeGroupArrayList: " + CodeGroup.cachedCodeGroupArrayList.size() + " chached !");
+	}
+	
+	public static List<CodeGroup> selectListCachedCodeGroup(String seq) throws Exception {
+		List<CodeGroup> rt = new ArrayList<CodeGroup>();
+		for(CodeGroup codeGroupRow : CodeGroup.cachedCodeGroupArrayList) {
+			if (codeGroupRow.getSeq().equals(seq)) {
+				rt.add(codeGroupRow);
+			} else {
+				// by pass
+			}
+		}
+		return rt;
+	}
+
+	public static String selectOneCachedCodeGroup(int codeGroup) throws Exception {
+		String rt = "";
+		for(CodeGroup codeGroupRow : CodeGroup.cachedCodeGroupArrayList) {
+			if (codeGroupRow.getSeq().equals(Integer.toString(codeGroup))) {
+				rt = codeGroupRow.getCodeGroup();
+			} else {
+				// by pass
+			}
+		}
+		return rt;
+	}
+	
+	
+	public static void clear() throws Exception {
+		CodeGroup.cachedCodeGroupArrayList.clear();
+	}
+
+	
 	
 }

@@ -6,6 +6,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ page session="false" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.mayfw.infra.modules.code.CodeServiceImpl"/>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -125,7 +126,7 @@
 
 <br><br>
 
-
+<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('1')}"/>
 <div class="container-fluid" style="width: 84%;">	
 	<table class="table table-bordered border-gray">
 	  <thead>
@@ -159,7 +160,10 @@
 			      <td><c:out value="${list.codeName }"/></td>
 			      <td><c:out value="${list.codeNameEn }"/></td>
 			      <td><c:out value="${list.useNy }"/></td>
-			      <td><c:out value="${list.sort }"/></td>
+			      <%-- <td><c:out value="${list.sort }"/></td> --%>
+			      <td><c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
+						<c:if test="${list.sort eq listGender.seq}"><c:out value="${listGender.codeName }"/></c:if>
+					</c:forEach></td>
 			      <td><fmt:formatDate value="${list.reg_date }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 			      <td><fmt:formatDate value="${list.mod_date }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 			    </tr>

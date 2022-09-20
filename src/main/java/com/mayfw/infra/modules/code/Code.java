@@ -1,6 +1,8 @@
 package com.mayfw.infra.modules.code;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Code {
 	
@@ -14,6 +16,10 @@ public class Code {
 	private String sort;
 	private Date reg_date;
 	private Date mod_date;
+	
+//	for cache
+	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
+	
 	public String getSeq() {
 		return seq;
 	}

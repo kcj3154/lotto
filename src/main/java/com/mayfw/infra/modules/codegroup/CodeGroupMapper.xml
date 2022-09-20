@@ -102,8 +102,25 @@
 		WHERE 1=1
 			AND seq = #{seq}
 	</update>
-
 	
+	<delete id="delete">
+		DELETE FROM ccg   
+			
+		WHERE 1=1
+			AND seq = #{seq}
+	</delete>
+	
+    <select id="selectListCachedCodeGroupArrayList" resultMap="resultMapObj">
+	 SELECT 
+		seq
+		, codeGroup
+		
+	 FROM
+		ccg
+	 WHERE 1=1
+		AND delNy = 0
+	    AND useNy = 1
+    </select>
 
 
 </mapper>	

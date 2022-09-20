@@ -23,7 +23,7 @@
     	
     	<style type="text/css">
     	
-    	#trash {
+    	#btnDelete {
     		float: left;
     	}
     	
@@ -127,7 +127,7 @@
 	<br><br><br>
 
     <div class="container-fluid">
-	<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-dark btn-sm" id="trash"><i class="fa-solid fa-trash-can"></i></button>
+	<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-dark btn-sm" id="btnDelete"><i class="fa-solid fa-trash-can"></i></button>
 		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
@@ -140,7 +140,7 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">취소</button>
-		        <button type="button" class="btn btn-dark">삭제</button>
+		        <button type="button" class="btn btn-dark" id="btnModalDelete">삭제</button>
 		      </div>
 		    </div>
 		  </div>
@@ -185,6 +185,8 @@
 	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
 	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
 	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
+	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
+	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
 	
 	var seq = $("input:hidden[name=Sseq]");				/* #-> */
 	
@@ -212,6 +214,19 @@
 		formVo.attr("action", goUrlList).submit();
 	});
 	
+	$("#btnDelete").on("click", function(){
+		$("input:hidden[name=exDeleteType]").val(2);
+		$(".modal-title").text("확 인");
+		$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
+		$("#btnModalUelete").hide();
+		$("#btnModalDelete").show();
+		$("#modalConfirm").modal("show");
+	});
+	
+	$("#btnModalDelete").on("click", function(){
+		$("#modalConfirm").modal("hide");
+		formVo.attr("action", goUrlDele).submit();
+	});
 	
 
 </script>

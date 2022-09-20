@@ -1,6 +1,8 @@
 package com.mayfw.infra.modules.codegroup;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class CodeGroup {
 	private String seq;
@@ -11,6 +13,10 @@ public class CodeGroup {
 	public String getDelNy() {
 		return delNy;
 	}
+	
+//	for cache
+	public static List<CodeGroup> cachedCodeGroupArrayList = new ArrayList<CodeGroup>();
+	
 	public void setDelNy(String delNy) {
 		this.delNy = delNy;
 	}

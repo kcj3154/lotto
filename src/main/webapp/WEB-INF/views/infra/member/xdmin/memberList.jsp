@@ -54,31 +54,35 @@
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
 	  <div class="col-md-1">
 	    <select class="form-select" name="shUseNy">
-	      <option selected disabled value="">사용여부</option>
+	      <option selected disabled value="">관리자여부</option>
 	      <option value="0">N</option>
 	      <option value="1">Y</option>
 	    </select>
 	  </div>
+	  
 	  <div class="col-md-2">
 	    <select class="form-select" name="shDate">
 	      <option value="">선택</option>
-	      <option value="5">등록일</option>
-	      <option value="6">수정일</option>
+	      <option value="1">등록일</option>
+	      <option value="2">수정일</option>
 	    </select>
 	  </div>
 	  <div class="col-md-2">
-	  	<input type="text" name="startDate" id="startDate" class="date-picker form-select" placeholder="시작일"/>
+	  	<input type="text" name="startDate" id="startDate" class="date-picker form-select" placeholder="등록일"/>
    	  </div>
    	  <div class="col-md-2">
-    	<input type="text" name="endDate" id="endDate" class="date-picker form-select" placeholder="종료일"/>
+    	<input type="text" name="endDate" id="endDate" class="date-picker form-select" placeholder="수정일"/>
    	  </div>
    	  <div class="col-md-2">
-	    <select class="form-select" name="shId">
-	      <option value=""<c:if test="${empty vo.shId}">selected</c:if>>검색구분</option>
-	      <option value="1"<c:if test="${vo.shId == 1}">selected</c:if>>코드그룹 코드</option>
-	      <option value="2"<c:if test="${vo.shId == 2}">selected</c:if>>코드그룹 이름 (한글)</option>
-	      <option value="3"<c:if test="${vo.shId == 3}">selected</c:if>>코드그룹 이름 (영문)</option>
-	      <option value="4"<c:if test="${vo.shId == 4}">selected</c:if>>코드그룹 코드갯수</option>
+	    <select class="form-select" name="shOption">
+	      <option value="">검색구분</option>
+	      <option value="1">아이디</option>
+	      <option value="2">이름</option>
+	      <option value="3">회원등급</option>
+	      <option value="4">성별</option>
+	      <option value="5">이메일</option>
+	      <option value="6">휴대전화</option>
+	      <option value="7">주소</option>
 	    </select>
 	  </div>
 	  <div class="col-md-2">
@@ -98,14 +102,42 @@
 	      <th scope="col">#</th>
 	      <th scope="col">아이디</th>
 	      <th scope="col">이름</th>
-	      <th scope="col">성별</th>
-	      <th scope="col">주소</th>
+	      <th scope="col">관리자여부</th>
 	      <th scope="col">회원등급</th>
+	      <th scope="col">성별</th>
+	      <th scope="col">이메일</th>
+	      <th scope="col">휴대전화</th>
+	      <th scope="col">주소</th>
 	      <th scope="col">등록일</th>
+	      <th scope="col">수정일</th>
+	      <th scope="col">탈퇴여부</th>
 	    </tr>
-	    </thead>
-	    </table>
-	    </div>
+      </thead>
+    <tbody class="table" align="center">
+	   	<c:choose>
+			<c:when test="${fn:length(list) eq 0}">
+				<tr>
+					<td class="text-center" colspan="9"></td>
+				</tr>
+			</c:when>
+			<c:otherwise>
+			   <c:forEach items="${list}" var="list" varStatus="status">
+			    <tr>
+			      <th scope="row"><input class="form-check-input" type="checkbox"></th>
+			      <td><c:out value="${list.seq }"/></td>
+			      <td><c:out value="${list.id }"/></td>
+			      <td><c:out value="${list.name }"/></td>
+			      <td><c:out value="${list.gender }"/></td>
+			    </tr>
+			   </c:forEach>
+			 </c:otherwise>
+		  </c:choose>
+	   
+	  </tbody>
+	</table>
+</div>
+
+
 	    
 
 	 <!-- Footer-->

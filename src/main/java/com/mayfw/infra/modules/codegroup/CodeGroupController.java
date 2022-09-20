@@ -84,4 +84,12 @@ public class CodeGroupController {
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/codeGroup/codeGroupList";
 	}
+	
+	@RequestMapping(value = "codeGroupDele")
+	public String codeGroupDele(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.delete(dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/codeGroup/codeGroupList";
+	}
 }

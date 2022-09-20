@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mayfw.infra.modules.member.memberMapper">
+
+	<resultMap id="resultMapObj"
+		type="com.mayfw.infra.modules.member.Member"></resultMap>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT
+		a.seq
+		,a.id
+		,a.name
+		,a.adminNy
+		,a.rating
+		,a.gender
+		,a.email
+		,a.tel
+		,a.zipcode
+		,a.address
+		,a.detailedAddress
+		,a.regDate
+		,a.modDate
+		,a.delNy
+		FROM member a
+		where 1=1
+		
+		<if test="shDate ==1">and a.regDate between #{startDate} and #{endDate}</if>
+		<if test="shDate ==2">and a.modDate between #{startDate} and #{endDate}</if>
+
+		<choose>
+			<when test="shOption ==1">and a.id = #{shValue}</when>
+			<when test="shOption ==2">and a.name LIKE CONCAT('%', #{shValue}, '%')
+			</when>
+			<when test="shOption ==3">and a.rating LIKE CONCAT('%', #{shValue}, '%')
+			</when>
+			<when test="shOption ==4">and a.gender LIKE CONCAT('%', #{shValue}, '%')
+			</when>
+			<when test="shOption ==5">and a.email LIKE CONCAT('%', #{shValue}, '%')
+			</when>
+			<when test="shOption ==6">and a.tel LIKE CONCAT('%', #{shValue}, '%')
+			</when>
+			<when test="shOption ==7">and a.address LIKE CONCAT('%', #{shValue}, '%')
+			</when>
+			<when test="shAdminNy ==0">and a.adminNy = #{shAdminNy}</when>
+			<when test="shAdminNy ==1">and a.adminNy = #{shAdminNy}</when>
+			<otherwise></otherwise>
+		</choose>
+	</select>
+
+
+
+
+</mapper>
