@@ -1,15 +1,9 @@
 package com.mayfw.infra.modules.member;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.mayfw.infra.modules.codegroup.CodeGroup;
-import com.mayfw.infra.modules.codegroup.CodeGroupVo;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -23,7 +17,7 @@ public class MemberServiceImpl implements MemberService{
 			 * vo.setSh_start_date(vo.getSh_start_date() + " 00:00:00");
 			 * vo.setSh_end_date(vo.getSh_end_date() + " 23:59:59");
 			 */
-			return dao.selectListDao(vo);
+			return dao.selectList(vo);
 		}
 
 		@Override
@@ -41,7 +35,7 @@ public class MemberServiceImpl implements MemberService{
 		
 		@Override
 		public Member selectOne(MemberVo vo) throws Exception {
-			CodeGroup result = dao.selectOne(vo);
+			Member result = dao.selectOne(vo);
 			System.out.println("service result: " + result);
 			return result;
 		}
@@ -66,43 +60,35 @@ public class MemberServiceImpl implements MemberService{
 			return result;
 		}
 		
-		@PostConstruct
-		public void selectListCachedCodeArrayList() throws Exception {
-			List<Member> codeListFromDb = (ArrayList<Member>) dao.selectListCachedCodeArrayList();
-//			codeListFromDb = (ArrayList<Code>) dao.selectListCachedCodeArrayList();
-			CodeGroup.cachedCodeArrayList.clear(); 
-			CodeGroup.cachedCodeArrayList.addAll(codeListFromDb);
-			System.out.println("cachedCodeArrayList: " + CodeGroup.cachedCodeArrayList.size() + " chached !");
-		}
+		/*
+		 * @PostConstruct public void selectListCachedCodeArrayList() throws Exception {
+		 * List<Member> codeListFromDb = (ArrayList<Member>)
+		 * dao.selectListCachedCodeArrayList(); // codeListFromDb = (ArrayList<Code>)
+		 * dao.selectListCachedCodeArrayList(); Member.cachedCodeArrayList.clear();
+		 * Member.cachedCodeArrayList.addAll(codeListFromDb);
+		 * System.out.println("cachedCodeArrayList: " +
+		 * Member.cachedCodeArrayList.size() + " chached !"); }
+		 */
 		
-		public static List<Member> selectListCachedCodeGroup(String seq) throws Exception {
-			List<Member> rt = new ArrayList<Member>();
-			for(Member codeRow : CodeGroup.cachedCodeArrayList) {
-				if (codeRow.getSeq().equals(seq)) {
-					rt.add(codeRow);
-				} else {
-					// by pass
-				}
-			}
-			return rt;
-		}
+		/*
+		 * public static List<Member> selectListCachedCode(String seq) throws Exception
+		 * { List<Member> rt = new ArrayList<Member>(); for(Member codeRow :
+		 * Member.cachedCodeArrayList) { if (codeRow.getSeq().equals(seq)) {
+		 * rt.add(codeRow); } else { // by pass } } return rt; }
+		 */
 
-		public static String selectOneCachedCode(int member) throws Exception {
-			String rt = "";
-			for(Member codeGroupRow : Member.cachedCodeArrayList) {
-				if (codeRow.getSeq().equals(Integer.toString(member))) {
-					rt = codeRow.getCodeGroup();
-				} else {
-					// by pass
-				}
-			}
-			return rt;
-		}
+		/*
+		 * public static String selectOneCachedCode(int member) throws Exception {
+		 * String rt = ""; for(Member codeGroupRow : Member.cachedCodeArrayList) { if
+		 * (codeRow.getSeq().equals(Integer.toString(member))) { rt =
+		 * codeRow.getCodeGroup(); } else { // by pass } } return rt; }
+		 */
 		
 		
-		public static void clear() throws Exception {
-			Member.cachedCodeArrayList.clear();
-		}
+		/*
+		 * public static void clear() throws Exception {
+		 * Member.cachedCodeArrayList.clear(); }
+		 */
 
 
 }

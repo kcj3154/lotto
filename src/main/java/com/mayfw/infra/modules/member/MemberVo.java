@@ -4,12 +4,21 @@ import com.mayfw.infra.common.constants.Constants;
 
 public class MemberVo {
 	
+	private String shSeq;
 	private String shAdminNy;
 	private String shDate;
 	private String startDate;
 	private String endDate;
 	private String shOption;
 	private String shValue;
+	
+	
+public String getShSeq() {
+		return shSeq;
+	}
+	public void setShSeq(String shSeq) {
+		this.shSeq = shSeq;
+	}
 	public String getShAdminNy() {
 		return shAdminNy;
 	}
@@ -46,8 +55,7 @@ public class MemberVo {
 	public void setShValue(String shValue) {
 		this.shValue = shValue;
 	}
-	
-//	paging
+	//	paging
 	private int thisPage = 1;									// 현재 페이지
 	private int rowNumToShow = Constants.ROW_NUM_TO_SHOW;		// 화면에 보여줄 데이터 줄 갯수
 	private int pageNumToShow = Constants.PAGE_NUM_TO_SHOW;		// 화면에 보여줄 페이징 번호 갯수

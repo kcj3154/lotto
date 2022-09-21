@@ -20,13 +20,14 @@ public class MemberDao {
 	
 	private static String namespace = "com.mayfw.infra.modules.member.memberMapper";
 			
-	public List<Member> selectListDao(MemberVo vo) {
-		return sqlSession.selectList(namespace + ".selectList", vo);
-	}
+	/*
+	 * public List<Member> selectListDao(MemberVo vo) { return
+	 * sqlSession.selectList(namespace + ".selectList", vo); }
+	 */
 
 	public List<Member> selectList(MemberVo vo) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Member> list = sqlSession.selectList(namespace + ".selectList", vo);
+		return list;
 	}
 	
 	public int insert(Member dto) {

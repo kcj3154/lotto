@@ -2,9 +2,6 @@ package com.mayfw.infra.modules.member;
 
 import java.util.List;
 
-import com.mayfw.infra.modules.member.Member;
-import com.mayfw.infra.modules.member.Member;
-
 public interface MemberService {
 	public List<Member> selectListService(MemberVo vo) throws Exception;
 

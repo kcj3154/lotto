@@ -1,10 +1,16 @@
 package com.mayfw.infra.modules.member;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.mayfw.infra.modules.codegroup.CodeGroup;
+
 public class Member {
 	
 	private String seq;
 	private String id;
 	private String name;
+	private String dob;
 	private String adminNy;
 	private String rating;
 	private String gender;
@@ -33,6 +39,12 @@ public class Member {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getDob() {
+		return dob;
+	}
+	public void setDob(String dob) {
+		this.dob = dob;
 	}
 	public String getAdminNy() {
 		return adminNy;
@@ -100,6 +112,13 @@ public class Member {
 	public void setDelNy(String delNy) {
 		this.delNy = delNy;
 	}
+	
+	
+	
+
+	/* public static List<Member> cachedCodeArrayList = new ArrayList<Member>(); */
+	
+	
 	
  
 }

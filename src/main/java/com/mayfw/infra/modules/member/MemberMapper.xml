@@ -8,29 +8,15 @@
 
 	<resultMap id="resultMapObj"
 		type="com.mayfw.infra.modules.member.Member"></resultMap>
-	
-	<select id="selectList" resultMap="resultMapObj">
-		SELECT
-		a.seq
-		,a.id
-		,a.name
-		,a.adminNy
-		,a.rating
-		,a.gender
-		,a.email
-		,a.tel
-		,a.zipcode
-		,a.address
-		,a.detailedAddress
-		,a.regDate
-		,a.modDate
-		,a.delNy
+		
+	<sql id="selectCommon">
 		FROM member a
 		where 1=1
-		
-		<if test="shDate ==1">and a.regDate between #{startDate} and #{endDate}</if>
-		<if test="shDate ==2">and a.modDate between #{startDate} and #{endDate}</if>
-
+		<choose>
+			<when test="shDate ==1">and a.regDate between #{startDate} and #{endDate}</when>
+			<when test="shDate ==2">and a.modDate between #{startDate} and #{endDate}</when>
+			<otherwise></otherwise>
+		</choose>
 		<choose>
 			<when test="shOption ==1">and a.id = #{shValue}</when>
 			<when test="shOption ==2">and a.name LIKE CONCAT('%', #{shValue}, '%')
@@ -45,13 +31,132 @@
 			</when>
 			<when test="shOption ==7">and a.address LIKE CONCAT('%', #{shValue}, '%')
 			</when>
-			<when test="shAdminNy ==0">and a.adminNy = #{shAdminNy}</when>
-			<when test="shAdminNy ==1">and a.adminNy = #{shAdminNy}</when>
+<!-- 			<when test="shAdminNy ==0">and a.adminNy = #{shAdminNy}</when> -->
+<!-- 			<when test="shAdminNy ==1">and a.adminNy = #{shAdminNy}</when> -->
 			<otherwise></otherwise>
 		</choose>
+	</sql>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+		SELECT
+		a.seq
+		,a.id
+		,a.name
+		,a.dob
+		,a.adminNy
+		,a.rating
+		,a.gender
+		,a.email
+		,a.tel
+		,a.zipcode
+		,a.address
+		,a.detailedAddress
+		,a.regDate
+		,a.modDate
+		,a.delNy
+		<include refid="selectCommon" />
+		<include refid="Base.selectListLowerForMysql" />
+		
+	</select>
+		
+		
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+		a.seq
+		,a.id
+		,a.name
+		,a.dob
+		,a.adminNy
+		,a.rating
+		,a.gender
+		,a.email
+		,a.tel
+		,a.zipcode
+		,a.address
+		,a.detailedAddress
+		,a.regDate
+		,a.modDate
+		,a.delNy
+		FROM member a
+		where 1=1
+			AND a.seq = #{shSeq}
 	</select>
 
-
-
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	<insert id="insert">
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+		insert into member(
+			seq
+		    ,name
+		    ,dob
+		    ,adminNy
+		    ,rating
+		    ,gender
+		    ,email
+		    ,tel
+		    ,zipcode
+		    ,address
+		    ,detailedAddress
+		    ,regDate
+		)
+		values(
+			#{seq}
+			,#{name}
+			,#{dob}
+			,#{adminNy}
+			,#{rating}
+			,#{gender}
+			,#{email}
+			,#{tel}
+			,#{zipcode}
+			,#{address}
+			,#{detailedAddress}
+			,now()
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE member SET  
+			name = #{name}
+			,dob = #{dob}
+			,adminNy = #{adminNy}
+			,rating = #{rating}
+			,gender = #{gender}
+			,email = #{email}
+			,tel = #{tel}
+			,zipcode = #{zipcode}
+			,address = #{address}
+			,detailedAddress = #{detailedAddress}
+			,mod_date = now()
+		WHERE 1=1
+			AND seq = #{seq}
+	</update>
+	
+	<!-- <delete id="delete">
+		DELETE FROM ccg   
+			
+		WHERE 1=1
+			AND seq = #{seq}
+	</delete> -->
+	
+    <!-- <select id="selectListCachedCodeGroupArrayList" resultMap="resultMapObj">
+	 SELECT 
+		seq
+		, codeGroup
+		
+	 FROM
+		ccg
+	 WHERE 1=1
+		AND delNy = 0
+	    AND useNy = 1
+    </select> -->
+	
 
 </mapper>
