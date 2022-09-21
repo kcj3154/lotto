@@ -77,16 +77,16 @@
 <div class="container-fluid" style="width: 84%;"><br>
 	<div class="row">
 		<div class="col-2">
-  			<label for="memberID" class="form-label">*아이디</label>
-  			<input type="text" id="memberId" name="memberId" class="form-control" value="<c:out value="${item.id}"/>">
+  			<label for="id" class="form-label">*아이디</label>
+  			<input type="text" id="" name="id" class="form-control" value="<c:out value="${item.id}"/>">
 		</div>
 		<div class="col-2">
-			<label for="memberName" class="form-label">*이름</label>
-  			<input type="text" id="memberName" name="memberName" class="form-control" value="<c:out value="${item.seq}"/>">
+			<label for="name" class="form-label">*이름</label>
+  			<input type="text" id="" name="name" class="form-control" value="<c:out value="${item.seq}"/>">
 		</div>
 		<div class="col-2">
-			<label for="memberDob" class="form-label">*생년월일</label>
-  			<input type="text" id="memberDob" name="memberDob" class="form-control" value="<c:out value="${item.seq}"/>">
+			<label for="dob" class="form-label">*생년월일</label>
+  			<input type="text" id="" name="dob" class="form-control" value="<c:out value="${item.seq}"/>">
 		</div>
 	</div>
 	

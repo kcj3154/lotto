@@ -68,7 +68,7 @@
 	    <div class="collapse navbar-collapse" id="navbarNav">
 	      <ul class="navbar-nav">
 	        <li class="nav-item">
-	          <a class="nav-link" href="/memberList/">회원관리</a>
+	          <a class="nav-link" href="/member/memberList">회원관리</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="/codeGroup/codeGroupList">코드그룹관리</a>
@@ -155,11 +155,11 @@
 			</c:when>
 			<c:otherwise>
 				<c:forEach items="${list}" var="list" varStatus="status">	
-				 <%-- <tr onclick="location.href='/codeGroup/codeGroupView?shSeq=<c:out value="${list.seq }"/>'"> --%>
+				<input type="hidden" name="shSeq" value="<c:out value="${list.seq }"/>"/>
 			      <th scope="row"><input class="form-check-input" value="<c:out value="${list.seq}"/>" type="checkbox"></th>
 			      <td><c:out value="${list.seq }"/></td>
 			      <td><c:out value="${list.seq }"/></td>
-			      <td><a href="/codeGroup/codeGroupForm?shSeq=<c:out value="${list.seq}"/>"><c:out value="${list.codeGroup}"/></a></td>
+			      <td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.codeGroup}"/></a></td>
 			      <td><c:out value="${list.codeGroupEn }"/></td>
 			      <td><c:out value="${list.cnt }"/></td>
 			      <td><fmt:formatDate value="${list.reg_date }" pattern="yyyy-MM-dd HH:mm:ss"/></td>

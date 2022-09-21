@@ -278,6 +278,6 @@
 
 <!-- end -->
 
-<script src="https://kit.fontawesome.com/0089819b08.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/0089819b08.js"></script>
 </body>
 </html>

@@ -158,11 +158,12 @@
 			</c:when>
 			<c:otherwise>
 			   <c:forEach items="${list}" var="list" varStatus="status">
+			   	<input type="hidden" name="shSeq" value="<c:out value="${list.seq }"/>"/>
 			    <tr>
 			      <th scope="row"><input class="form-check-input" value="<c:out value="${list.seq}"/>" type="checkbox"></th>
 			      <td><c:out value="${list.seq }"/></td>
 			      <td><c:out value="${list.id }"/></td>
-			      <td><a href="member/memberListForm?shSeq=<c:out value="${list.seq }"/>"><c:out value="${list.name}"/></a></td>
+			      <td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.name }"/></a></td>
 			      <td><c:out value="${list.dob }"/></td>
 			      <td><c:out value="${list.adminNy }"/></td>
 			      <td><c:out value="${list.rating }"/></td>
@@ -259,11 +260,13 @@
 		form.attr("action", goUrlForm).submit();              
 	});
 	
+
 	 goForm = function(keyValue) {
 		/* if(keyValue != 0) seq.val(btoa(keyValue)); */
 		seq.val(keyValue);
 		form.attr("action", goUrlForm).submit();
-	}; 
+	}
+
 	
 	
 
