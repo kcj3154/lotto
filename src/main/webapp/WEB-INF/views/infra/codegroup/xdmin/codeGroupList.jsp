@@ -88,11 +88,13 @@
 <br>
 <div class="container-fluid" style="width: 84%;">
 	<form class="row g-3 needs-validation" method="post" action="/codeGroup/codeGroupList" name="formList" id="formList">
-	<input type="hidden" name="shSeq" value="<c:out value="${vo.shSeq}"/>"/>
+	<input type="hidden" name="Sseq" value="<c:out value="${vo.shSeq}"/>"/>
+	<input type="hidden" name="shSeq" value="<c:out value="${seq }"/>"/>
 	<input type="hidden" name="mainKey">
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
 	<input type="hidden" name="checkboxSeqArray" >
+	
 	  <div class="col-md-1">
 	    <select class="form-select" name="shUseNy">
 	      <option value="" <c:if test="${empty vo.shUseNy }">selected</c:if>>사용여부</option>
@@ -155,7 +157,7 @@
 			</c:when>
 			<c:otherwise>
 				<c:forEach items="${list}" var="list" varStatus="status">	
-				<input type="hidden" name="shSeq" value="<c:out value="${list.seq }"/>"/>
+				
 			      <th scope="row"><input class="form-check-input" value="<c:out value="${list.seq}"/>" type="checkbox"></th>
 			      <td><c:out value="${list.seq }"/></td>
 			      <td><c:out value="${list.seq }"/></td>
