@@ -62,12 +62,7 @@
 								<tr>
 									<th class="bg-light px-2">휴대폰 번호</th>
 									<td class="px-2">
-										
-											
-											
-												010-0000-0000
-											
-										
+										010-0000-0000
 									</td>
 								</tr>
 							</table>
@@ -78,60 +73,40 @@
 				<div class="row py-3">
 					<p class="p-0 mb-0 fw-bold fs-5 d-inline" style="width: 135px;">받는 사람</p>
 					<div id="ShippingAnchorDiv" class="d-inline-block" style="width: 200px;">
-						
-							
-							
-								<a class="btn btn-dark border container4" style="width: 60%; font-size: small;" data-bs-toggle="modal" data-bs-target="#addressModal">배송지 변경</a>
-							
-						
+						<a class="btn btn-dark border container4" style="width: 60%; font-size: small;" data-bs-toggle="modal" data-bs-target="#addressModal">배송지 변경</a>
 					</div>
 					<div id="ShippingContentDiv" class="col-12 p-0 pt-2">
-						
-							
-							
-								
-									
-									
-										<div class="table-responsive">
-											<table class="table table-sm p-0 border-top border-3">
-												<tr>
-													<th class="bg-light px-2">이름</th>
-													<td class="px-2">
-														관리자
-													</td>
-												</tr>
-												<tr>
-													<th class="bg-light px-2">배송주소</th>
-													<td class="px-2">
-														서울시 강동구 천호대로 193길 37 
-														<br>
-														길동 우성아파트 103동 1301호
-													</td>
-												</tr>
-												<tr>
-													<th class="bg-light px-2">연락처</th>
-													<td class="px-2">
-														
-															
-															
-																010-0000-0000
-															
-														
-													</td>
-												</tr>
-												<tr>
-													<th class="bg-light px-2">배송 요청사항</th>
-													<td class="px-2">
-														<span id="deliveryRequestSpan" class="pe-3">문 앞</span>
-														<button type="button" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#deliveryRequestModal">변경</button>
-													</td>
-												</tr>
-											</table>
-										</div>
-									
-								
-							
-						
+						<div class="table-responsive">
+							<table class="table table-sm p-0 border-top border-3">
+								<tr>
+									<th class="bg-light px-2">이름</th>
+									<td class="px-2">
+										관리자
+									</td>
+								</tr>
+								<tr>
+									<th class="bg-light px-2">배송주소</th>
+									<td class="px-2">
+										서울시 강동구 천호대로 193길 37 
+										<br>
+										길동 우성아파트 103동 1301호
+									</td>
+								</tr>
+								<tr>
+									<th class="bg-light px-2">연락처</th>
+									<td class="px-2">
+												010-0000-0000
+									</td>
+								</tr>
+								<tr>
+									<th class="bg-light px-2">배송 요청사항</th>
+									<td class="px-2">
+										<span id="deliveryRequestSpan" class="pe-3">문 앞</span>
+										<button type="button" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#deliveryRequestModal">변경</button>
+									</td>
+								</tr>
+							</table>
+						</div>
 					</div>
 				</div>
 
@@ -253,8 +228,6 @@
 												<div class="card-body">
 													<h5 class="card-title">
 														관리자
-														
-														
 													</h5>
 													<p class="card-text">
 														서울시 강동구 천호대로 193길 37
@@ -262,17 +235,11 @@
 														길동 우성아파트 103동 1301호
 													</p>
 													<p class="card-text">
-														
-															
-															
-																010-0000-0000
-															
-														
+														010-0000-0000
 													</p>
 												</div>
 											</div>
 										</div>
-									
 								</div>
 							</div>
 							<div class="modal-footer px-5">
@@ -306,8 +273,6 @@
 					</div>
 				</div>
 
-
-
 				<div class="row py-3">
 					<p class="col-12 p-0 mb-0 fw-bold fs-5">배송 1건 중 1</p>
 					<div class="col p-0 pt-2">
@@ -328,9 +293,7 @@
 											<input type="hidden" name="trprFullNameArray" placeholder="풀네임" value="아이시스 8.0 생수 2L, 24개">
 										</td>
 										<td class="text-end px-2" style="font-weight: lighter;">
-											수량
-											1
-											개 / 무료배송
+											수량 1개 / 무료배송
 											<input type="hidden" name="trctQuantityArray" placeholder="수량" value="1">
 										</td>
 									</tr>
@@ -349,7 +312,6 @@
 									<th class="bg-light px-2">총상품가격</th>
 									<td class="px-2">
 										17,140
-										원
 										<input type="hidden" name="totalProduct" value="43120">
 									</td>
 								</tr>
@@ -357,7 +319,6 @@
 									<th class="bg-light px-2">배송비</th>
 									<td class="px-2">
 										0
-										원
 										<input type="hidden" name="totalDelivery" value="0">
 									</td>
 								</tr>
@@ -365,7 +326,6 @@
 									<th class="bg-light px-2">총결제금액</th>
 									<td class="px-2">
 										17,140
-										원
 										<input type="hidden" name="totalMoney" value="17,140">
 									</td>
 								</tr>
