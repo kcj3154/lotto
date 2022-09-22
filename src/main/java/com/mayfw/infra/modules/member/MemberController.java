@@ -68,13 +68,13 @@ public void setSearchAndPaging(MemberVo vo) throws Exception{
 	 * "infra/codegroup/xdmin/codeGroupForm"; }
 	 */
 	
-	@RequestMapping(value = "memberListForm")
+	@RequestMapping(value = "memberForm")
 	public String memberForm(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 		
-		System.out.println("vo.getShseq(): " + vo.getShSeq());
+		System.out.println("vo.getSseq(): " + vo.getShSeq());
 		Member item = service.selectOne(vo);
 		model.addAttribute("item", item);
-		return "infra/member/xdmin/memberListForm";
+		return "infra/member/xdmin/memberForm";
 	}
 	
 	@RequestMapping(value = "memberUpdt")

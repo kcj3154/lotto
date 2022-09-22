@@ -52,10 +52,10 @@
 	    <div class="collapse navbar-collapse" id="navbarNav">
 	      <ul class="navbar-nav">
 	        <li class="nav-item">
-	          <a class="nav-link" href="/memberList/">회원관리</a>
+	          <a class="nav-link" href="/member/memberList">회원관리</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="/codeGroup/codeGroup">코드그룹관리</a>
+	          <a class="nav-link" href="/codeGroup/codeGroupList">코드그룹관리</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="/code/codeList">코드관리</a>

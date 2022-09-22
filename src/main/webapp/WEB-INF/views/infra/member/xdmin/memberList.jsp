@@ -186,9 +186,9 @@
 
 <!--Currency Converter widget by FreeCurrencyRates.com -->
 
-<div id='gcw_mainFRDl2f9ya' class='gcw_mainFRDl2f9ya'></div>
+<!-- <div id='gcw_mainFRDl2f9ya' class='gcw_mainFRDl2f9ya'></div>
 <a id='gcw_siteFRDl2f9ya' href='https://freecurrencyrates.com/en/'>FreeCurrencyRates.com</a>
-<script>function reloadFRDl2f9ya(){ var sc = document.getElementById('scFRDl2f9ya');if (sc) sc.parentNode.removeChild(sc);sc = document.createElement('script');sc.type = 'text/javascript';sc.charset = 'UTF-8';sc.async = true;sc.id='scFRDl2f9ya';sc.src = 'https://freecurrencyrates.com/en/widget-vertical?iso=USD-EUR-GBP-JPY-CNY-XUL&df=2&p=FRDl2f9ya&v=fits&source=fcr&width=245&width_title=0&firstrowvalue=1&thm=666666,000000,333333,333333,FFFFFF,666666,555555,ffffff,ffffff&title=Currency%20Converter&tzo=-540';var div = document.getElementById('gcw_mainFRDl2f9ya');div.parentNode.insertBefore(sc, div);} reloadFRDl2f9ya(); </script>
+<script>function reloadFRDl2f9ya(){ var sc = document.getElementById('scFRDl2f9ya');if (sc) sc.parentNode.removeChild(sc);sc = document.createElement('script');sc.type = 'text/javascript';sc.charset = 'UTF-8';sc.async = true;sc.id='scFRDl2f9ya';sc.src = 'https://freecurrencyrates.com/en/widget-vertical?iso=USD-EUR-GBP-JPY-CNY-XUL&df=2&p=FRDl2f9ya&v=fits&source=fcr&width=245&width_title=0&firstrowvalue=1&thm=666666,000000,333333,333333,FFFFFF,666666,555555,ffffff,ffffff&title=Currency%20Converter&tzo=-540';var div = document.getElementById('gcw_mainFRDl2f9ya');div.parentNode.insertBefore(sc, div);} reloadFRDl2f9ya(); </script> -->
 <!-- put custom styles here: .gcw_mainFRDl2f9ya{}, .gcw_headerFRDl2f9ya{}, .gcw_ratesFRDl2f9ya{}, .gcw_sourceFRDl2f9ya{} -->
 <!--End of Currency Converter widget by FreeCurrencyRates.com -->
 
@@ -251,7 +251,7 @@
 
 <script type="text/javascript">
 				/* #-> */
-	var goUrlForm = "/member/memberListForm";
+	var goUrlForm = "/member/memberForm";
 	var seq = $("input:hidden[name=shSeq]");
 	
 	var form = $("form[name=formList]");
@@ -274,6 +274,6 @@
  
 	
 	
-<script src="https://kit.fontawesome.com/0089819b08.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/0089819b08.js"></script>
 </body>
 </html>

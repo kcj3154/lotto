@@ -31,7 +31,7 @@
 						<i class="bi bi-search"></i>
 					</button>
                     <a class="nav-link link-dark" href="login" style="height: 50px; width: 80px;"><p style="font-size: 12px;">로그인</p></a>
-                    <a class="nav-link link-dark" href="/resources/user/main/member/signupForm.html" style="height: 50px; width: 80px;"><p style="font-size: 12px;">회원가입</p></a>
+                    <a class="nav-link link-dark" href="signup" style="height: 50px; width: 80px;"><p style="font-size: 12px;">회원가입</p></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 </div>

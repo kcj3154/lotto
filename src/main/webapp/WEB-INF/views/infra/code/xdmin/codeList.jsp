@@ -68,7 +68,7 @@
 	    <div class="collapse navbar-collapse" id="navbarNav">
 	      <ul class="navbar-nav">
 	        <li class="nav-item">
-	          <a class="nav-link" href="/memberList/">회원관리</a>
+	          <a class="nav-link" href="/member/memberList">회원관리</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="/codeGroup/codeGroupList">코드그룹관리</a>
@@ -87,7 +87,7 @@
 <div class="container-fluid" style="width: 84%; font-size: 24px;">코드 관리</div>
 <br>
 <div class="container-fluid" style="width: 84%;">
-	<form class="row g-3 needs-validation" method="post" action="/codeGroup/codeGroupList">
+	<form class="row g-3 needs-validation" method="post" action="/codeGroup/codeGroupList" name="formList" id="formList">
 	  <div class="col-md-1">
 	    <select class="form-select" name="shUseNy">
 	      <option selected disabled value="">사용여부</option>
@@ -126,7 +126,7 @@
 
 <br><br>
 
-<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('1')}"/>
+<%-- <c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('1')}"/> --%>
 <div class="container-fluid" style="width: 84%;">	
 	<table class="table table-bordered border-gray">
 	  <thead>
@@ -152,18 +152,19 @@
 			</c:when>
 			<c:otherwise>
 			   <c:forEach items="${list}" var="list" varStatus="status">
+			   <input type="hidden" name="shSeq" value="<c:out value="${list.seq }"/>"/>
 			    <tr>
 			      <th scope="row"><input class="form-check-input" type="checkbox"></th>
 			      <td><c:out value="${list.seq }"/></td>
 			      <td><c:out value="${list.ccg_seq }"/></td>
-			      <td><c:out value="${list.codeGroup }"/></td>
+			      <td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.codeGroup }"/></a></td>
 			      <td><c:out value="${list.codeName }"/></td>
 			      <td><c:out value="${list.codeNameEn }"/></td>
 			      <td><c:out value="${list.useNy }"/></td>
-			      <%-- <td><c:out value="${list.sort }"/></td> --%>
-			      <td><c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
+			      <td><c:out value="${list.sort }"/></td>
+			      <%-- <td><c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
 						<c:if test="${list.sort eq listGender.seq}"><c:out value="${listGender.codeName }"/></c:if>
-					</c:forEach></td>
+					</c:forEach></td> --%>
 			      <td><fmt:formatDate value="${list.reg_date }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 			      <td><fmt:formatDate value="${list.mod_date }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 			    </tr>
@@ -227,7 +228,43 @@
     
 <!-- end -->
 
-<script src="https://kit.fontawesome.com/0089819b08.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	
+	var goUrlList = "/code/codeList";
+	var form = $("form[name=formList]");
+
+	goList = function(thisPage){
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action", goUrlList).submit();
+	};
+	
+</script>
+
+<script type="text/javascript">
+				/* #-> */
+	var goUrlForm = "/code/codeForm";
+	var seq = $("input:hidden[name=shSeq]");
+	
+	var form = $("form[name=formList]");
+	
+	$('#btnForm').on("click", function() {
+		form.attr("action", goUrlForm).submit();              
+	});
+	
+
+	 goForm = function(keyValue) {
+		/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+		seq.val(keyValue);
+		form.attr("action", goUrlForm).submit();
+	}
+
+	
+	
+
+</script>
+ 
+
+<script src="https://kit.fontawesome.com/0089819b08.js"></script>
 </body>
 </html>
 

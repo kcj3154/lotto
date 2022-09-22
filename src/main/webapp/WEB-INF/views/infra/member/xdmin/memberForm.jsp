@@ -103,7 +103,7 @@
 	<!-- 주소 -->
 	<div class="row">
 		<div class="col-1">
-			<label for="sample4_postcode" class="form-label">*주소</label>
+			<label for="sample4_postcode" class="form-label">*우편번호</label>
 			<input type="text" id="sample4_postcode" class="form-control" placeholder="우편번호">
 		</div>
 		<div class="col-2">
@@ -131,6 +131,20 @@
 		</div>
 	</div>
 </div>
+
+<div id="map" style="width:100%;height:350px;"></div>
+
+<script type="text/javascript" src="1355f81b58cbef3ddc9caf6439b595a21355f81b58cbef3ddc9caf6439b595a2"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+</script>
 	
 	
 	<br><br><br>
