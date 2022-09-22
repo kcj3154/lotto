@@ -55,7 +55,7 @@
 	          <a class="nav-link" href="/member/memberList">회원관리</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="/codeGroup/codeGroup">코드그룹관리</a>
+	          <a class="nav-link" href="/codeGroup/codeGroupList">코드그룹관리</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="/code/codeList">코드관리</a>
@@ -130,21 +130,24 @@
 			<input type="text" id="sample4_extraAddress" class="form-control" placeholder="참고항목">
 		</div>
 	</div>
+	<br>
+	<div class="row">
+		<div class="col-3">
+			<label for="latitude" class="form-label">*위도</label>
+			<input type="text" id="latitude" class="form-control" placeholder="도로명주소">
+		</div>
+		<div class="col-3">
+			<label for="longitude" class="form-label">*경도</label>
+			<input type="text" id="longitude" class="form-control" placeholder="도로명주소">
+		</div>
+	</div>
+	<br>
+	<div id="map" style="height:350px;"></div>
+	
 </div>
 
-<div id="map" style="width:100%;height:350px;"></div>
 
-<script type="text/javascript" src="1355f81b58cbef3ddc9caf6439b595a21355f81b58cbef3ddc9caf6439b595a2"></script>
-<script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };
 
-// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-var map = new kakao.maps.Map(mapContainer, mapOption); 
-</script>
 	
 	
 	<br><br><br>
@@ -309,12 +312,41 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
                     guideTextBox.innerHTML = '';
                     guideTextBox.style.display = 'none';
                 }
+                
+                /* lat and lng from address s */
+    			
+        		// 주소-좌표 변환 객체를 생성
+        		var geocoder = new daum.maps.services.Geocoder();
+        		
+        		// 주소로 좌표를 검색
+        		geocoder.addressSearch(roadAddr, function(result, status) {
+        		 
+        			// 정상적으로 검색이 완료됐으면,
+        			if (status == daum.maps.services.Status.OK) {
+        				
+        				document.getElementById("latitude").value=result[0].y;
+        				document.getElementById("longitude").value=result[0].x;
+        			}
+        		});
+        		/* lat and lng from address e */
             }
+			
         }).open();
     }
     
-   
     
+</script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1355f81b58cbef3ddc9caf6439b595a2&libraries=services,clusterer,drawing"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+var map = new kakao.maps.Map(mapContainer, mapOption); 
 </script>
 
 <script src="https://kit.fontawesome.com/0089819b08.js"></script>
