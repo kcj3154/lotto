@@ -87,6 +87,7 @@
 	<form class="row g-3 needs-validation" method="post" action="/member/memberList" name="formList" id="formList">
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
+	<input type="hidden" name="shSeq" value="<c:out value="${seq }"/>"/>
 	  <div class="col-md-2">
 	    <select class="form-select" name="shAdminNy">
 	      <option value=""<c:if test="${empty vo.shAdminNy }">selected</c:if>>관리자여부</option>
@@ -158,7 +159,6 @@
 			</c:when>
 			<c:otherwise>
 			   <c:forEach items="${list}" var="list" varStatus="status">
-			   	<input type="hidden" name="shSeq" value="<c:out value="${list.seq }"/>"/>
 			    <tr>
 			      <th scope="row"><input class="form-check-input" value="<c:out value="${list.seq}"/>" type="checkbox"></th>
 			      <td><c:out value="${list.seq }"/></td>

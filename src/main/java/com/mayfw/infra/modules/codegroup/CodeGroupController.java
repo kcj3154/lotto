@@ -71,7 +71,7 @@ public class CodeGroupController {
 	@RequestMapping(value = "codeGroupForm")
 	public String codeGroupForm(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 		
-		System.out.println("vo.getSseq(): " + vo.getSseq());
+//		System.out.println("vo.getSseq(): " + vo.getSseq());
 		CodeGroup item = service.selectOne(vo);
 		model.addAttribute("item", item);
 		return "infra/codegroup/xdmin/codeGroupForm";

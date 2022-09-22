@@ -38,7 +38,7 @@
             </div>
         </nav>
         <!-- Header-->
-        <header class="bg-dark py-4">
+        <header class="py-4">
             <div class="container">
                <a href="/resources/user/main/product/bibigoSamgyetang/productView.html"><img src="/resources/user/main/image/bibigo.jpg" style="width: 100%"></a>
             </div>

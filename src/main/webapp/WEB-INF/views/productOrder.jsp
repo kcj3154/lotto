@@ -20,7 +20,7 @@
 
 <!-- start -->
 
-<div class="container-fluid">
+<div class="container px-4 px-lg-5">
 		<form id="formCheck1" method="post" action="">
 			<input type="hidden" name="ifmmSeq" value="1">
 			<input type="hidden" id="ifsaSeq" name="ifsaSeq">
@@ -34,7 +34,7 @@
 				</div>
 			</div>
 
-			<div class="width65">
+			<div class="">
 				<div class="row border-bottom border-4 py-2 mt-2 align-items-end">
 					<div class="col p-0">
 						<h2>주문/결제</h2>
@@ -360,10 +360,6 @@
 										원
 										<input type="hidden" name="totalDelivery" value="0">
 									</td>
-								</tr>
-								<tr>
-									<th class="bg-light px-2">쿠팡캐시</th>
-									<td class="px-2">0원</td>
 								</tr>
 								<tr>
 									<th class="bg-light px-2">총결제금액</th>
