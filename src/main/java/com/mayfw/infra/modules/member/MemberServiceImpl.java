@@ -59,6 +59,11 @@ public class MemberServiceImpl implements MemberService{
 			int result = dao.delete(dto);
 			return result;
 		}
+
+		public int selectOneIdCheck(Member dto) {
+			
+			return dao.selectOneIdCheck(dto);
+		}
 		
 		/*
 		 * @PostConstruct public void selectListCachedCodeArrayList() throws Exception {
@@ -89,6 +94,8 @@ public class MemberServiceImpl implements MemberService{
 		 * public static void clear() throws Exception {
 		 * Member.cachedCodeArrayList.clear(); }
 		 */
+		
+		
 
 
 }

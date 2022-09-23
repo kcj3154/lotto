@@ -88,6 +88,10 @@
 		<include refid="selectCommon" />
 	</select>
 	
+	<select id="selectOneIdCheck" resultType="Integer">
+		SELECT COUNT(*) From member where id = #{id}
+	</select>
+	
 	<insert id="insert">
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()

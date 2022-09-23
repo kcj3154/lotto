@@ -1,12 +1,14 @@
 package com.mayfw.infra.modules.member;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.mayfw.infra.modules.codegroup.CodeGroup;
-
 public class Member {
 	
+	private String rt;
+	public String getRt() {
+		return rt;
+	}
+	public void setRt(String rt) {
+		this.rt = rt;
+	}
 	private String seq;
 	private String id;
 	private String name;

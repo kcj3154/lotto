@@ -8,8 +8,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.mayfw.infra.modules.codegroup.CodeGroup;
-import com.mayfw.infra.modules.codegroup.CodeGroupVo;
+//import com.mayfw.infra.modules.member.Member;
+//import com.mayfw.infra.modules.member.MemberVo;
 
 @Repository
 public class MemberDao {
@@ -51,5 +51,11 @@ public class MemberDao {
 //	for cache
 	public List<Member> selectListCachedCodeArrayList(){ return sqlSession.selectList(namespace + ".selectListCachedCodeArrayList", null); }
 
+	public int selectOneIdCheck(Member dto) {return sqlSession.selectOne(namespace + ".selectOneIdCheck", dto);}
+		
 
-}
+		
+	}
+
+
+
