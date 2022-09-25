@@ -125,10 +125,9 @@
 			<div class="input-group">
 				<div class="input-group-prepend">
 					<span class="input-group-text">
-						<span class="fa fa-user"></span>
+					아이디
 					</span>                    
 				</div>
-				<label for="" class="form-label">아이디 <span class="text-danger">"</span></label>
 				<input type="hidden" id="ifmmIdAllowedNy" name="ifmmIdAllowedNy" value="0">
 				<input type="text" id="id" name="id"
 					value="<c:out value="${item. id}"/>"
@@ -144,7 +143,7 @@
 			<div class="input-group">
 				<div class="input-group-prepend">
 					<span class="input-group-text">
-						<i class="fa fa-paper-plane"></i>
+						이메일
 					</span>                    
 				</div>
 				<input type="email" class="form-control" name="email" placeholder="이메일" required="required">
@@ -154,7 +153,7 @@
 			<div class="input-group">
 				<div class="input-group-prepend">
 					<span class="input-group-text">
-						<i class="fa fa-lock"></i>
+						비밀번호
 					</span>                    
 				</div>
 				<input type="password" class="form-control" id="password1" placeholder="비밀번호" required="required">
@@ -164,8 +163,7 @@
 			<div class="input-group">
 				<div class="input-group-prepend">
 					<span class="input-group-text">
-						<i class="fa fa-lock"></i>
-						<i class="fa fa-check"></i>
+						비밀번호 확인
 					</span>                    
 				</div>
 				<input type="password" class="form-control" id="password2" placeholder="비밀번호 확인" required="required">
@@ -175,7 +173,7 @@
 			<div class="input-group">
 				<div class="input-group-prepend">
 					<span class="input-group-text">
-						<i class="fa-solid fa-file-signature"></i>
+						이름
 					</span>                    
 				</div>
 				<input type="text" class="form-control" name="name" placeholder="이름" required="required">
@@ -185,7 +183,7 @@
 			<div class="input-group">
 				<div class="input-group-prepend">
 					<span class="input-group-text">
-						<i class="fa-solid fa-cake-candles" style="width: 18px;"></i>
+						생년월일
 					</span>                    
 				</div>
 				<input type="date" class="form-control" name="dob" placeholder="생년월일" required="required">
@@ -195,7 +193,7 @@
 			<div class="input-group">
 				<div class="input-group-prepend">
 					<span class="input-group-text">
-						<i class="fa-solid fa-mobile-screen" style="width: 18px;"></i>
+						전화번호
 					</span>                    
 				</div>
 				<input type="text" class="form-control" name="tel" placeholder="전화번호" required="required">

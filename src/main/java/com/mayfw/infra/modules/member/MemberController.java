@@ -118,7 +118,7 @@ public void setSearchAndPaging(MemberVo vo) throws Exception{
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		int result = service.selectOneIdCheck(dto);
-		System.out.println("ㅇ" + result);
+		
 		if (result > 0) {
 			returnMap.put("rt", "fail");
 		} else {
