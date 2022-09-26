@@ -1,14 +1,10 @@
 package com.mayfw.infra.modules.member;
 
+import java.util.Date;
+
 public class Member {
 	
 	private String rt;
-	public String getRt() {
-		return rt;
-	}
-	public void setRt(String rt) {
-		this.rt = rt;
-	}
 	private String seq;
 	private String id;
 	private String name;
@@ -21,9 +17,15 @@ public class Member {
 	private String zipcode;
 	private String address;
 	private String detailedAddress;
-	private String regDate;
-	private String modDate;
+	private Date regDate;
+	private Date modDate;
 	private String delNy;
+	public String getRt() {
+		return rt;
+	}
+	public void setRt(String rt) {
+		this.rt = rt;
+	}
 	public String getSeq() {
 		return seq;
 	}
@@ -96,16 +98,16 @@ public class Member {
 	public void setDetailedAddress(String detailedAddress) {
 		this.detailedAddress = detailedAddress;
 	}
-	public String getRegDate() {
+	public Date getRegDate() {
 		return regDate;
 	}
-	public void setRegDate(String regDate) {
+	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	public String getModDate() {
+	public Date getModDate() {
 		return modDate;
 	}
-	public void setModDate(String modDate) {
+	public void setModDate(Date modDate) {
 		this.modDate = modDate;
 	}
 	public String getDelNy() {

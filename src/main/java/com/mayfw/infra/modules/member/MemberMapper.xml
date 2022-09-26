@@ -98,6 +98,7 @@
 		</selectKey>
 		insert into member(
 			seq
+			,id
 		    ,name
 		    ,dob
 		    ,adminNy
@@ -112,6 +113,7 @@
 		)
 		values(
 			#{seq}
+			,#{id}
 			,#{name}
 			,#{dob}
 			,#{adminNy}
@@ -129,6 +131,7 @@
 	<update id="update">
 		UPDATE member SET  
 			name = #{name}
+			,id = #{id}
 			,dob = #{dob}
 			,adminNy = #{adminNy}
 			,rating = #{rating}
@@ -138,7 +141,7 @@
 			,zipcode = #{zipcode}
 			,address = #{address}
 			,detailedAddress = #{detailedAddress}
-			,mod_date = now()
+			,modDate = now()
 		WHERE 1=1
 			AND seq = #{seq}
 	</update>
