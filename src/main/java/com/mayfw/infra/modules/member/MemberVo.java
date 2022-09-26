@@ -20,6 +20,7 @@ public class MemberVo {
 	private String shValue;
 	
 	
+	
 public String getShSeq() {
 		return shSeq;
 	}

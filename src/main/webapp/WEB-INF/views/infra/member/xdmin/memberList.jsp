@@ -88,6 +88,7 @@
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
 	<input type="hidden" name="shSeq" value="<c:out value="${seq }"/>"/>
+	<input type="hidden" name="Sseq" value="<c:out value="${vo.shSeq}"/>"/>
 	  <div class="col-md-2">
 	    <select class="form-select" name="shAdminNy">
 	      <option value=""<c:if test="${empty vo.shAdminNy }">selected</c:if>>관리자여부</option>

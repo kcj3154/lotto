@@ -71,21 +71,29 @@
 <!-- 데이터 넘기려면 action 안 넘기려면 onsubmit -->
 <form name="form" id="form" method="post">
 		<!-- <form name="form" method="post" > -->
-		<input type="hidden" name="seq" value="<c:out value="${item.seq }"/>">
+		<input type="hidden" name="shSeq" value="<c:out value="${list.seq }"/>">
+		<input type="hidden" name="seq" value="<c:out value="${list.seq }"/>">
 <div class="container-fluid" style="width: 84%; font-size: 24px;">회원 정보</div>
 <br>
 <div class="container-fluid" style="width: 84%;"><br>
 	<div class="row">
-		<div class="col-2">
-  			<label for="id" class="form-label">*아이디</label>
+		<div class="col-4">
+  			<label for="id" class="form-label"><span class="text-danger">*</span>아이디</label>
   			<input type="text" id="id" name="id" class="form-control" value="<c:out value="${item.id}"/>">
 		</div>
-		<div class="col-2">
-			<label for="name" class="form-label">*이름</label>
+		<div class="col-4">
+			<label for="name" class="form-label"><span class="text-danger">*</span>이름</label>
   			<input type="text" id="name" name="name" class="form-control" value="<c:out value="${item.name}"/>">
 		</div>
-		<div class="col-2">
-			<label for="dob" class="form-label">*생년월일</label>
+		<div class="col-4">
+			<label for="tel" class="form-label"><span class="text-danger">*</span>휴대전화</label>
+  			<input type="tel" id="tel" name="tel" class="form-control" value="<c:out value="${item.tel}"/>">
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-4">
+			<label for="dob" class="form-label"><span class="text-danger">*</span>생년월일</label>
   			<input type="date" id="dob" name="dob" class="form-control" value="<c:out value="${item.dob}"/>">
 		</div>
 	</div>
@@ -103,7 +111,7 @@
 	<!-- 주소 -->
 	<div class="row">
 		<div class="col-1">
-			<label for="sample4_postcode" class="form-label">*우편번호</label>
+			<label for="sample4_postcode" class="form-label"><span class="text-danger">*</span>우편번호</label>
 			<input type="text" id="sample4_postcode" class="form-control" placeholder="우편번호">
 		</div>
 		<div class="col-2">
@@ -112,8 +120,8 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-3">
-			<label for="sample4_roadAddress" class="form-label">*도로명주소</label>
+		<div class="col-4">
+			<label for="sample4_roadAddress" class="form-label"><span class="text-danger">*</span>도로명주소</label>
 			<input type="text" id="sample4_roadAddress" class="form-control" placeholder="도로명주소">
 		</div>
 	<!-- 	<div class="col-3">
@@ -121,23 +129,23 @@
 			<input type="text" id="sample4_jibunAddress" class="form-control" placeholder="지번주소">
 		</div> -->
 		<span id="guide" style="color:#999;display:none"></span>
-		<div class="col-3">
-			<label for="sample4_detailAddress" class="form-label">*상세주소</label>
+		<div class="col-4">
+			<label for="sample4_detailAddress" class="form-label"><span class="text-danger">*</span>상세주소</label>
 			<input type="text" id="sample4_detailAddress" class="form-control" placeholder="상세주소">
 		</div>
-		<div class="col-3">
-			<label for="sample4_extraAddress" class="form-label">*참고항목</label>
+		<div class="col-4">
+			<label for="sample4_extraAddress" class="form-label">참고항목</label>
 			<input type="text" id="sample4_extraAddress" class="form-control" placeholder="참고항목">
 		</div>
 	</div>
 	<br>
 	<div class="row">
-		<div class="col-3">
-			<label for="latitude" class="form-label">*위도</label>
+		<div class="col-4">
+			<label for="latitude" class="form-label"><span class="text-danger">*</span>위도</label>
 			<input type="text" id="latitude" class="form-control" placeholder="도로명주소">
 		</div>
-		<div class="col-3">
-			<label for="longitude" class="form-label">*경도</label>
+		<div class="col-4">
+			<label for="longitude" class="form-label"><span class="text-danger">*</span>경도</label>
 			<input type="text" id="longitude" class="form-control" placeholder="도로명주소">
 		</div>
 	</div>

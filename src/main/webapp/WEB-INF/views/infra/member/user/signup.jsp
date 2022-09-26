@@ -74,6 +74,7 @@
 	            <div class="form-group col-md-4">
 	                <label for="pwd2"><span class="text-danger">*</span>비밀번호 확인</label>
 	                <input type="password" class="form-control" name="pwd2" id="pwd2" maxlength="12" placeholder="비밀번호 확인">
+	                <label id="pwd2Feedback"></label>
 	            </div>
 	         </div>
 	         <div class="form-row">
@@ -215,6 +216,14 @@
 			});
 // 		}
 	});
+	
+	<!-- 비밀번호 일치 -->
+    $('#pwd1, #pwd2').on('keyup', function () {
+    	  if ($('#pwd1').val() == $('#pwd2').val()) {
+    		$("#pwd2Feedback").text("비밀번호가 일치합니다").css({'color':'#198754', 'font-size':'14px'});
+    		} else    
+    		$("#pwd2Feedback").text("비밀번호가 일치하지 않습니다").css({'color':'#DC3545', 'font-size':'14px'});
+    	});
 	
 </script>
 
@@ -387,7 +396,7 @@ function check(re,what,message){//정규화데이터,아이템 id,메세지
 }
 
 
-//휴대전
+//휴대전화
 function inputPhoneNumber(obj) {
 
 
