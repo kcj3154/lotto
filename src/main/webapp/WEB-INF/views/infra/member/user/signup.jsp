@@ -44,8 +44,6 @@
 <!-- start -->
 <div class="container-fluid" style="width: 84%">
 	<a href="../user/main/main.html"><img src="/resources/user/main/image/cou.jpg" style="width: 200px;"></a>
-	<br><br>
-	<h5>회원가입</h5>
 </div>
 
 <hr>
@@ -53,10 +51,12 @@
 <div class="container-fluid" style="width: 84%;">
 <br>
 <form method="post" onsubmit="return validate()" enctype="text/plain">
+<h5>회원가입</h5>
+<br><br>
     <fieldset>
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="" class="form-label">아이디</label>
+        <div class="row">
+            <div class="col-4">
+                <label for="" class="form-label">*아이디</label>
 				<input type="hidden" id="ifmmIdAllowedNy" name="ifmmIdAllowedNy" value="0">
 				<input type="text" id="id" name="id"
 				value="<c:out value="${item. id}"/>"
@@ -67,26 +67,31 @@
 			>
 			<div class="invalid-feedback" id="ifmmIdFeedback"></div>
 			</div>
-            <div class="form-group col-md-4">
-                <label for="pwd1">비밀번호</label>
+            <div class="col-4">
+                <label for="pwd1">*비밀번호</label>
                 <input type="password" class="form-control" name="pwd1" id="pwd1" maxlength="12" placeholder="비밀번호">
             </div>
-            <div class="form-group col-md-4">
-                <label for="pwd2">비밀번호 확인</label>
+            <div class="col-4">
+                <label for="pwd2">*비밀번호 확인</label>
                 <input type="password" class="form-control" name="pwd2" id="pwd2" maxlength="12" placeholder="비밀번호 확인">
             </div>
-            <div class="form-group col-md-4">
-                <label for="name">이름</label>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-4">
+                <label for="name">*이름</label>
                 <input type="text" class="form-control" name="name" id="name" maxlength="10" placeholder="이름">
             </div>
             <div class="form-group col-md-4">
-                <label for="email">이메일</label>
+                <label for="email">*이메일</label>
                 <input type="email" class="form-control" name="email" id="email" placeholder="이메일">
             </div>
             <div class="form-group col-md-4">
-                <label for="tel">휴대전화</label>
+                <label for="tel">*휴대전화</label>
                 <input type="tel" class="form-control" onkeyup="inputPhoneNumber(this);" name="tel" id="tel" maxlength="13" placeholder="휴대번호">
             </div>
+          </div>
+          <br>
 <!--             <div class="form-group col-md-6"> -->
 <!--                 <label for="my_num">주민등록번호</label> -->
 <!--                 <div class="input-group-prepend"> -->
@@ -94,13 +99,57 @@
 <!--                     <input type="password" class="form-control" name="my_num2" id="my_num2" maxlength="7" placeholder="주민번호 뒷자리"> -->
 <!--                 </div> -->
 <!--             </div> -->
+				<!-- 주소 -->
+		  <div class="row">
+			<div class="col-2">
+				<label for="sample4_postcode" class="form-label">*우편번호</label>
+				<input type="text" id="sample4_postcode" class="form-control" placeholder="우편번호">
+			</div>
+			<div class="col-2">
+				<label for="sample4 execDaumPostcode()" class="form-label">&nbsp;</label>
+				<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="form-control"><br>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="col-4">
+				<label for="sample4_roadAddress" class="form-label">*도로명주소</label>
+				<input type="text" id="sample4_roadAddress" class="form-control" placeholder="도로명주소">
+			</div>
+			<!-- 	<div class="col-3">
+					<label for="sample4_jibunAddress" class="form-label">*지번주소</label>
+					<input type="text" id="sample4_jibunAddress" class="form-control" placeholder="지번주소">
+				</div> -->
+				<span id="guide" style="color:#999;display:none"></span>
+			<div class="col-4">
+				<label for="sample4_detailAddress" class="form-label">*상세주소</label>
+				<input type="text" id="sample4_detailAddress" class="form-control" placeholder="상세주소">
+			</div>
+			<div class="col-4">
+				<label for="sample4_extraAddress" class="form-label">*참고항목</label>
+				<input type="text" id="sample4_extraAddress" class="form-control" placeholder="참고항목">
+			</div>
+		   </div>
+		   <br>
+		   <div class="row">
+			 <div class="col-4">
+				<label for="latitude" class="form-label">*위도</label>
+				<input type="text" id="latitude" class="form-control" placeholder="도로명주소">
+		   	 </div>
+			 <div class="col-4">
+				<label for="longitude" class="form-label">*경도</label>
+				<input type="text" id="longitude" class="form-control" placeholder="도로명주소">
+			 </div>
+		   </div>
+		   <br>
+		   <div id="map" style="height:350px;"></div>
+		   <br>
             <div class="col-md-12 submit-btn">
                 <input class="btn btn-primary" type="submit" name="submit" value="회원 가입">
             </div>
-        </div>
     </fieldset>
 </form>
-	<div class="text-center">이미 아이디가 있다면? <a href="login">로그인하러 가기</a></div>
+	<br>
+	<div class="text-center">이미 아이디가 있다면? <a href="/member/login">로그인하러 가기</a></div>
 </div>
 
 <br><br>
@@ -355,7 +404,99 @@ if(number.length < 4) {
 obj.value = tel;
 }
 
-  </script>
+</script>
+
+<!-- 주소 스크립트 -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+    function sample4_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 참고 항목 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample4_postcode').value = data.zonecode;
+                document.getElementById("sample4_roadAddress").value = roadAddr;
+                /* document.getElementById("sample4_jibunAddress").value = data.jibunAddress; */
+                
+                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                if(roadAddr !== ''){
+                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+                } else {
+                    document.getElementById("sample4_extraAddress").value = '';
+                }
+
+                var guideTextBox = document.getElementById("guide");
+                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                if(data.autoRoadAddress) {
+                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                    guideTextBox.style.display = 'block';
+
+                } /* else if(data.autoJibunAddress) {
+                    var expJibunAddr = data.autoJibunAddress;
+                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                    guideTextBox.style.display = 'block';
+                } */ else {
+                    guideTextBox.innerHTML = '';
+                    guideTextBox.style.display = 'none';
+                }
+                
+                /* lat and lng from address s */
+    			
+        		// 주소-좌표 변환 객체를 생성
+        		var geocoder = new daum.maps.services.Geocoder();
+        		
+        		// 주소로 좌표를 검색
+        		geocoder.addressSearch(roadAddr, function(result, status) {
+        		 
+        			// 정상적으로 검색이 완료됐으면,
+        			if (status == daum.maps.services.Status.OK) {
+        				
+        				document.getElementById("latitude").value=result[0].y;
+        				document.getElementById("longitude").value=result[0].x;
+        			}
+        		});
+        		/* lat and lng from address e */
+            }
+			
+        }).open();
+    }
+    
+    
+</script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1355f81b58cbef3ddc9caf6439b595a2&libraries=services,clusterer,drawing"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+</script>
 
 </body>
 </html>

@@ -54,9 +54,7 @@
                         <p class="lead"></p>
                         <div class="d-flex">
                             <input class="form-control text-center me-3" id="inputQuantity" type="number" min="1" max="100" step="1" value="1" style="max-width: 4rem" />
-                            <a href="/productOrder/"><button class="btn btn-outline-dark flex-shrink-0" type="button"><i class="bi-cart-fill me-1"></i>구매하기</button></a>
-                                
-                                
+                            <a href="/member/productOrder"><button class="btn btn-outline-dark flex-shrink-0" type="button"><i class="bi-cart-fill me-1"></i>구매하기</button></a>
                     </div>
                 </div>
             </div>
