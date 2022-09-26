@@ -31,7 +31,7 @@
 	}
 	
 	.submit-btn input{
-	  float: center;
+	  float: right;
 	}
 	
 	
@@ -54,9 +54,9 @@
 <h5>회원가입</h5>
 <br><br>
     <fieldset>
-        <div class="row">
-            <div class="col-4">
-                <label for="" class="form-label">*아이디</label>
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="" class="form-label"><span class="text-danger">*</span>아이디</label>
 				<input type="hidden" id="ifmmIdAllowedNy" name="ifmmIdAllowedNy" value="0">
 				<input type="text" id="id" name="id"
 				value="<c:out value="${item. id}"/>"
@@ -67,31 +67,36 @@
 			>
 			<div class="invalid-feedback" id="ifmmIdFeedback"></div>
 			</div>
-            <div class="col-4">
-                <label for="pwd1">*비밀번호</label>
+            <div class="form-group col-md-4">
+                <label for="pwd1"><span class="text-danger">*</span>비밀번호</label>
                 <input type="password" class="form-control" name="pwd1" id="pwd1" maxlength="12" placeholder="비밀번호">
             </div>
-            <div class="col-4">
-                <label for="pwd2">*비밀번호 확인</label>
+            <div class="form-group col-md-4">
+                <label for="pwd2"><span class="text-danger">*</span>비밀번호 확인</label>
                 <input type="password" class="form-control" name="pwd2" id="pwd2" maxlength="12" placeholder="비밀번호 확인">
             </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-4">
-                <label for="name">*이름</label>
+         </div>
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="name"><span class="text-danger">*</span>이름</label>
                 <input type="text" class="form-control" name="name" id="name" maxlength="10" placeholder="이름">
             </div>
             <div class="form-group col-md-4">
-                <label for="email">*이메일</label>
+                <label for="tel"><span class="text-danger">*</span>휴대전화</label>
+                <input type="tel" class="form-control" onkeyup="inputPhoneNumber(this);" name="tel" id="tel" maxlength="13" placeholder="휴대전화">
+            </div>
+         </div>
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="email"><span class="text-danger">*</span>이메일</label>
                 <input type="email" class="form-control" name="email" id="email" placeholder="이메일">
             </div>
             <div class="form-group col-md-4">
-                <label for="tel">*휴대전화</label>
-                <input type="tel" class="form-control" onkeyup="inputPhoneNumber(this);" name="tel" id="tel" maxlength="13" placeholder="휴대번호">
+                <label for="dob"><span class="text-danger">*</span>생년월일</label>
+                <input type="date" class="form-control" name="dob" id="dob" placeholder="이메일">
             </div>
-          </div>
-          <br>
+         </div>
+         <br>
 <!--             <div class="form-group col-md-6"> -->
 <!--                 <label for="my_num">주민등록번호</label> -->
 <!--                 <div class="input-group-prepend"> -->
@@ -100,46 +105,47 @@
 <!--                 </div> -->
 <!--             </div> -->
 				<!-- 주소 -->
-		  <div class="row">
-			<div class="col-2">
-				<label for="sample4_postcode" class="form-label">*우편번호</label>
+		 <div class="form-row">
+			<div class="form-group col-md-2" style="height:70px;">
+				<label for="sample4_postcode" class="form-label"><span class="text-danger">*</span>우편번호</label>
 				<input type="text" id="sample4_postcode" class="form-control" placeholder="우편번호">
 			</div>
-			<div class="col-2">
+			<div class="form-group col-md-2" style="height:70px;">
 				<label for="sample4 execDaumPostcode()" class="form-label">&nbsp;</label>
 				<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="form-control"><br>
 			</div>
-		  </div>
-		  <div class="row">
-			<div class="col-4">
-				<label for="sample4_roadAddress" class="form-label">*도로명주소</label>
+		 </div>
+		 <div class="form-row">
+			<div class="form-group col-md-4" style="height:70px;">
+				<label for="sample4_roadAddress" class="form-label"><span class="text-danger">*</span>도로명주소</label>
 				<input type="text" id="sample4_roadAddress" class="form-control" placeholder="도로명주소">
+				<span id="guide" style="color:#999;display:none"></span>
 			</div>
 			<!-- 	<div class="col-3">
 					<label for="sample4_jibunAddress" class="form-label">*지번주소</label>
 					<input type="text" id="sample4_jibunAddress" class="form-control" placeholder="지번주소">
 				</div> -->
-				<span id="guide" style="color:#999;display:none"></span>
-			<div class="col-4">
-				<label for="sample4_detailAddress" class="form-label">*상세주소</label>
+				
+			<div class="form-group col-md-4">
+				<label for="sample4_detailAddress" class="form-label"><span class="text-danger">*</span>상세주소</label>
 				<input type="text" id="sample4_detailAddress" class="form-control" placeholder="상세주소">
 			</div>
-			<div class="col-4">
-				<label for="sample4_extraAddress" class="form-label">*참고항목</label>
+			<div class="form-group col-md-4">
+				<label for="sample4_extraAddress" class="form-label">참고항목</label>
 				<input type="text" id="sample4_extraAddress" class="form-control" placeholder="참고항목">
 			</div>
-		   </div>
-		   <br>
-		   <div class="row">
-			 <div class="col-4">
-				<label for="latitude" class="form-label">*위도</label>
-				<input type="text" id="latitude" class="form-control" placeholder="도로명주소">
+		 </div>
+		 <div class="form-row">
+			 <div class="form-group col-md-4">
+				<label for="latitude" class="form-label"><span class="text-danger">*</span>위도</label>
+				<input type="text" id="latitude" class="form-control">
 		   	 </div>
-			 <div class="col-4">
-				<label for="longitude" class="form-label">*경도</label>
-				<input type="text" id="longitude" class="form-control" placeholder="도로명주소">
+		   	 
+			 <div class="form-group col-md-4">
+				<label for="longitude" class="form-label"><span class="text-danger">*</span>경도</label>
+				<input type="text" id="longitude" class="form-control">
 			 </div>
-		   </div>
+		 </div>
 		   <br>
 		   <div id="map" style="height:350px;"></div>
 		   <br>
@@ -369,10 +375,19 @@ function validate() {
 //         f.month.value = m;//월
 //         f.day.value = d;//일
 //     }
-// }
+}
+function check(re,what,message){//정규화데이터,아이템 id,메세지
+    if (re.test(what.value)) {//what의 문자열에 re의 패턴이 있는지 나타내는 함수 test
+    //만약 내가 입력한 곳의 값이 정규화 데이터를 썼다면 true를 반환해서 호출 된 곳으로 리턴됨
+        return true;
+    }
+    alert(message);
+    what.value = "";
+    what.focus();
+}
 
 
-//휴대번호
+//휴대전
 function inputPhoneNumber(obj) {
 
 
@@ -385,24 +400,25 @@ var tel = "";
 if(number.length < 4) {
     return number;
 } else if(number.length < 7) {
-    tel += number.substr(0, 3);
-    tel += "-";
-    tel += number.substr(3);
-} else if(number.length < 11) {
 	tel += number.substr(0, 3);
 	tel += "-";
-	tel += number.substr(3, 3);
-	tel += "-";
-	tel += number.substr(6);
+	tel += number.substr(3);
+} else if(number.length < 11) {
+	tel += number.substr(0, 3);
+    tel += "-";
+    tel += number.substr(3, 3);
+    tel += "-";
+    tel += number.substr(6);
 } else {
 	tel += number.substr(0, 3);
 	tel += "-";
 	tel += number.substr(3, 4);
-    tel += "-";
-    tel += number.substr(7);
+	tel += "-";
+	tel += number.substr(7);
 }
 obj.value = tel;
 }
+
 
 </script>
 
