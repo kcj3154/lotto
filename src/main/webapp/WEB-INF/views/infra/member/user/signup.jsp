@@ -34,9 +34,10 @@
 
 <hr>
 
-<div class="container-fluid" style="width: 84%;"><br>
+<div class="container-fluid" style="width: 84%;">
+<br>
 	<div class="row">
-		<div class="col-6">
+		<div class="col-4">
 			<label for="" class="form-label">아이디</label>
 			<input type="hidden" id="ifmmIdAllowedNy" name="ifmmIdAllowedNy" value="0">
 			<input type="text" id="id" name="id"
@@ -48,12 +49,32 @@
 			>
 			<div class="invalid-feedback" id="ifmmIdFeedback"></div>
 		</div>
-		<div class="col-6">
-			<label for="" class="form-label"></label>
-  			<input type="text" id="" name="" class="form-control">
+		<div class="col-4">
+			<label for="pwd1" class="form-label">비밀번호</label>
+  			<input type="password" id="pwd1" name="" class="form-control">
+		</div>
+		<div class="col-4">
+			<label for="pwd2" class="form-label">비밀번호 확인</label>
+  			<input type="password" id="pwd2" name="" class="form-control">
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-4">
+			<label for="name" class="form-label">이름</label>
+  			<input type="text" id="name" name="" class="form-control">
+		</div>
+		<div class="col-4">
+			<label for="email" class="form-label">이메일</label>
+  			<input type="text" id="email" name="" class="form-control">
+		</div>
+		<div class="col-4">
+			<label for="email" class="form-label">생년월일</label>
+  			<input type="text" id="email" name="" class="form-control">
 		</div>
 	</div>	
-	
+		
+	<br>
 		<div class="form-group">
             <button type="button" class="btn btn-primary btn-lg" onclick="signup()">가입하기</button>
         </div>
@@ -78,8 +99,8 @@
 <!--비밀번호 확인 -->
   <script type="text/javascript">
     function signup() {
-      var p1 = document.getElementById('password1').value;
-      var p2 = document.getElementById('password2').value;
+      var p1 = document.getElementById('pwd1').value;
+      var p2 = document.getElementById('pwd2').value;
       if( p1 != p2 ) {
         alert("비밀번호가 일치 하지 않습니다");
         return false;
