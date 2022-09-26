@@ -49,111 +49,111 @@
 <hr>
 
 <div class="container-fluid" style="width: 84%;">
-<br>
-<form method="post" onsubmit="return validate()" enctype="text/plain">
-<h5>회원가입</h5>
-<br><br>
-    <fieldset>
-         <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="" class="form-label"><span class="text-danger">*</span>아이디</label>
-				<input type="hidden" id="ifmmIdAllowedNy" name="ifmmIdAllowedNy" value="0">
-				<input type="text" id="id" name="id"
-				value="<c:out value="${item. id}"/>"
-				maxlength="20"
-				placeholder="대소문자,숫자,4~12"
-				class="form-control"
-				<c:if test="${not empty item. id}">readonly</c:if>
-			>
-			<div class="invalid-feedback" id="ifmmIdFeedback"></div>
-			</div>
-            <div class="form-group col-md-4">
-                <label for="pwd1"><span class="text-danger">*</span>비밀번호</label>
-                <input type="password" class="form-control" name="pwd1" id="pwd1" maxlength="12" placeholder="비밀번호">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="pwd2"><span class="text-danger">*</span>비밀번호 확인</label>
-                <input type="password" class="form-control" name="pwd2" id="pwd2" maxlength="12" placeholder="비밀번호 확인">
-            </div>
-         </div>
-         <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="name"><span class="text-danger">*</span>이름</label>
-                <input type="text" class="form-control" name="name" id="name" maxlength="10" placeholder="이름">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="tel"><span class="text-danger">*</span>휴대전화</label>
-                <input type="tel" class="form-control" onkeyup="inputPhoneNumber(this);" name="tel" id="tel" maxlength="13" placeholder="휴대전화">
-            </div>
-         </div>
-         <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="email"><span class="text-danger">*</span>이메일</label>
-                <input type="email" class="form-control" name="email" id="email" placeholder="이메일">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="dob"><span class="text-danger">*</span>생년월일</label>
-                <input type="date" class="form-control" name="dob" id="dob" placeholder="이메일">
-            </div>
-         </div>
-         <br>
-<!--             <div class="form-group col-md-6"> -->
-<!--                 <label for="my_num">주민등록번호</label> -->
-<!--                 <div class="input-group-prepend"> -->
-<!--                     <input type="text" class="form-control" name="my_num1" id="my_num1" maxlength="6" placeholder="주민번호 앞자리"> -->
-<!--                     <input type="password" class="form-control" name="my_num2" id="my_num2" maxlength="7" placeholder="주민번호 뒷자리"> -->
-<!--                 </div> -->
-<!--             </div> -->
-				<!-- 주소 -->
-		 <div class="form-row">
-			<div class="form-group col-md-2" style="height:70px;">
-				<label for="sample4_postcode" class="form-label"><span class="text-danger">*</span>우편번호</label>
-				<input type="text" id="sample4_postcode" class="form-control" placeholder="우편번호">
-			</div>
-			<div class="form-group col-md-2" style="height:70px;">
-				<label for="sample4 execDaumPostcode()" class="form-label">&nbsp;</label>
-				<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="form-control"><br>
-			</div>
-		 </div>
-		 <div class="form-row">
-			<div class="form-group col-md-4" style="height:70px;">
-				<label for="sample4_roadAddress" class="form-label"><span class="text-danger">*</span>도로명주소</label>
-				<input type="text" id="sample4_roadAddress" class="form-control" placeholder="도로명주소">
-				<span id="guide" style="color:#999;display:none"></span>
-			</div>
-			<!-- 	<div class="col-3">
-					<label for="sample4_jibunAddress" class="form-label">*지번주소</label>
-					<input type="text" id="sample4_jibunAddress" class="form-control" placeholder="지번주소">
-				</div> -->
-				
-			<div class="form-group col-md-4">
-				<label for="sample4_detailAddress" class="form-label"><span class="text-danger">*</span>상세주소</label>
-				<input type="text" id="sample4_detailAddress" class="form-control" placeholder="상세주소">
-			</div>
-			<div class="form-group col-md-4">
-				<label for="sample4_extraAddress" class="form-label">참고항목</label>
-				<input type="text" id="sample4_extraAddress" class="form-control" placeholder="참고항목">
-			</div>
-		 </div>
-		 <div class="form-row">
-			 <div class="form-group col-md-4">
-				<label for="latitude" class="form-label"><span class="text-danger">*</span>위도</label>
-				<input type="text" id="latitude" class="form-control">
-		   	 </div>
-		   	 
-			 <div class="form-group col-md-4">
-				<label for="longitude" class="form-label"><span class="text-danger">*</span>경도</label>
-				<input type="text" id="longitude" class="form-control">
+	<br>
+	<form method="post" onsubmit="return validate()" enctype="text/plain">
+	<h5>회원가입</h5>
+	<br><br>
+	    <fieldset>
+	         <div class="form-row">
+	            <div class="form-group col-md-4">
+	                <label for="" class="form-label"><span class="text-danger">*</span>아이디</label>
+					<input type="hidden" id="ifmmIdAllowedNy" name="ifmmIdAllowedNy" value="0">
+					<input type="text" id="id" name="id"
+					value="<c:out value="${item. id}"/>"
+					maxlength="20"
+					placeholder="대소문자,숫자,4~12"
+					class="form-control"
+					<c:if test="${not empty item. id}">readonly</c:if>
+				>
+				<div class="invalid-feedback" id="ifmmIdFeedback"></div>
+				</div>
+	            <div class="form-group col-md-4">
+	                <label for="pwd1"><span class="text-danger">*</span>비밀번호</label>
+	                <input type="password" class="form-control" name="pwd1" id="pwd1" maxlength="12" placeholder="비밀번호">
+	            </div>
+	            <div class="form-group col-md-4">
+	                <label for="pwd2"><span class="text-danger">*</span>비밀번호 확인</label>
+	                <input type="password" class="form-control" name="pwd2" id="pwd2" maxlength="12" placeholder="비밀번호 확인">
+	            </div>
+	         </div>
+	         <div class="form-row">
+	            <div class="form-group col-md-4">
+	                <label for="name"><span class="text-danger">*</span>이름</label>
+	                <input type="text" class="form-control" name="name" id="name" maxlength="10" placeholder="이름">
+	            </div>
+	            <div class="form-group col-md-4">
+	                <label for="tel"><span class="text-danger">*</span>휴대전화</label>
+	                <input type="tel" class="form-control" onkeyup="inputPhoneNumber(this);" name="tel" id="tel" maxlength="13" placeholder="휴대전화">
+	            </div>
+	         </div>
+	         <div class="form-row">
+	            <div class="form-group col-md-4">
+	                <label for="email"><span class="text-danger">*</span>이메일</label>
+	                <input type="email" class="form-control" name="email" id="email" placeholder="이메일">
+	            </div>
+	            <div class="form-group col-md-4">
+	                <label for="dob"><span class="text-danger">*</span>생년월일</label>
+	                <input type="date" class="form-control" name="dob" id="dob" placeholder="이메일">
+	            </div>
+	         </div>
+	         <br>
+	<!--             <div class="form-group col-md-6"> -->
+	<!--                 <label for="my_num">주민등록번호</label> -->
+	<!--                 <div class="input-group-prepend"> -->
+	<!--                     <input type="text" class="form-control" name="my_num1" id="my_num1" maxlength="6" placeholder="주민번호 앞자리"> -->
+	<!--                     <input type="password" class="form-control" name="my_num2" id="my_num2" maxlength="7" placeholder="주민번호 뒷자리"> -->
+	<!--                 </div> -->
+	<!--             </div> -->
+					<!-- 주소 -->
+			 <div class="form-row">
+				<div class="form-group col-md-2" style="height:70px;">
+					<label for="sample4_postcode" class="form-label"><span class="text-danger">*</span>우편번호</label>
+					<input type="text" id="sample4_postcode" class="form-control" placeholder="우편번호">
+				</div>
+				<div class="form-group col-md-2" style="height:70px;">
+					<label for="sample4 execDaumPostcode()" class="form-label">&nbsp;</label>
+					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="form-control"><br>
+				</div>
 			 </div>
-		 </div>
-		   <br>
-		   <div id="map" style="height:350px;"></div>
-		   <br>
-            <div class="col-md-12 submit-btn">
-                <input class="btn btn-primary" type="submit" name="submit" value="회원 가입">
-            </div>
-    </fieldset>
-</form>
+			 <div class="form-row">
+				<div class="form-group col-md-4" style="height:70px;">
+					<label for="sample4_roadAddress" class="form-label"><span class="text-danger">*</span>도로명주소</label>
+					<input type="text" id="sample4_roadAddress" class="form-control" placeholder="도로명주소">
+					<span id="guide" style="color:#999;display:none"></span>
+				</div>
+				<!-- 	<div class="col-3">
+						<label for="sample4_jibunAddress" class="form-label">*지번주소</label>
+						<input type="text" id="sample4_jibunAddress" class="form-control" placeholder="지번주소">
+					</div> -->
+					
+				<div class="form-group col-md-4">
+					<label for="sample4_detailAddress" class="form-label"><span class="text-danger">*</span>상세주소</label>
+					<input type="text" id="sample4_detailAddress" class="form-control" placeholder="상세주소">
+				</div>
+				<div class="form-group col-md-4">
+					<label for="sample4_extraAddress" class="form-label">참고항목</label>
+					<input type="text" id="sample4_extraAddress" class="form-control" placeholder="참고항목">
+				</div>
+			 </div>
+			 <div class="form-row">
+				 <div class="form-group col-md-4">
+					<label for="latitude" class="form-label"><span class="text-danger">*</span>위도</label>
+					<input type="text" id="latitude" class="form-control">
+			   	 </div>
+			   	 
+				 <div class="form-group col-md-4">
+					<label for="longitude" class="form-label"><span class="text-danger">*</span>경도</label>
+					<input type="text" id="longitude" class="form-control">
+				 </div>
+			 </div>
+			   <br>
+			   <div id="map" style="height:350px;"></div>
+			   <br>
+	            <div class="col-md-12 submit-btn">
+	                <input class="btn btn-primary" type="submit" name="submit" value="회원 가입">
+	            </div>
+	    </fieldset>
+	</form>
 	<br>
 	<div class="text-center">이미 아이디가 있다면? <a href="/member/login">로그인하러 가기</a></div>
 </div>
