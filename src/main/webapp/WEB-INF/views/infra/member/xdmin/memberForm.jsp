@@ -71,8 +71,8 @@
 <!-- 데이터 넘기려면 action 안 넘기려면 onsubmit -->
 <form name="form" id="form" method="post">
 		<!-- <form name="form" method="post" > -->
-		<input type="hidden" name="shSeq" value="<c:out value="${list.seq }"/>">
-		<input type="hidden" name="seq" value="<c:out value="${list.seq }"/>">
+		<input type="hidden" name="shSeq" value="<c:out value="${item.seq }"/>">
+<%-- 		<input type="hidden" name="seq" value="<c:out value="${item.seq }"/>"> --%>
 <div class="container-fluid" style="width: 84%; font-size: 24px;">회원 정보</div>
 <br>
 <div class="container-fluid" style="width: 84%;"><br>

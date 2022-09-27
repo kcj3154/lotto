@@ -50,7 +50,7 @@
 
 <div class="container-fluid" style="width: 84%;">
 	<br>
-	<form method="post" onsubmit="return validate()" enctype="text/plain">
+	<form method="post" action="signup">
 	<h5>회원가입</h5>
 	<br><br>
 	    <fieldset>
@@ -69,7 +69,7 @@
 				</div>
 	            <div class="form-group col-md-4">
 	                <label for="pwd1"><span class="text-danger">*</span>비밀번호</label>
-	                <input type="password" class="form-control" name="pwd1" id="pwd1" maxlength="12" placeholder="비밀번호">
+	                <input type="password" class="form-control" name="pwd" id="pwd" maxlength="12" placeholder="비밀번호">
 	            </div>
 	            <div class="form-group col-md-4">
 	                <label for="pwd2"><span class="text-danger">*</span>비밀번호 확인</label>
@@ -218,8 +218,8 @@
 	});
 	
 	<!-- 비밀번호 일치 -->
-    $('#pwd1, #pwd2').on('keyup', function () {
-    	  if ($('#pwd1').val() == $('#pwd2').val()) {
+    $('#pwd, #pwd2').on('keyup', function () {
+    	  if ($('#pwd').val() == $('#pwd2').val()) {
     		$("#pwd2Feedback").text("비밀번호가 일치합니다").css({'color':'#198754', 'font-size':'14px'});
     		} else    
     		$("#pwd2Feedback").text("비밀번호가 일치하지 않습니다").css({'color':'#DC3545', 'font-size':'14px'});
@@ -232,7 +232,7 @@
 function validate() {
     //event.preventDefault();
     var objID = document.getElementById("id");
-    var objPwd1 = document.getElementById("pwd1");
+    var objPwd1 = document.getElementById("pwd");
     var objPwd2 = document.getElementById("pwd2");
     var objEmail = document.getElementById("email");
     var objName = document.getElementById("name");

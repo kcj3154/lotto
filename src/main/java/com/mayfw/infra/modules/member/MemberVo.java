@@ -5,12 +5,6 @@ import com.mayfw.infra.common.constants.Constants;
 public class MemberVo {
 	
 	private String Sseq;
-	public String getSseq() {
-		return Sseq;
-	}
-	public void setSseq(String sseq) {
-		Sseq = sseq;
-	}
 	private String shSeq;
 	private String shAdminNy;
 	private String shDate;
@@ -19,9 +13,13 @@ public class MemberVo {
 	private String shOption;
 	private String shValue;
 	
-	
-	
-public String getShSeq() {
+	public String getSseq() {
+		return Sseq;
+	}
+	public void setSseq(String sseq) {
+		Sseq = sseq;
+	}
+	public String getShSeq() {
 		return shSeq;
 	}
 	public void setShSeq(String shSeq) {

@@ -5,6 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mayfw.infra.common.util.UtilSecurity;
+
+
+
 @Service
 public class MemberServiceImpl implements MemberService{
 		@Autowired
@@ -65,6 +69,12 @@ public class MemberServiceImpl implements MemberService{
 			return dao.selectOneIdCheck(dto);
 		}
 		
+		@Override
+		public int signup(Member dto) throws Exception { 
+		 	dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));    	
+			return dao.insert(dto);
+		}
+		
 		/*
 		 * @PostConstruct public void selectListCachedCodeArrayList() throws Exception {
 		 * List<Member> codeListFromDb = (ArrayList<Member>)
@@ -95,7 +105,19 @@ public class MemberServiceImpl implements MemberService{
 		 * Member.cachedCodeArrayList.clear(); }
 		 */
 		
+	
+		
+		@Override
+		public Member selectOneId(Member dto) throws Exception {
+			return dao.selectOneId(dto);
+		}
+
+		@Override
+		public Member selectOneLogin(Member dto) throws Exception {
+			return dao.selectOneLogin(dto);
+		}
 		
 
-
 }
+
+

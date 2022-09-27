@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.mayfw.infra.common.constants.Constants;
+import com.mayfw.infra.common.util.UtilSecurity;
 
 @Controller
 @RequestMapping(value = "/member/")
@@ -57,8 +62,7 @@ public void setSearchAndPaging(MemberVo vo) throws Exception{
 
 		int result = service.insert(dto);
 		System.out.println("controller result: " + result);
-		System.out.println(dto.getSeq());
-		vo.setShSeq(dto.getSeq());
+		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		return "redirect:/member/memberForm";
@@ -82,7 +86,7 @@ public void setSearchAndPaging(MemberVo vo) throws Exception{
 	
 	@RequestMapping(value = "memberUpdt")
 	public String memberUpdt(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
-		
+		dto.setSeq(vo.getShSeq());
 		service.update(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/member/memberList";
@@ -98,12 +102,7 @@ public void setSearchAndPaging(MemberVo vo) throws Exception{
 	 */
 	
 	
-	@RequestMapping(value = "signup")
-	public String signup() throws Exception {
-		return "infra/member/user/signup";
 	
-
-	}
 	
 	@RequestMapping(value = "login")
 	public String login() throws Exception {
@@ -139,8 +138,50 @@ public void setSearchAndPaging(MemberVo vo) throws Exception{
 		return returnMap;
 	}
 
-		
-			
+	
+	//////////////////////////////////////////////////////////////////////////////////
+	
+	@ResponseBody
+	@RequestMapping(value = "loginProc")
+	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+
+		Member rtMember = service.selectOneId(dto);
+
+		if (rtMember != null) {
+			dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
+			Member rtMember2 = service.selectOneLogin(dto);
+
+			if (rtMember2 != null) {
+				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
+				httpSession.setAttribute("sessSeq", rtMember2.getSeq());
+				httpSession.setAttribute("sessId", rtMember2.getId());
+				httpSession.setAttribute("sessName", rtMember2.getName());
+
+				returnMap.put("rt", "success");
+			} else {
+				dto.setSeq(rtMember.getSeq());
+				returnMap.put("rt", "fail");
+			}
+		} else {
+			returnMap.put("rt", "fail");
+		}
+		return returnMap;
+	}
+	
+	
+	@RequestMapping(value = "/signupForm")
+	public String sign() throws Exception {
+		return "infra/member/user/signupForm";
+	
+
+	}
+	
+	@RequestMapping(value = "signup")
+	public String signup(Member dto) throws Exception {
+		service.signup(dto);
+		return "redirect:/member/signupForm"; 
+	}
 		
 }
 

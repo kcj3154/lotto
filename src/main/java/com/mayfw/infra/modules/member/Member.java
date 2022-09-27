@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Member {
 	
+	private String rtSeq;
 	private String rt;
 	private String seq;
 	private String id;
@@ -20,6 +21,14 @@ public class Member {
 	private Date regDate;
 	private Date modDate;
 	private String delNy;
+	private String pwd;
+	private String regMod;
+	public String getRtSeq() {
+		return rtSeq;
+	}
+	public void setRtSeq(String rtSeq) {
+		this.rtSeq = rtSeq;
+	}
 	public String getRt() {
 		return rt;
 	}
@@ -115,6 +124,18 @@ public class Member {
 	}
 	public void setDelNy(String delNy) {
 		this.delNy = delNy;
+	}
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+	public String getRegMod() {
+		return regMod;
+	}
+	public void setRegMod(String regMod) {
+		this.regMod = regMod;
 	}
 	
 	

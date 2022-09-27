@@ -97,8 +97,8 @@
 			SELECT last_insert_id()
 		</selectKey>
 		insert into member(
-			seq
-			,id
+			id
+			,pwd
 		    ,name
 		    ,dob
 		    ,adminNy
@@ -112,8 +112,8 @@
 		    ,regDate
 		)
 		values(
-			#{seq}
-			,#{id}
+			#{id}
+			,#{pwd}
 			,#{name}
 			,#{dob}
 			,#{adminNy}
@@ -164,6 +164,31 @@
 		AND delNy = 0
 	    AND useNy = 1
     </select> -->
+    
+ <!-- 로그 -->
+    <select id="selectOneId" resultMap="resultMapObj">
+   			select
+   				seq
+   				,id
+   			from
+   				member 
+   			WHERE 1=1
+   				and id = #{id}
+   		</select>    
+   		
+    	<select id="selectOneLogin" resultMap="resultMapObj">
+    		select
+    			seq
+    			,id
+    			,name
+    		from
+    			member 
+    		where 1=1
+    			and id = #{id}
+    			<if test="pwd != null and !pwd.equals('')">and pwd = #{pwd}</if>
+    	</select>
+    	
+
 	
 
 </mapper>
