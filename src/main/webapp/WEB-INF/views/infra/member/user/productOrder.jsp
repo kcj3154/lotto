@@ -379,7 +379,56 @@
 	
 <!-- end -->
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="/resources/demos/style.css">
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+<!-- 결제 -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
+	<script type="text/javascript">
+	var IMP = window.IMP;
+	
+	IMP.init('imp77780712');
+	
+	</script>
+
+<script type="text/javascript">
+
+goPurchase = function() {
+			
+			
+			if($("#paymentMethod1"){
+				
+				IMP.request_pay({ // param
+					pg: 'kakaopay',
+					pay_method : 'card',
+					merchant_uid : 'iamport_test_id' + new Date().getTime(), // 주문번호
+					name : '쿠팡 상품주문',
+					amount : "17,140"
+				}, function(rsp) {
+					if(rsp.success) {
+						console.log("빌링키 발급 성공", rsp);
+						$("#formCheck1").attr("action", "/infra/member/user/productOrder").submit();
+					} else {
+						var msg = "결제에 실패하였습니다.\n";
+						msg += rsp.error_msg;
+						alert(msg);
+						return false;
+					}
+				})
+				
+			} else {
+				alert("결제방법을 선택해주세요.");
+			}
+			
+			
+			
+			
+		}
+	</script>
  
 	
 	

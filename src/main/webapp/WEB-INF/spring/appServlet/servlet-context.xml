@@ -23,6 +23,24 @@
 	
 	<context:component-scan base-package="com.mayfw.infra" />
 	
+	<!-- session interceptor s 2022.03.13 for logincheck -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<exclude-mapping path="/" />
+			<exclude-mapping path="/resources/**" />
+			<exclude-mapping path="/member/login" />
+			<exclude-mapping path="/member/loginProc" />
+			<exclude-mapping path="/member/productView" />
+			<exclude-mapping path="/member/signupForm"/>
+<!-- 			<exclude-mapping path="/member/findIdPwdForm" /> -->
+<!-- 			<exclude-mapping path="/test/**" /> -->
+<!-- 			<exclude-mapping path="/rest/**" /> -->
+			<beans:bean id="checkLoginSessionInterception" class="com.mayfw.infra.common.interceptor.CheckLoginSessionInterception"/>
+		</interceptor>
+	</interceptors>	
+	<!-- session interceptor e 2022.03.13 for logincheck -->
+	
 	
 	
 </beans:beans>

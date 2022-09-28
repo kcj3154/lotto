@@ -157,7 +157,6 @@ public void setSearchAndPaging(MemberVo vo) throws Exception{
 				httpSession.setAttribute("sessSeq", rtMember2.getSeq());
 				httpSession.setAttribute("sessId", rtMember2.getId());
 				httpSession.setAttribute("sessName", rtMember2.getName());
-
 				returnMap.put("rt", "success");
 			} else {
 				dto.setSeq(rtMember.getSeq());
@@ -168,6 +167,18 @@ public void setSearchAndPaging(MemberVo vo) throws Exception{
 		}
 		return returnMap;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "logOutProc")
+	public Map<String, Object> logOutProc(HttpSession httpSession) throws Exception {
+
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		httpSession.invalidate();
+		returnMap.put("rt", "success");
+
+		return returnMap;
+	}
+
 	
 	
 	@RequestMapping(value = "/signupForm")

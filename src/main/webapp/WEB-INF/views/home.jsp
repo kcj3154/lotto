@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -22,21 +22,25 @@
         <link href="/resources/user/main/template/css/styles.css" rel="stylesheet" />
     </head>
     <body>
+    <%@include file="./include/coupangTopBar.jsp"%>
+    <%@include file="./include/coupangSearch.jsp"%>
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!"><img src="/resources/user/main/image/cou.jpg" style="width: 150px;"></a>
-                <input class="form-control" type="text" placeholder="상품을 검색해보세요!" style="width: 800px;">
-					<button id="btnSearch" name="btnSearch" class="btn btn-outline-secondary" type="button">
-						<i class="bi bi-search"></i>
-					</button>
-                    <a class="nav-link link-dark" href="/member/login" style="height: 50px; width: 80px;"><p style="font-size: 12px;">로그인</p></a>
-                    <a class="nav-link link-dark" href="/member/signupForm" style="height: 50px; width: 80px;"><p style="font-size: 12px;">회원가입</p></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                </div>
-            </div>
-        </nav>
+<!--         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;"> -->
+<!--             <div class="container px-4 px-lg-5"> -->
+<!--                 <a class="navbar-brand" href="#!"><img src="/resources/user/main/image/cou.jpg" style="width: 150px;"></a> -->
+<!--                 <input class="form-control" type="text" placeholder="상품을 검색해보세요!" style="width: 800px;"> -->
+<!-- 					<button id="btnSearch" name="btnSearch" class="btn btn-outline-secondary" type="button"> -->
+<!-- 						<i class="bi bi-search"></i> -->
+<!-- 					</button> -->
+<!--                     <a class="nav-link link-dark" href="/member/login" style="height: 50px; width: 80px;"><p style="font-size: 12px;">로그인</p></a> -->
+<!--                     <a class="nav-link link-dark" href="/member/signupForm" style="height: 50px; width: 80px;"><p style="font-size: 12px;">회원가입</p></a> -->
+<!--                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> -->
+<!--                 <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+<!--                 </div> -->
+<!--             </div> -->
+<!--         </nav> -->
+        
+        
         <!-- Header-->
         <header class="py-4">
             <div class="container">
@@ -280,5 +284,36 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="/resources/user/main/template/js/scripts.js"></script>
-    </body>
+        
+ <!-- end -->
+ 
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="/resources/demos/style.css">
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 
+ <script type="text/javascript">
+		logOut = function() {
+			$.ajax({
+				async : true,
+				cache : false,
+				type : "post",
+				url : "/member/logOutProc",
+				success : function(response) {
+					if (response.rt == "success") {
+						location.href = "/";
+					} else {
+						alert("로그아웃 실패");
+					}
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					alert("ajaxUpdate " + jqXHR.textStatus + " : "
+							+ jqXHR.errorThrown);
+				}
+			});
+		}
+ </script>
+ 
+</body>
 </html>

@@ -187,8 +187,5 @@
     			and id = #{id}
     			<if test="pwd != null and !pwd.equals('')">and pwd = #{pwd}</if>
     	</select>
-    	
-
-	
 
 </mapper>
