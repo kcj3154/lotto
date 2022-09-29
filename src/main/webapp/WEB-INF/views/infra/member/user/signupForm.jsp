@@ -61,7 +61,7 @@
 					<input type="text" id="id" name="id"
 					value="<c:out value="${item. id}"/>"
 					maxlength="20"
-					placeholder="대소문자,숫자,4~12"
+					placeholder="대소문자,숫자,4~12자"
 					class="form-control"
 					<c:if test="${not empty item. id}">readonly</c:if>
 				>
@@ -153,11 +153,13 @@
 	            <div class="col-md-12 submit-btn">
 	                <input class="btn btn-primary" type="submit" name="submit" value="회원 가입">
 	            </div>
+	         </div>
 	    </fieldset>
 	</form>
 	<br>
 	<div class="text-center">이미 아이디가 있다면? <a href="/member/login">로그인하러 가기</a></div>
 </div>
+
 
 <br><br>
 

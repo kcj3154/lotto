@@ -181,6 +181,7 @@
     			seq
     			,id
     			,name
+    			,adminNy
     		from
     			member 
     		where 1=1

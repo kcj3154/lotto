@@ -9,6 +9,6 @@ public class Constants {
 	
 	public static final int SESSION_MINUTE = 30;
 	
-	
+//세션x
 	public static final String URL_LOGINFORM = "/member/login";
 }

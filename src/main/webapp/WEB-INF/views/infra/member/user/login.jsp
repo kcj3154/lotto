@@ -45,14 +45,13 @@
             </div>
 
             <button type="button" id="btnLogin" name="btnLogin" class="btn btn-dark btn-lg btn-block"  style="width: 100%">로그인</button></a>
+			<input type="hidden" name="sessAdminNy" value="<c:out value="${sessAdminNy }"/>">
             <hr class="my-4">
-
         </div>
       </div>
     </div>
   </div>
 </section>
-	
 <!-- end -->
 
 
@@ -64,7 +63,6 @@
 		
 
 <script type="text/javascript">
-
 	function loginAjax(){
 		$.ajax({
 			async: true 
@@ -74,7 +72,24 @@
 			,data : { "id" : $("#id").val(), "pwd" : $("#pwd").val()}
 			,success: function(response) {
 				if(response.rt == "success") {
+					const sessAdminNy = $("
+
+							
+							
+							
+							
+							
+					alert("sessAdminNy : "+sessAdminNy);
+					if(sessAdminNy.val() =="1"){
+						alert("11111");
+						location.href = "/codeGroup/codeGroupList";
+					
+					}else{
+						
+					alert("22222");
+					
 					location.href = "/";
+					}
 				} else {
 					alert("로그인 실패");
 				}
