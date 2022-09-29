@@ -60,7 +60,7 @@
 
 <!-- start -->
 <div class="container-fluid" style="width: 84%">
-	<a href="../user/main/main.html"><img src="/resources/user/main/image/cou.jpg" style="width: 200px;"></a>
+	<a href="/"><img src="/resources/user/main/image/cou.jpg" style="width: 200px;"></a>
 </div>
 
 <div class="container-fluid" style="width: 84%">

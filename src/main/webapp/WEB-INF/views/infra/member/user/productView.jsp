@@ -25,13 +25,13 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="../../main/main.html"><img src="/resources/user/main/image/cou.jpg" style="width: 150px;"></a>
+                <a class="navbar-brand" href="/"><img src="/resources/user/main/image/cou.jpg" style="width: 150px;"></a>
         </nav>
         <!-- Product section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
-                	<p style="font-size: 12px;"><a class="link-dark" href="../../main/main.html">쿠팡 홈</a>  >식품  >저탄고지  >생수/음료  >생수  >국산생수</p>
+                	<p style="font-size: 12px;"><a class="link-dark" href="/">쿠팡 홈</a>  >식품  >저탄고지  >생수/음료  >생수  >국산생수</p>
                     <div class="col-md-4"><img class="card-img-top mb-5 mb-md-0" src="/resources/user/main/image/icis.jpg" alt="..." /></div>
                     <div class="col-md-8">
                         <h5><strong>아이시스 8.0 생수 2L, 24개</strong></h5>

@@ -151,14 +151,13 @@ public void setSearchAndPaging(MemberVo vo) throws Exception{
 		if (rtMember != null) {
 			dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
 			Member rtMember2 = service.selectOneLogin(dto);
-
 			if (rtMember2 != null) {
 				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
 				httpSession.setAttribute("sessSeq", rtMember2.getSeq());
 				httpSession.setAttribute("sessId", rtMember2.getId());
 				httpSession.setAttribute("sessName", rtMember2.getName());
 				httpSession.setAttribute("sessAdminNy", rtMember2.getAdminNy());
-				System.out.println("rtMember2.getAdminNy()"+rtMember2.getAdminNy());
+				returnMap.put("rtt",httpSession.getAttribute("sessAdminNy"));
 				returnMap.put("rt", "success");
 			} else {
 				dto.setSeq(rtMember.getSeq());

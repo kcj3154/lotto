@@ -45,7 +45,6 @@
             </div>
 
             <button type="button" id="btnLogin" name="btnLogin" class="btn btn-dark btn-lg btn-block"  style="width: 100%">로그인</button></a>
-			<input type="hidden" name="sessAdminNy" value="<c:out value="${sessAdminNy }"/>">
             <hr class="my-4">
         </div>
       </div>
@@ -72,21 +71,10 @@
 			,data : { "id" : $("#id").val(), "pwd" : $("#pwd").val()}
 			,success: function(response) {
 				if(response.rt == "success") {
-					const sessAdminNy = $("
-
-							
-							
-							
-							
-							
-					alert("sessAdminNy : "+sessAdminNy);
-					if(sessAdminNy.val() =="1"){
-						alert("11111");
+					if(response.rtt =="1"){
 						location.href = "/codeGroup/codeGroupList";
 					
 					}else{
-						
-					alert("22222");
 					
 					location.href = "/";
 					}
@@ -106,7 +94,7 @@
 		
 	});
 	
-	//엔터키 쳤을 때 로그인 하는 방법 (input id칸이랑 pwd칸에 [onkeyup="enterkey();"] 추가)
+	//엔터키 로그인
 	function enterkey() {
        if (window.event.keyCode == 13) {
 				
