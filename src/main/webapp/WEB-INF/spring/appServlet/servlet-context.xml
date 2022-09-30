@@ -42,6 +42,7 @@
 <!-- 			<exclude-mapping path="/member/memberList"/> -->
 <!-- 			<exclude-mapping path="/member/memberForm"/> -->
 <!-- 			<exclude-mapping path="/member/findIdPwdForm" /> -->
+
 <!-- 			<exclude-mapping path="/test/**" /> -->
 <!-- 			<exclude-mapping path="/rest/**" /> -->
 			<beans:bean id="checkLoginSessionInterception" class="com.mayfw.infra.common.interceptor.CheckLoginSessionInterception"/>
