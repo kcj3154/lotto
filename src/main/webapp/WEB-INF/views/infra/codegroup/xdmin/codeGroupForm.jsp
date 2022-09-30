@@ -127,8 +127,7 @@
 	<br><br><br>
 
     <div class="container-fluid">
-	<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-dark btn-sm" id="btnDelete"><i class="fa-solid fa-trash-can"></i></button>
-		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="modalConfirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -146,6 +145,7 @@
 		  </div>
 		</div>
 	</div>
+	<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-dark btn-sm" id="btnDelete"><i class="fa-solid fa-trash-can"></i></button>
 	<button type="button" class="btn btn-dark btn-sm" id="btnList">뒤로가기</button>
 	<button type="button" class="btn btn-dark btn-sm" id="btnSave">저장</button>
 </div>
@@ -215,7 +215,6 @@
 	});
 	
 	$("#btnDelete").on("click", function(){
-		$("input:hidden[name=exDeleteType]").val(2);
 		$(".modal-title").text("확 인");
 		$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
 		$("#btnModalUelete").hide();

@@ -182,7 +182,7 @@ public void setSearchAndPaging(MemberVo vo) throws Exception{
 
 	
 	
-	@RequestMapping(value = "/signupForm")
+	@RequestMapping(value = "signupForm")
 	public String sign() throws Exception {
 		return "infra/member/user/signupForm";
 	

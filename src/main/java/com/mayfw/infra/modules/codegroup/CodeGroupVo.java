@@ -227,6 +227,14 @@ public class CodeGroupVo {
 		}
 	
 	
+//	list
+	private String[] checkboxSeqArray;
+	public String[] getCheckboxSeqArray() {
+		return checkboxSeqArray;
+	}
+	public void setCheckboxSeqArray(String[] checkboxSeqArray) {
+		this.checkboxSeqArray = checkboxSeqArray;
+	}
 		
 	}
 	

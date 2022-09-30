@@ -43,14 +43,14 @@
 
 <!-- start -->
 <div class="container-fluid" style="width: 84%">
-	<a href="../user/main/main.html"><img src="/resources/user/main/image/cou.jpg" style="width: 200px;"></a>
+	<a href="/"><img src="/resources/user/main/image/cou.jpg" style="width: 200px;"></a>
 </div>
 
 <hr>
 
 <div class="container-fluid" style="width: 84%;">
 	<br>
-	<form method="post" action="signup">
+	<form method="post" onsubmit="return validate()" action="/member/signup">
 	<h5>회원가입</h5>
 	<br><br>
 	    <fieldset>
@@ -68,7 +68,7 @@
 				<div class="invalid-feedback" id="ifmmIdFeedback"></div>
 				</div>
 	            <div class="form-group col-md-4">
-	                <label for="pwd1"><span class="text-danger">*</span>비밀번호</label>
+	                <label for="pwd"><span class="text-danger">*</span>비밀번호</label>
 	                <input type="password" class="form-control" name="pwd" id="pwd" maxlength="12" placeholder="비밀번호">
 	            </div>
 	            <div class="form-group col-md-4">
@@ -176,60 +176,61 @@
     
 <!-- end -->
 
-  <script type="text/javascript">
+<script type="text/javascript">  
   
-	$("#id").on("focusout", function(){
-// 		if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) {
-// 			return false;
-// 		} else {
-			$.ajax({
-				async: true 
-				,cache: false
-				,type: "post"
-				/* ,dataType:"json" */
-				,url: "/member/checkId"
-				/* ,data : $("#formLogin").serialize() */
-				,data : { "id" : $("#id").val() }
-				,success: function(response) {
-					if(response.rt == "success") {
+ $("#id").on("focusout", function(){  
+		if(!checkId('id', "아이디는 4~12자의 대소문자와 숫자로만 입력 가능합니다.")) {  
+		return false;  
+	} else {  
+		$.ajax({  
+				async: true   
+				,cache: false  
+				,type: "post"  
+				/* ,dataType:"json" */  
+				,url: "/member/checkId"  
+ 				/* ,data : $("#formLogin").serialize() */   
+				,data : { "id" : $("#id").val() } 
+ 				,success: function(response) {  
+ 					if(response.rt == "success") {  
 						
- 						document.getElementById("id").classList.add('is-valid');
+					document.getElementById("id").classList.add('is-valid');  
+					document.getElementById("ifmmIdFeedback").classList.remove('invalid-feedback');  
+				    document.getElementById("ifmmIdFeedback").classList.add('valid-feedback');  
+					document.getElementById("ifmmIdFeedback").innerText = "사용 가능 합니다.";  
+						
+					document.getElementById("ifmmIdAllowedNy").value = 1;  
+						
+				} else {  
+						
+ 						document.getElementById("id").classList.add('is-invalid');  
+						
+						document.getElementById("ifmmIdFeedback").classList.remove('valid-feedback');  
+ 						document.getElementById("ifmmIdFeedback").classList.add('invalid-feedback');  
+ 						document.getElementById("ifmmIdFeedback").innerText = "사용 불가능 합니다";  
+						
+  						document.getElementById("ifmmIdAllowedNy").value = 0;  
+					} 
+			}  
+				,error : function(jqXHR, textStatus, errorThrown){ 
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);  
+				}  
+			});  
+ 		}  
+  	});  
 	
-						document.getElementById("ifmmIdFeedback").classList.remove('invalid-feedback');
-					    document.getElementById("ifmmIdFeedback").classList.add('valid-feedback');
- 						document.getElementById("ifmmIdFeedback").innerText = "사용 가능 합니다.";
-						
- 						document.getElementById("ifmmIdAllowedNy").value = 1;
-						
-					} else {
-						
- 						document.getElementById("id").classList.add('is-invalid');
-						
- 						document.getElementById("ifmmIdFeedback").classList.remove('valid-feedback');
- 						document.getElementById("ifmmIdFeedback").classList.add('invalid-feedback');
- 						document.getElementById("ifmmIdFeedback").innerText = "사용 불가능 합니다";
-						
- 						document.getElementById("ifmmIdAllowedNy").value = 0;
-					}
-				}
-// 				,error : function(jqXHR, textStatus, errorThrown){
-// 					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-// 				}
-			});
-// 		}
-	});
-	
-	<!-- 비밀번호 일치 -->
+// 	비밀번호 일치 
     $('#pwd, #pwd2').on('keyup', function () {
-    	  if ($('#pwd').val() == $('#pwd2').val()) {
-    		$("#pwd2Feedback").text("비밀번호가 일치합니다").css({'color':'#198754', 'font-size':'14px'});
-    		} else    
-    		$("#pwd2Feedback").text("비밀번호가 일치하지 않습니다").css({'color':'#DC3545', 'font-size':'14px'});
-    	});
+    	  if ($('#pwd').val() == $('#pwd2').val()) {  
+    		$("#pwd2Feedback").text("비밀번호가 일치합니다").css({'color':'#198754', 'font-size':'14px'}); 
+     		} else   
+    		$("#pwd2Feedback").text("비밀번호가 일치하지 않습니다").css({'color':'#DC3545', 'font-size':'14px'});  
+     	});  
 	
-</script>
+</script> 
 
 <script type="text/javascript">
+
+
 
 function validate() {
     //event.preventDefault();
@@ -265,15 +266,10 @@ function validate() {
     //아이디 유효성 검사
     //내가 입력한 데이터를 검사하는 check()
     //만약 내가 아이디에 정규화 방식을 하나라도 지키지 않으면 if문 안으로 들어가서 alert message를 띄움
-    if (!check(regul1,objID,"아이디는 4~12자의 대소문자와 숫자로만 입력 가능합니다.")) {
-        return false;//반환 할 곳 없이 if문 탈출
-    }
-    //아이디 입력 하지 않았을 경우
-    if ((objID.value) == ""){
-        alert("아이디를 입력하지 않았습니다.");
-        objID.focus();
-        return false;
-    }
+//     if (!check(regul1,objID,"아이디는 4~12자의 대소문자와 숫자로만 입력 가능합니다.")) {
+//         return false;//반환 할 곳 없이 if문 탈출
+//     }
+    
     //휴대번호를 입력 하지 않았을 경우
      if ((objPnum.value) == ""){
         alert("휴대번호를 입력하지 않았습니다.");
@@ -298,13 +294,7 @@ function validate() {
         return false;
     }
     
-    //비밀번호와 비밀번호 확인이 일치 하지 않을 경우
-    if ((objPwd1.value)!=(objPwd2.value)) {
-        alert("비밀번호가 일치 하지 않습니다.");
-        objPwd1.focus();
-        objPwd2.focus();
-        return false;
-    }
+	
     //이메일 입력 안했을 경우
     if ((objEmail.value)=="") {
         alert("이메일을 입력해 주세요");
@@ -432,6 +422,7 @@ obj.value = tel;
 
 
 </script>
+
 
 <!-- 주소 스크립트 -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

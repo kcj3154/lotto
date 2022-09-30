@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 @Controller
 @RequestMapping(value = "/codeGroup/")
 public class CodeGroupController {
@@ -77,19 +78,54 @@ public class CodeGroupController {
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}
 	
-	@RequestMapping(value = "codeGroupUpdt")
-	public String codeGroupUpdt(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
+	@RequestMapping(value = "codeGroupUele")
+	public String codeGroupUele(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
 		
-		service.update(dto);
+		service.uelete(dto);
+
 		redirectAttributes.addFlashAttribute("vo", vo);
+
 		return "redirect:/codeGroup/codeGroupList";
 	}
+
 	
 	@RequestMapping(value = "codeGroupDele")
-	public String codeGroupDele(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
-		
-		service.delete(dto);
+	public String nationalityDele(CodeGroupVo vo, RedirectAttributes redirectAttributes) throws Exception {
+
+		service.delete(vo);
+
 		redirectAttributes.addFlashAttribute("vo", vo);
+
 		return "redirect:/codeGroup/codeGroupList";
 	}
+
+	
+	@RequestMapping(value = "codeGroupMultiUele")
+	public String codeGroupMultiUele(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
+
+		for (String checkboxSeq : vo.getCheckboxSeqArray()) {
+			dto.setSeq(checkboxSeq);
+			service.uelete(dto);
+		}
+
+		redirectAttributes.addFlashAttribute("vo", vo);
+
+		return "redirect:/codeGroup/codeGroupList";
+	}
+
+	
+//	@RequestMapping(value = "codeGroupMultiDele")
+//	public String codeGroupMultiDele(CodeGroupVo vo, RedirectAttributes redirectAttributes) throws Exception {
+//
+//		for (String checkboxSeq : vo.getCheckboxSeqArray()) {
+//			vo.setShSeq(checkboxSeq);
+//			service.delete(vo);
+//		}
+//
+//		redirectAttributes.addFlashAttribute("vo", vo);
+//
+//		return "redirect:/codeGroup/codeGroupList";
+//	}
+	
+	
 }

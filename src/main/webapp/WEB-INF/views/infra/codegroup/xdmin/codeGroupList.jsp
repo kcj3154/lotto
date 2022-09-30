@@ -42,7 +42,7 @@
     <!-- css -->
     <style type="text/css">
     	
-    	#btnDelete {
+    	#btnDelete, #btnUelete {
     		float: left;
     	}
     	
@@ -138,7 +138,7 @@
 	<table class="table table-bordered border-gray">
 	  <thead>
 	    <tr class="table bg-dark" align="center" style="color: #ffffff;">
-	      <th scope="col"><input class="form-check-input" type="checkbox"></th>
+	      <th scope="col"><input class="form-check-input" type="checkbox" id="checkboxAll"></th>
 	      <th scope="col">#</th>
 	      <th scope="col">코드그룹 코드</th>
 	      <th scope="col">코드그룹 이름 (한글)</th>
@@ -158,7 +158,7 @@
 			<c:otherwise>
 				<c:forEach items="${list}" var="list" varStatus="status">	
 				
-			      <th scope="row"><input class="form-check-input" value="<c:out value="${list.seq}"/>" type="checkbox"></th>
+			      <th scope="row"><input class="form-check-input" value="<c:out value="${list.seq}"/>" type="checkbox" id="checkboxSeq" name="checkboxSeq"></th>
 			      <td><c:out value="${list.seq }"/></td>
 			      <td><c:out value="${list.seq }"/></td>
 			      <td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.codeGroup}"/></a></td>
@@ -181,26 +181,49 @@
 <br><br><br>
 
 <div class="container-fluid" style="width: 84%;">
+		<div class="modal fade" id="modalConfirm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      	body
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"><i class="fa-solid fa-angle-left"></i></button>
+       	<button type="button" class="btn btn-danger btn-sm" name="" id="btnModalDelete"><i class="fa-solid fa-x"></i></button>
+       	<button type="button" class="btn btn-danger btn-sm" name="" id="btnModalUelete"><i class="far fa-trash-alt"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modalAlert" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      	body
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal"><i class="fa-solid fa-check"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+	
 	<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-dark btn-sm" id="btnDelete"><i class="fa-solid fa-trash-can"></i></button>
-		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">알림</h5>
-		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		      </div>
-		      <div class="modal-body">
-		        삭제하시겠습니까?
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">취소</button>
-		        <button type="button" class="btn btn-dark" id="btnModalDelete">삭제</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
+    <button type="button" class="btn btn-danger btn-sm" name="" id="btnUelete"><i class="far fa-trash-alt"></i></button>
 	<button type="button" class="btn btn-dark btn-sm" id="btnForm"><i class="fa-solid fa-plus"></i></button>
 </div>
+
+
 
 <!-- pagination s -->
 <%@include file="../../../common/xdmin/includeV1/pagination.jsp"%>
@@ -225,20 +248,14 @@
 
 
 <script type="text/javascript">
+
 	
-	var goUrlList = "/codeGroup/codeGroupList";
+	var goUrlList = "/codeGroup/codeGroupList";					/* #-> */
+	var goUrlForm = "/codeGroup/codeGroupForm";					/* #-> */
+	var goUrlMultiUele = "/codeGroup/codeGroupMultiUele";		/* #-> */
+	var goUrlMultiDele = "/codeGroup/codeGroupMultiDele";		/* #-> */
+
 	var form = $("form[name=formList]");
-
-	goList = function(thisPage){
-		$("input:hidden[name=thisPage]").val(thisPage);
-		form.attr("action", goUrlList).submit();
-	};
-	
-</script>
-
-<script type="text/javascript">
-				/* #-> */
-	var goUrlForm = "/codeGroup/codeGroupForm";
 	var seq = $("input:hidden[name=shSeq]");
 	
 	var form = $("form[name=formList]");
@@ -252,6 +269,82 @@
 		seq.val(keyValue);
 		form.attr("action", goUrlForm).submit();
 	}; 
+	
+	goList = function(thisPage){
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action", goUrlList).submit();
+	};
+	
+	$("#btnUelete").on("click", function(){
+		if($("input[name=checkboxSeq]:checked").length > 0 ) {
+			$("input:hidden[name=exDeleteType]").val(1);
+			$(".modal-title").text("확 인");
+			$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
+			$("#btnModalUelete").show();
+			$("#btnModalDelete").hide();
+			$("#modalConfirm").modal("show");
+		} else {
+			$(".modal-title").text("확 인");
+			$(".modal-body").text("데이터를 선택해 주세요!");
+			$("#modalAlert").modal("show");
+		}
+	});
+	
+
+	$("#btnDelete").on("click", function(){
+		if($("input[name=checkboxSeq]:checked").length > 0 ) {
+			$("input:hidden[name=exDeleteType]").val(2);
+			$(".modal-title").text("확 인");
+			$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
+			$("#btnModalUelete").hide();
+			$("#btnModalDelete").show();
+			$("#modalConfirm").modal("show");
+		} else {
+			$(".modal-title").text("확 인");
+			$(".modal-body").text("데이터를 선택해 주세요!");
+			$("#modalAlert").modal("show");
+		}
+	});
+	
+	
+	$("#btnModalUelete").on("click", function(){
+		$("input[name=checkboxSeq]:checked").each(function() { 
+			checkboxSeqArray.push($(this).val());
+		});
+		
+		$("input:hidden[name=checkb1oxSeqArray]").val(checkboxSeqArray);
+		
+		$("#modalConfirm").modal("hide");
+		
+		form.attr("action", goUrlMultiUele).submit();
+	});
+	
+	
+	$("#btnModalDelete").on("click", function(){
+		$("input[name=checkboxSeq]:checked").each(function() { 
+			checkboxSeqArray.push($(this).val());
+		});
+		
+		$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray);
+		
+		$("#modalConfirm").modal("hide");
+							
+		form.attr("action", goUrlMultiDele).submit();
+	});
+	
+	$("#checkboxAll").click(function() {
+		if($("#checkboxAll").is(":checked")) $("input[name=checkboxSeq]").prop("checked", true);
+		else $("input[name=checkboxSeq]").prop("checked", false);
+	});
+	
+	
+	$("input[name=checkboxSeq]").click(function() {
+		var total = $("input[name=checkboxSeq]").length;
+		var checked = $("input[name=checkboxSeq]:checked").length;
+		
+		if(total != checked) $("#checkboxAll").prop("checked", false);
+		else $("#checkboxAll").prop("checked", true); 
+	});
 	
 	
 

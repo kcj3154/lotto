@@ -105,9 +105,8 @@
 	
 	<delete id="delete">
 		DELETE FROM ccg   
-			
 		WHERE 1=1
-			AND seq = #{seq}
+			AND seq = #{shSeq}
 	</delete>
 	
     <select id="selectListCachedCodeGroupArrayList" resultMap="resultMapObj">

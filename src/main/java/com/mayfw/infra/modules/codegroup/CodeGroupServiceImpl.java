@@ -8,7 +8,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mayfw.infra.modules.member.MemberVo;
+
 
 @Service
 public class CodeGroupServiceImpl implements CodeGroupService {
@@ -57,11 +57,22 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 	}
 	
 	@Override
-	public int delete(CodeGroup dto) throws Exception {
-		int result = dao.delete(dto);
+	public int delete(CodeGroupVo vo) throws Exception {
+		int result = dao.delete(vo);
 		return result;
 	}
 	
+	@Override
+	public int uelete(CodeGroup dto) throws Exception {
+		setRegMod(dto);
+		return dao.uelete(dto);
+	}
+	
+	private void setRegMod(CodeGroup dto) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	@PostConstruct
 	public void selectListCachedCodeGroupArrayList() throws Exception {
 		List<CodeGroup> codeGroupListFromDb = (ArrayList<CodeGroup>) dao.selectListCachedCodeGroupArrayList();
