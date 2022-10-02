@@ -24,8 +24,6 @@
 			<script src="https://kit.fontawesome.com/0089819b08.js" crossorigin="anonymous"></script>
 			
 <style>
-
-
 	body{
 	  padding:2em;
 	}
@@ -163,6 +161,9 @@
 
 <br><br>
 
+<fieldset>
+	<legende>뭘</legende>
+</fieldset>
 
 
  <!-- Footer-->
@@ -229,9 +230,6 @@
 </script> 
 
 <script type="text/javascript">
-
-
-
 function validate() {
     //event.preventDefault();
     var objID = document.getElementById("id");
@@ -240,23 +238,18 @@ function validate() {
     var objEmail = document.getElementById("email");
     var objName = document.getElementById("name");
     var objPnum = document.getElementById("tel");
-
 //     var arrNum1 = new Array();
 //     var arrNum2 = new Array();
-
 //     var tempSum=0;//주민번호 합을 넣는 공간
-
     //아이디와 패스워드 값 데이터 정규화 공식
     var regul1 = /^[a-zA-Z0-9]{4,12}$/;
     //이메일 값 데이터 유효성 체크
     //[]안에 있는 값만 쓰겠다
-
     //이메일 정규화 공식
     var regul2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
     //이름 정규화 공식
     var regul3 = /^[가-힝a-zA-Z]{2,}$/;
     //var email = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
-
     //아이디 입력 하지 않았을 경우
     if ((objID.value) == ""){
         alert("아이디를 입력하지 않았습니다.");
@@ -287,7 +280,6 @@ function validate() {
         objPwd2.focus();
         return false;
     }
-
     //비밀번호 유효성 검사
     //만약 내가 비밀번호에 정규화 방식을 하나라도 지키지 않으면 if문 안으로 들어가서 alert message를 띄움
     if (!check(regul1,objPwd1,"비밀번호는 4~12자의 대소문자와 숫자로만 입력 가능합니다.")) {
@@ -315,14 +307,12 @@ function validate() {
     if (!check(regul3,objName,"이름이 잘못 되었습니다.")) {
         return false;
     }
-
 //     //주민번호 앞자리를 각 배열에 넣어 검색 및 비교하기위한 단계
 //     //앞자리 값 만큼 돌림
 //     for (var i = 0; i <objNum1.value.length; i++) {
 //         //배열 칸마다 앞자리 값 하나씩 넣어줌
 //         arrNum1[i]=objNum1.value.charAt(i);
 //     }
-
 //     //주민번호 뒷자리를 각 배열에 넣어 검색 및 비교하기위한 단계
 //     //뒷자리 값 만큼 돌림
 //     for (var i = 0; i <objNum2.value.length; i++) {
@@ -386,18 +376,10 @@ function check(re,what,message){//정규화데이터,아이템 id,메세지
     what.value = "";
     what.focus();
 }
-
-
 //휴대전화
 function inputPhoneNumber(obj) {
-
-
-
 var number = obj.value.replace(/[^0-9]/g, "");
 var tel = "";
-
-
-
 if(number.length < 4) {
     return number;
 } else if(number.length < 7) {
@@ -419,8 +401,6 @@ if(number.length < 4) {
 }
 obj.value = tel;
 }
-
-
 </script>
 
 
@@ -432,12 +412,10 @@ obj.value = tel;
         new daum.Postcode({
             oncomplete: function(data) {
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
                 // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
                 // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
                 var roadAddr = data.roadAddress; // 도로명 주소 변수
                 var extraRoadAddr = ''; // 참고 항목 변수
-
                 // 법정동명이 있을 경우 추가한다. (법정리는 제외)
                 // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
                 if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
@@ -451,7 +429,6 @@ obj.value = tel;
                 if(extraRoadAddr !== ''){
                     extraRoadAddr = ' (' + extraRoadAddr + ')';
                 }
-
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('sample4_postcode').value = data.zonecode;
                 document.getElementById("sample4_roadAddress").value = roadAddr;
@@ -463,14 +440,12 @@ obj.value = tel;
                 } else {
                     document.getElementById("sample4_extraAddress").value = '';
                 }
-
                 var guideTextBox = document.getElementById("guide");
                 // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
                 if(data.autoRoadAddress) {
                     var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
                     guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
                     guideTextBox.style.display = 'block';
-
                 } /* else if(data.autoJibunAddress) {
                     var expJibunAddr = data.autoJibunAddress;
                     guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
@@ -511,7 +486,6 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };
-
 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 </script>
