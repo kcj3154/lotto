@@ -24,6 +24,190 @@
 			<script src="https://kit.fontawesome.com/0089819b08.js" crossorigin="anonymous"></script>
 			
 <style>
+body {
+	color: #fff;
+	background: #444444;
+	font-family: 'Roboto', sans-serif;
+}
+.form-control {
+	font-size: 15px;
+}
+.form-control, .form-control:focus, .input-group-text {
+	border-color: #e1e1e1;
+}
+.form-control, .btn {        
+	border-radius: 3px;
+}
+.signup-form {
+	width: 400px;
+	margin: 0 auto;
+	padding: 30px 0;		
+}
+.signup-form form {
+	color: #999;
+	border-radius: 3px;
+	margin-bottom: 15px;
+	background: #fff;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	padding: 30px;
+}
+.signup-form h2 {
+	color: #333;
+	font-weight: bold;
+	margin-top: 0;
+}
+.signup-form hr {
+	margin: 0 -30px 20px;
+}
+.signup-form .form-group {
+	margin-bottom: 20px;
+}
+.signup-form label {
+	font-weight: normal;
+	font-size: 15px;
+}
+.signup-form .form-control {
+	min-height: 38px;
+	box-shadow: none !important;
+}	
+.signup-form .input-group-addon {
+	max-width: 42px;
+	text-align: center;
+}	
+.signup-form .btn, .signup-form .btn:active {        
+	font-size: 16px;
+	font-weight: bold;
+	background: #262121 !important;
+	border: none;
+	min-width: 140px;
+}
+.signup-form .btn:hover, .signup-form .btn:focus {
+	background: #444444 !important;
+}
+.signup-form a {
+	color: #fff;	
+	text-decoration: underline;
+}
+.signup-form a:hover {
+	text-decoration: none;
+}
+.signup-form form a {
+	color: #19aa8d;
+	text-decoration: none;
+}	
+.signup-form form a:hover {
+	text-decoration: underline;
+}
+
+.input-group-text{
+	font-size: 14px;
+	width: 100px;
+}
+</style>
+</head>
+<body>
+<div class="signup-form">
+    <form method="post" onsubmit="return validate()" action="/member/signup">
+    	<a href="/"><img src = "/resources/user/main/image/coupang3.png"></a>
+		<h5>회원가입</h5>
+		<hr>
+		
+        <div class="form-group">
+	        <div class="input-group">
+                <div class="input-group-prepend">
+					<span class="input-group-text">
+						<span class="text-danger">*</span>아이디
+					</span>                    
+				</div>
+				<input type="hidden" id="ifmmIdAllowedNy" name="ifmmIdAllowedNy" value="0">
+				<input type="text" id="id" name="id"
+				value="<c:out value="${item. id}"/>"
+				maxlength="20"
+				placeholder="대소문자,숫자,4~12자"
+				class="form-control"
+				
+				<c:if test="${not empty item. id}">readonly</c:if>
+				>
+				<div class="invalid-feedback" id="ifmmIdFeedback"></div>
+			</div>
+			<!-- <div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<span class="fa fa-user"></span>
+					</span>                    
+				</div>
+				<input type="text" class="form-control" name="username" placeholder="아이디" required="required">
+			</div> -->
+        </div>
+        <div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<span class="text-danger">*</span>비밀번호
+					</span>                    
+				</div>
+				 <input type="password" class="form-control" name="pwd" id="pwd" maxlength="12" placeholder="비밀번호">
+			</div>
+        </div>
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<span class="text-danger">*</span>비밀번호 확인
+					</span>                    
+				</div>
+				<input type="password" class="form-control" name="pwd2" id="pwd2" maxlength="12" placeholder="비밀번호 확인">
+			</div>
+        </div>
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa fa-lock"></i>
+						<i class="fa fa-check"></i>
+					</span>                    
+				</div>
+				<input type="password" class="form-control" name="confirm_password" placeholder="비밀번호 확인" required="required">
+			</div>
+        </div>
+        <div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa-solid fa-file-signature"></i>
+					</span>                    
+				</div>
+				<input type="text" class="form-control" name="name" placeholder="이름" required="required">
+			</div>
+        </div>
+        <div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa-solid fa-cake-candles" style="width: 18px;"></i>
+					</span>                    
+				</div>
+				<input type="date" class="form-control" name="dob" placeholder="생년월일" required="required">
+			</div>
+        </div>
+        <div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa-solid fa-mobile-screen" style="width: 18px;"></i>
+					</span>                    
+				</div>
+				<input type="text" class="form-control" name="tel" placeholder="전화번호" required="required">
+			</div>
+        </div>
+		<div class="form-group">
+            <input type="submit" name="submit" class="btn btn-primary btn-lg" value="가입하기">
+        </div>
+    </form>
+	<div class="text-center">이미 아이디가 있다면? <a href="/member/login">로그인하러 가기</a></div>
+</div>
+			
+<%-- <%-- <style>
 	body{
 	  padding:2em;
 	}
@@ -37,6 +221,7 @@
 
 
 </head>
+
 <body>
 
 <!-- start -->
@@ -160,10 +345,8 @@
 
 
 <br><br>
+ --%>
 
-<fieldset>
-	<legende>뭘</legende>
-</fieldset>
 
 
  <!-- Footer-->
