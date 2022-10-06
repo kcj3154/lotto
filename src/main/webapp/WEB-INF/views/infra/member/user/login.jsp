@@ -74,11 +74,11 @@
 			,success: function(response) {
 				if(response.rt == "success") {
 					if(response.rtt =="1"){
-						location.href = "/codeGroup/codeGroupList";
+						location.href = "/member/memberList";
 					
 					}else{
 					
-					location.href = "/";
+					location.href = "/main";
 					}
 				} else {
 					alert("로그인 실패");

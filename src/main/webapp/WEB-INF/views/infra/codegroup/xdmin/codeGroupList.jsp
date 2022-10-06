@@ -24,19 +24,19 @@
     	 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
     	 <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css">
 		 <script type="text/javascript">
-         $(function() {
-            $('.date-picker').datepicker( {
-            changeMonth: true,
-            changeYear: true,
-            changeDay: true,
-            showButtonPanel: true,
-            dateFormat: 'yy-mm-dd',
-            onClose: function(dateText, inst) { 
-                $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, inst.selectedDay));
-            }
-            });
-         });
-    </script>
+	         $(function() {
+	            $('.date-picker').datepicker( {
+	            changeMonth: true,
+	            changeYear: true,
+	            changeDay: true,
+	            showButtonPanel: true,
+	            dateFormat: 'yy-mm-dd',
+	            onClose: function(dateText, inst) { 
+	                $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, inst.selectedDay));
+	            }
+	            });
+	         });
+    	 </script>
 		
 
     <!-- css -->

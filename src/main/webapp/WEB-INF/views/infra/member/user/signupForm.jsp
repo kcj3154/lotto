@@ -23,6 +23,25 @@
 			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 			<script src="https://kit.fontawesome.com/0089819b08.js" crossorigin="anonymous"></script>
 			
+		<!-- Datepicker -->
+	   		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
+	    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+	    	<link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css">
+			<script type="text/javascript">
+		         $(function() {
+		            $('.date-picker').datepicker( {
+		            changeMonth: true,
+		            changeYear: true,
+		            changeDay: true,
+		            showButtonPanel: true,
+		            dateFormat: 'yy-mm-dd',
+		            onClose: function(dateText, inst) { 
+		                $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, inst.selectedDay));
+		            }
+		            });
+		         });
+    	    </script>
+			
 <style>
 body {
 	color: #fff;
@@ -39,7 +58,7 @@ body {
 	border-radius: 3px;
 }
 .signup-form {
-	width: 400px;
+	width: 500px;
 	margin: 0 auto;
 	padding: 30px 0;		
 }
@@ -103,6 +122,7 @@ body {
 	font-size: 14px;
 	width: 100px;
 }
+
 </style>
 </head>
 <body>
@@ -125,19 +145,10 @@ body {
 				maxlength="20"
 				placeholder="대소문자,숫자,4~12자"
 				class="form-control"
-				
 				<c:if test="${not empty item. id}">readonly</c:if>
 				>
 				<div class="invalid-feedback" id="ifmmIdFeedback"></div>
 			</div>
-			<!-- <div class="input-group">
-				<div class="input-group-prepend">
-					<span class="input-group-text">
-						<span class="fa fa-user"></span>
-					</span>                    
-				</div>
-				<input type="text" class="form-control" name="username" placeholder="아이디" required="required">
-			</div> -->
         </div>
         <div class="form-group">
 			<div class="input-group">
@@ -158,54 +169,98 @@ body {
 				</div>
 				<input type="password" class="form-control" name="pwd2" id="pwd2" maxlength="12" placeholder="비밀번호 확인">
 			</div>
+<!-- 			<label id="pwd2Feedback"></label> -->
         </div>
 		<div class="form-group">
 			<div class="input-group">
 				<div class="input-group-prepend">
 					<span class="input-group-text">
-						<i class="fa fa-lock"></i>
-						<i class="fa fa-check"></i>
+						<span class="text-danger">*</span>이름
 					</span>                    
 				</div>
-				<input type="password" class="form-control" name="confirm_password" placeholder="비밀번호 확인" required="required">
+				<input type="text" class="form-control" name="name" id="name" maxlength="10" placeholder="이름">
 			</div>
         </div>
         <div class="form-group">
 			<div class="input-group">
 				<div class="input-group-prepend">
 					<span class="input-group-text">
-						<i class="fa-solid fa-file-signature"></i>
+						<span class="text-danger">*</span>휴대전화
 					</span>                    
 				</div>
-				<input type="text" class="form-control" name="name" placeholder="이름" required="required">
+	            <input type="tel" class="form-control" onkeyup="inputPhoneNumber(this);" name="tel" id="tel" maxlength="13" placeholder="휴대전화">
 			</div>
         </div>
         <div class="form-group">
 			<div class="input-group">
 				<div class="input-group-prepend">
 					<span class="input-group-text">
-						<i class="fa-solid fa-cake-candles" style="width: 18px;"></i>
+						<span class="text-danger">*</span>생년월일
 					</span>                    
 				</div>
-				<input type="date" class="form-control" name="dob" placeholder="생년월일" required="required">
+				<input type="text" class="date-picker form-control" name="dob" placeholder="생년월일">
 			</div>
         </div>
         <div class="form-group">
 			<div class="input-group">
 				<div class="input-group-prepend">
 					<span class="input-group-text">
-						<i class="fa-solid fa-mobile-screen" style="width: 18px;"></i>
+						<span class="text-danger">*</span>이메일
 					</span>                    
 				</div>
-				<input type="text" class="form-control" name="tel" placeholder="전화번호" required="required">
+				<input type="email" class="form-control" name="email" placeholder="이메일">
 			</div>
         </div>
+        <div class="form-group">
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text">
+							<span class="text-danger">*</span>우편번호
+						</span>
+					</div>
+					<input type="text" id="sample4_postcode" class="form-control" placeholder="우편번호">
+					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="form-control">
+				</div>
+			 </div>
+		 <div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<span class="text-danger">*</span>도로명주소
+					</span>
+				</div>
+				<input type="text" id="sample4_roadAddress" class="form-control" placeholder="도로명주소">
+				<span id="guide" style="color:#999;display:none"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<span class="text-danger">*</span>상세주소
+					</span>
+				</div>		
+				<input type="text" id="sample4_detailAddress" class="form-control" placeholder="상세주소">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<span class="text-danger">*</span>참고항목
+					</span>
+				</div>
+				<input type="text" id="sample4_extraAddress" class="form-control" placeholder="참고항목">
+			</div>
+		</div>
 		<div class="form-group">
             <input type="submit" name="submit" class="btn btn-primary btn-lg" value="가입하기">
         </div>
     </form>
-	<div class="text-center">이미 아이디가 있다면? <a href="/member/login">로그인하러 가기</a></div>
 </div>
+	<div class="text-center">이미 아이디가 있다면? <a href="/member/login">로그인하러 가기</a></div>
+	<br><br>
+
 			
 <%-- <%-- <style>
 	body{
@@ -349,7 +404,7 @@ body {
 
 
 
- <!-- Footer-->
+<!-- Footer-->
  	
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Coupang</p></div>
@@ -402,13 +457,13 @@ body {
  		}  
   	});  
 	
-// 	비밀번호 일치 
-    $('#pwd, #pwd2').on('keyup', function () {
-    	  if ($('#pwd').val() == $('#pwd2').val()) {  
-    		$("#pwd2Feedback").text("비밀번호가 일치합니다").css({'color':'#198754', 'font-size':'14px'}); 
-     		} else   
-    		$("#pwd2Feedback").text("비밀번호가 일치하지 않습니다").css({'color':'#DC3545', 'font-size':'14px'});  
-     	});  
+// // 	비밀번호 일치 
+//     $('#pwd, #pwd2').on('keyup', function () {
+//     	  if ($('#pwd').val() == $('#pwd2').val()) {  
+//     		$("#pwd2Feedback").text("비밀번호가 일치합니다").css({'color':'#198754', 'font-size':'14px'}); 
+//      		} else   
+//     		$("#pwd2Feedback").text("비밀번호가 일치하지 않습니다").css({'color':'#DC3545', 'font-size':'14px'});  
+//      	});  
 	
 </script> 
 
@@ -589,6 +644,8 @@ obj.value = tel;
 
 <!-- 주소 스크립트 -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1355f81b58cbef3ddc9caf6439b595a2&libraries=services,clusterer,drawing"></script>
+
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {
@@ -662,16 +719,16 @@ obj.value = tel;
     
 </script>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1355f81b58cbef3ddc9caf6439b595a2&libraries=services,clusterer,drawing"></script>
-<script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };
-// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-var map = new kakao.maps.Map(mapContainer, mapOption); 
-</script>
+<!--지도 -->
+<!-- <!-- <script> --> 
+<!-- // var mapContainer = document.getElementById('map'), // 지도를 표시할 div  -->
+<!-- //     mapOption = {  -->
+<!-- //         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표 -->
+<!-- //         level: 3 // 지도의 확대 레벨 -->
+<!-- //     }; -->
+<!-- // // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다 -->
+<!-- // var map = new kakao.maps.Map(mapContainer, mapOption);  -->
+<!-- <!-- </script> --> 
 
 </body>
 </html>
