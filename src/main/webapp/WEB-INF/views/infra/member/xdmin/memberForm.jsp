@@ -39,7 +39,7 @@
  	
 		.input-file-button{
 			padding: 4px 25px;
-			background-color:#FF6600;
+			background-color:#fed400;
 			border-radius: 4px;
 			color: white;
 			cursor: pointer;
@@ -48,11 +48,11 @@
     </style>
     	
     	
-    </style>
+    
        
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+	<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 
@@ -208,8 +208,10 @@
 	<div class="row">
 		<div class="col-4">
 			<label for="#" class="form-label"><span class="text-danger">*</span>파일첨부</label>
-			<input type="file" id="#" class="form-control" placeholder="">
+			<input type="file" name="img" id="img" class="form-control" multiple="multiple">
+			<input type="file" name="img2" id="img2" class="form-control">
 		</div>
+	</div>
 </div>
 
 
@@ -240,6 +242,18 @@
 	</div>
 	<button type="button" class="btn btn-dark btn-sm" id="btnList">뒤로가기</button>
 	<button type="button" class="btn btn-dark btn-sm" id="btnSave">저장</button>
+	
+		<div class="row mt-sm-4">
+		
+        <div class="col-sm-6 mt-3 mt-sm-0" style="float:right;">
+            <button type="button" onclick="upload('img12', 1, 0, 3, 0, 0, 1)">파일 확인</button>
+            <input type="file" multiple="multiple" id="img12" name="img12" >
+            <input type="file" id="img121" name="img121" >
+ 			<!-- <input class="form-control form-control-sm" id="img12" name="img12" type="file" multiple="multiple" style="display: none;" onChange="upload('memberUploaded', 1, 0, 1, 0, 0, 1);"> -->
+			<div class="addScroll">
+				<ul id="ulFile1" class="list-group"></ul>
+			</div>
+        </div>
 </div>
   
 
@@ -284,21 +298,69 @@
 	var formVo = $("form[name=formVo]");
 	
 	
-	$("#btnSave").on("click", function(){
+// 	$("#btnSave").on("click", function (){
 	   		
-		if (seq.val() == "0" || seq.val() == ""){
-	   		// insert
-/* if (validationInst() == false) return false;
- */	   		form.attr("action", goUrlInst).submit();
-	   	} else {
-	   		// update
-	   		/* keyName.val(atob(keyName.val())); */
+// 		if (seq.val() == "0" || seq.val() == ""){
+// 	   		// insert
+// /* if (validationInst() == false) return false;
 	   		
-// 	   		if (validationUpdt() == false) return false;
+//  */	   		
+// //	 		<input type="file" name="img" id="img">
+ 
+// //	 		var obj = $("input[name=img]")[0].files;
+// //	 		var obj2 = $("input[name=img2]")[0].files;
+			
+// 			var obj = document.getElementById("img").files; 
+// 			var obj2 = document.querySelector("#img2").files;
+			
+// 			alert(obj);
+// 			alert(obj.length);
+// //	 		alert(obj.name);
+			
+// 			for(var i=0; i<obj.length; i++){
+// 				alert(obj[i].name + " : " + obj[i].size);	
+// 			}
+			
+// 			alert(obj2);
+// 			alert(obj2.length);
+			
+// 			for(var i=0; i<obj2.length; i++){
+// 				alert(obj2[i].name + " + " + obj2[i].size);
+// 			}
+		
+// 	   		return false;
 	   		
-	   		form.attr("action", goUrlUpdt).submit();
-	   	}
-	}); 
+    	    
+//      	    	var obj = document.getElementById("img").files;
+// 				var obj2 = document.querySelector("#img2").files;
+// 				var kbtoMb = (1024 * 10);
+// 				var maxTotalFileNumber = 5;
+// 				var totalSize = 0;
+// 				var fileCount = obj.length;
+				
+// 				if(obj.length > maxTotalFileNumber) { alert("전체 파일 갯수는 " + maxTotalFileNumber + "개 까지만 허용됩니다."); return false; } 
+				
+// 				for(var i=0; i<obj.length; i++) {
+// 					totalSize += obj[i].size;
+// 					alert("전체사이즈: " + totalSize);
+					
+// 					if(obj[i].size > kbtoMb * 50) { alert(obj[i].name + "사이즈 초과"); return false; }
+// 					if(totalSize > kbtoMb * 500) { alert("전체사이즈 초과"); return false; }
+				
+// 					alert(obj[i].name + " | "+ obj[i].size + " / 성공");
+// 				}
+// 			});
+ 
+//  		form.attr("action", goUrlInst).submit();
+// 	   	} else {
+// 	   		// update
+// 	   		/* keyName.val(atob(keyName.val())); */
+	   		
+// // 	   		if (validationUpdt() == false) return false;
+	   		
+// 	   		form.attr("action", goUrlUpdt).submit();
+// 	   	}
+// 	}); 
 	
 	$("#btnList").on("click", function(){
 		formVo.attr("action", goUrlList).submit();
@@ -318,8 +380,177 @@
 		formVo.attr("action", goUrlDele).submit();
 	});
 	
+	upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
+//		objName 과 seq 는 jsp 내에서 유일 하여야 함.
+//		memberProfileImage: 1
+//		memberImage: 2
+//		memberFile : 3
+		
+		const MAX_EACH_FILE_SIZE = 5 * 1024 * 1024;		//	5M
+		const MAX_TOTAL_FILE_SIZE = 25 * 1024 * 1024;	//	25M
+		const MAX_TOTAL_FILE_NUMBER = 5;
+		
+		var extArray1 = new Array();
+		extArray1 = ["jpg","gif","png","jpeg","bmp","tif"];
 
-</script>
+		// 문서관련
+		var extArray2 = new Array();
+		extArray2 = ["txt","pdf","hwp","doc","docx","xls","xlsx","ppt","pptx","html"];
+
+		// 이하는 커스텀
+		var extArray3 = new Array();
+		extArray3 = ["jpg","gif","png","jpeg","bmp","tif","txt","pdf","hwp","doc","docx","xls","xlsx","ppt","pptx","html"];
+
+		var extArray4 = new Array();
+		extArray4 = ["jpg","gif","png","jpeg","bmp","tif","txt","pdf","hwp","doc","docx","xls","xlsx","ppt","pptx","html"];
+
+		var extArray5 = new Array();
+		extArray5 = ["jpg","gif","png","jpeg","bmp","tif","txt","pdf","hwp","doc","docx","xls","xlsx","ppt","pptx","html"];
+
+		var extArray6 = new Array();
+		extArray6 = ["jpg","gif","png","jpeg","bmp","tif","txt","pdf","hwp","doc","docx","xls","xlsx","ppt","pptx","html"];
+
+		var extArray7 = new Array();
+		extArray7 = ["jpg","gif","png","jpeg","bmp","tif","txt","pdf","hwp","doc","docx","xls","xlsx","ppt","pptx","html"];
+
+		var extArray8 = new Array();
+		extArray8 = ["jpg","gif","png","jpeg","bmp","tif","txt","pdf","hwp","doc","docx","xls","xlsx","ppt","pptx","html"];
+
+		var extArray9 = new Array();
+		extArray9 = ["jpg","gif","png","jpeg","bmp","tif","txt","pdf","hwp","doc","docx","xls","xlsx","ppt","pptx","html"];
+
+		
+		var totalFileSize = 0;
+		var obj = $("#" + objName +"")[0].files;	
+		var fileCount = obj.length;
+		
+		allowedMaxTotalFileNumber = allowedMaxTotalFileNumber == 0 ? MAX_TOTAL_FILE_NUMBER : allowedMaxTotalFileNumber;
+		allowedEachFileSize = allowedEachFileSize == 0 ? MAX_EACH_FILE_SIZE : allowedEachFileSize;
+		allowedTotalFileSize = allowedTotalFileSize == 0 ? MAX_TOTAL_FILE_SIZE : allowedTotalFileSize;
+		
+		checkUploadedTotalFileNumber = function(obj, allowedMaxTotalFileNumber, fileCount) {
+			if(allowedMaxTotalFileNumber < fileCount){
+				alert("전체 파일 갯수는 "+ allowedMaxTotalFileNumber +"개 까지 허용됩니다.");
+//				$("#file"+seq).val("");
+//				obj.val("");
+				return false;
+			}
+		}
+
+
+		checkUploadedExt = function(objName, seq, div) {
+			var ext = objName.split('.').pop().toLowerCase();
+			var extArray = eval("extArray" + div);
+			
+			if(extArray.indexOf(ext) == -1) {
+				alert("허용된 확장자가 아닙니다.");
+//				$("#file"+seq).val("");
+				return false;
+			}
+		}
+
+
+		checkUploadedEachFileSize = function(obj, seq, allowedEachFileSize) {
+
+			if(obj.size > allowedEachFileSize){
+				alert("각 첨부 파일 사이즈는 "+kbToMb(allowedEachFileSize)+"MB 이내로 등록 가능합니다.");
+				$("#file"+seq).val("");
+				return false;
+			}
+		}
+
+
+		checkUploadedTotalFileSize = function(seq, totalSize, allowedTotalFileSize) {
+			if(totalSize > allowedTotalFileSize){
+				alert("전체 용량은 "+kbToMb(allowedTotalFileSize)+"M를 넘을 수 없습니다.");
+				$("#file"+seq).val("");
+				return false;
+			}
+		}
+		
+		if(checkUploadedTotalFileNumber(obj, allowedMaxTotalFileNumber, fileCount) == false) { return false; }
+
+		for (var i = 0 ; i < fileCount ; i++) {
+			if(checkUploadedExt($("#" + objName +"")[0].files[i].name, seq, allowedExtdiv) == false) { return false; }
+			if(checkUploadedEachFileSize($("#" + objName +"")[0].files[i], seq, allowedEachFileSize) == false) { return false; }
+			totalFileSize += $("#" + objName +"")[0].files[i].size;
+		}
+		if(checkUploadedTotalFileSize(seq, totalFileSize, allowedTotalFileSize) == false) { return false; }
+		
+		if (uiType == 1) {
+
+			for (var i = 0 ; i < fileCount ; i++) {
+				
+	 			var divImage = "";
+	 			divImage += '<div style="display: inline-block; height: 95px;">';
+				/* divImage += '	<img src="/resources/common/image/default_111.jpg" class="rounded" width= "85px" height="85px">'; */
+				divImage += '	<img id="aaa'+i+'" src="" class="rounded" width= "85px" height="85px">';
+				divImage += '	<div style="position: relative; top:-85px; left:5px"><span style="color: red;">X</span></div>';
+				divImage += '</div> ';
+				
+				$("#ifmmUploadedImage1View").append(divImage);
+				
+				var fileReader = new FileReader();
+				 fileReader.readAsDataURL($("#" + objName +"")[0].files[i]);
+				alert($("#" + objName +"")[0].files[i]);
+				 fileReader.onload = function () {
+				 /* alert(i + " : " + fileReader.result); */
+				 alert($("#aaa"+i+""));
+				 
+				 if(i == 0) {
+					 $("#aaa0").attr("src", fileReader.result);		/* #-> */
+				 } else if (i == 1) {
+					 $("#aaa0").attr("src", fileReader.result);		/* #-> */
+				 } else {
+					 
+				 }
+					 /* $("#aaa"+i+"").attr("src", fileReader.result);		/* #-> */
+					 /* $("#aaa1").attr("src", fileReader.result);		/* #-> */ 
+				 }
+			}			
+ 			
+		} else if(uiType == 2) {
+			$("#ulFile" + seq).children().remove();
+			
+			for (var i = 0 ; i < fileCount ; i++) {
+				addUploadLi(seq, i, $("#" + objName +"")[0].files[i].name);
+			}
+		} else if (uiType == 3) {
+			var fileReader = new FileReader();
+			 fileReader.readAsDataURL($("#" + objName +"")[0].files[0]);
+			
+			 fileReader.onload = function () {
+				 $("#imgProfile").attr("src", fileReader.result);		/* #-> */
+			 }		
+		} else {
+			return false;
+		}
+		return false;
+	}
+	
+	
+	addUploadLi = function (seq, index, name){
+		
+		var ul_list = $("#ulFile0");
+		
+		li = '<li id="li_'+seq+'_'+index+'" class="list-group-item d-flex justify-content-between align-items-center">';
+		li = li + name;
+		li = li + '<span class="badge bg-danger rounded-pill" onClick="delLi('+ seq +','+ index +')"><i class="fa-solid fa-x" style="cursor: pointer;"></i></span>';
+		li = li + '</li>';
+		
+		$("#ulFile"+seq).append(li);
+	}
+	
+	
+	delLi = function(seq, index) {
+		$("#li_"+seq+"_"+index).remove();
+	}
+
+	</script>
+	
+	
+	
+	
 
 <!-- 주소 -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

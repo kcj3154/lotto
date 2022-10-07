@@ -194,6 +194,12 @@ public void setSearchAndPaging(MemberVo vo) throws Exception{
 		service.signup(dto);
 		return "redirect:/member/signupForm"; 
 	}
+	
+	@RequestMapping(value = "test")
+	public String test() throws Exception {
+		return "infra/member/xdmin/test";
+		
+	}
 		
 }
 
