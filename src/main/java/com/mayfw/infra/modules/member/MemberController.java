@@ -110,11 +110,6 @@ public void setSearchAndPaging(MemberVo vo) throws Exception{
 		
 	}
 	
-	@RequestMapping(value = "productView")
-	public String productView() throws Exception {
-		return "infra/member/user/productView";
-		
-	}
 	
 	@RequestMapping(value = "productOrder")
 	public String productOrder() throws Exception {
