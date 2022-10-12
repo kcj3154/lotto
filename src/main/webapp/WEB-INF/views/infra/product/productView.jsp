@@ -25,7 +25,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="/"><img src="/resources/user/main/image/cou.jpg" style="width: 150px;"></a>
+                <a class="navbar-brand" href="/main"><img src="/resources/user/main/image/cou.jpg" style="width: 150px;"></a>
         </nav>
         <!-- Product section-->
         <section class="py-5">

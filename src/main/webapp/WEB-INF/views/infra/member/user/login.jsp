@@ -30,7 +30,7 @@
         <div class="card shadow-2-strong" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
 
-            <a href="/"><div class="mb-5"><img src="/resources/user/main/image/coupang2.png"></div></a>
+            <a href="/main"><div class="mb-5"><img src="/resources/user/main/image/coupang2.png"></div></a>
 
             <div class="form-outline mb-4">
               <input type="text" id="id" onkeyup="enterkey();" class="form-control form-control-lg"  placeholder="아이디"/>

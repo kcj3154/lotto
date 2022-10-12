@@ -28,7 +28,7 @@
 
 			<div class="row border-bottom py-3 pt-6">
 				<div class="col offset-0">
-					<a href="/">
+					<a href="/main">
 						<img src="/resources/user/main/image/cou.jpg" style="width: 150px;">
 					</a>
 				</div>

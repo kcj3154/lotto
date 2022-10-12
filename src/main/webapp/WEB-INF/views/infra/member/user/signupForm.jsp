@@ -128,7 +128,7 @@ body {
 <body>
 <div class="signup-form">
     <form method="post" onsubmit="return validate()" action="/member/signup">
-    	<a href="/"><img src = "/resources/user/main/image/coupang3.png"></a>
+    	<a href="/main"><img src = "/resources/user/main/image/coupang3.png"></a>
 		<h5>회원가입</h5>
 		<hr>
 		
