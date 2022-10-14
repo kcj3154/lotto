@@ -1,6 +1,6 @@
-package com.mayfw.infra.modules.product;
+package com.mayfw.infra.modules.coupang;
 
-public class ProductVo {
+public class CoupangVo {
 	
 	private String productSeq;
 

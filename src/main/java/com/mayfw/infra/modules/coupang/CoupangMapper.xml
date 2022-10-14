@@ -4,10 +4,10 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.mayfw.infra.modules.product.ProductMapper">
+<mapper namespace="com.mayfw.infra.modules.coupang.CoupangMapper">
 
 <resultMap id="resultMapObj"
-		type="com.mayfw.infra.modules.product.Product"></resultMap>
+		type="com.mayfw.infra.modules.coupang.Coupang"></resultMap>
 		
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
@@ -21,6 +21,13 @@
 		,a.deliveryPrice
 		,a.productCountryOfOrigin
 		,a.productNumber
+		,b.*
+		FROM 
+			product a
+		left join
+			productUploaded b
+		on a.seq = b.pseq
+		WHERE 1=1
 	</select>
 	
 	<insert id="insert">

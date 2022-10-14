@@ -49,7 +49,7 @@
                     <div class="overflow-hidden position-relative">
 
                         <!--Article image-->
-                        <img src="/resources/user/main/image/admin.jpg" alt="" class="img-fluid">
+                        <img src="/resources/images/admin.jpg" alt="" class="img-fluid">
 
                         <!--Article image divider-->
                         <svg class="position-absolute start-0 bottom-0 mb-n1 text-white" preserveAspectRatio="none" width="100%" height="48" viewBox="0 0 1460 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +70,7 @@
                     <div class="overflow-hidden position-relative">
 
                         <!--Article image-->
-                        <img src="/resources/user/main/image/main.jpg" alt="" class="img-fluid">
+                        <img src="/resources/images/main.jpg" alt="" class="img-fluid">
 
                         <!--Article image divider-->
                         <svg class="position-absolute start-0 bottom-0 mb-n1 text-white" preserveAspectRatio="none" width="100%" height="48" viewBox="0 0 1460 120" fill="none" xmlns="http://www.w3.org/2000/svg">
