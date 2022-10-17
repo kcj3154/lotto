@@ -56,7 +56,6 @@
                         <input type='hidden' name="productSeq">
                         <c:forEach items="${list }" var="list" varStatus="status">
                         		<a href="javascript:goForm(<c:out value="${list.productSeq }"/>)">
-                           			<c:out value="${list.productSeq }"/>
                            			<img class="card-img-top" src="<c:out value="${list.path}"/><c:out value="${list.uuidName}"/>">
                             		<div class="card-body p-4" >
 	                                	<div class="text-center">

@@ -56,7 +56,10 @@
 			,#{productCountryOfOrigin}
 			,#{productNumber}
 		)
-</insert>
+		<selectKey resultType="String" keyProperty="productSeq" order="AFTER"> 
+			select last_insert_id()
+		</selectKey>
+	</insert>
 
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
