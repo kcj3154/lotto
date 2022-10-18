@@ -15,7 +15,7 @@
         <meta name="author" content="" />
         <title>CODE</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="/resources/user/main/image/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/resources/images/favicon.ico" />
     	
     	 <!--  css  -->
     	<style type="text/css">

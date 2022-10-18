@@ -15,7 +15,7 @@
         <meta name="author" content="" />
         <title>MEMBER</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="/resources/user/main/image/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/resources/iamges/favicon.ico" />
         
         <!--  css  -->
     	<style type="text/css">
@@ -58,7 +58,7 @@
 
 <!-- start -->
 <div class="container-fluid" style="width: 84%">
-	<a href="/main"><img src="/resources/user/main/image/cou.jpg" style="width: 200px;"></a>
+	<a href="/main"><img src="/resources/images/cou.jpg" style="width: 200px;"></a>
 </div>
 
 <div class="container-fluid" style="width: 84%">

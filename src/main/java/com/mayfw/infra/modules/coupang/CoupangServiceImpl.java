@@ -31,4 +31,10 @@ public class CoupangServiceImpl implements CoupangService {
 		System.out.println("service result: " + result);
 		return result;
 	}
+	
+	@Override
+	public int selectOneCount(CoupangVo vo) throws Exception {
+		
+		return dao.selectOneCount(vo);
+	}
 }

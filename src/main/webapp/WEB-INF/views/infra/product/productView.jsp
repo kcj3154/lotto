@@ -15,7 +15,7 @@
         <meta name="author" content="" />
         <title>쿠팡 | 아이시스 8.0 생수</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="/resources/user/main/image/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/resources/images/favicon.ico" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -25,14 +25,14 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="/main"><img src="/resources/user/main/image/cou.jpg" style="width: 150px;"></a>
+                <a class="navbar-brand" href="/main"><img src="/resources/images/cou.jpg" style="width: 150px;"></a>
         </nav>
         <!-- Product section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
-                	<p style="font-size: 12px;"><a class="link-dark" href="/">쿠팡 홈</a>  >식품  >저탄고지  >생수/음료  >생수  >국산생수</p>
-                    <div class="col-md-4"><img class="card-img-top mb-5 mb-md-0" src="/resources/user/main/image/icis.jpg" alt="..." /></div>
+                	<p style="font-size: 12px;"><a class="link-dark" href="/main">쿠팡 홈</a>  >식품  >저탄고지  >생수/음료  >생수  >국산생수</p>
+                    <div class="col-md-4"><img class="card-img-top mb-5 mb-md-0" src="/resources/uploaded/product/icis.jpg" alt="..." /></div>
                     <div class="col-md-8">
                         <h5><strong>아이시스 8.0 생수 2L, 24개</strong></h5>
                         	<div class="d-flex justify-content small text-warning mb-2">
@@ -46,7 +46,10 @@
                         <span class="instant-discount-rate" style="font-size: 14px; color: #999999">5%</span> <del class="base-price" style="font-size: 12px; color: #bcbcbc"> 18,200 </del>
                                     <br> <strong class="total-price" style="color: #af1010;">17,140</strong>원
                                     <hr>무료배송
-                        <p style="font-size: 12px; color: #1a9e30;"><strong> &#9702; 내일 (목) 도착 </strong></p>
+                        <p class="m-0" style="font-size: 12px; color: #1a9e30">
+									<strong>&#9702; <span id="arrivalDate" class="arrivalDate"></span></strong>
+									<span style="color:black;">도착 보장</span>
+						</p>
                         <hr>
                         <p style="font-size: 11px;">&bull; 원산지: 국내산</p>
                         <p style="font-size: 11px;">&bull; 쿠팡상품번호: 6530515742 - 14502777312</p>
@@ -54,7 +57,7 @@
                         <p class="lead"></p>
                         <div class="d-flex">
                             <input class="form-control text-center me-3" id="inputQuantity" type="number" min="1" max="100" step="1" value="1" style="max-width: 4rem" />
-                            <a href="/member/productOrder"><button class="btn btn-outline-dark flex-shrink-0" type="button"><i class="bi-cart-fill me-1"></i>구매하기</button></a>
+                            <a href="/productOrder"><button class="btn btn-outline-dark flex-shrink-0" type="button"><i class="bi-cart-fill me-1"></i>구매하기</button></a>
                     </div>
                 </div>
             </div>
@@ -67,7 +70,7 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="/resources/user/main/image/handCream.jpg" alt="..." />
+                            <img class="card-img-top" src="/resources/uploaded/product/handCream.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -96,7 +99,7 @@
                             <!-- Sale badge-->
                             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
                             <!-- Product image-->
-                            <img class="card-img-top" src="/resources/user/main/image/mask.jpg" alt="..." />
+                            <img class="card-img-top" src="/resources/uploaded/product/mask.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -126,7 +129,7 @@
                             <!-- Sale badge-->
                             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
                             <!-- Product image-->
-                            <img class="card-img-top" src="/resources/user/main/image/toothbrush.jpg" alt="..." />
+                            <img class="card-img-top" src="/resources/uploaded/product/toothbrush.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -156,7 +159,7 @@
                         	<!-- Sale badge-->
                             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
                             <!-- Product image-->
-                            <img class="card-img-top" src="/resources/user/main/image/sparklingWater.jpg" alt="..." />
+                            <img class="card-img-top" src="/resources/uploaded/product/sparklingWater.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -184,6 +187,8 @@
                 </div>
             </div>
         </section>
+        
+        
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Coupang</p></div>
@@ -192,5 +197,22 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
 <!--         <script src="../../main/template/js/scripts.js"></script> -->
+
+	<script type="text/javascript">
+	
+		const arrivalDate = document.querySelector("#arrivalDate");
+		const today = new Date();
+		const tomorrow = new Date(today.setDate(today.getDate() + 1));
+		const month = tomorrow.getMonth() + 1;
+		const date = tomorrow.getDate();
+		const day = tomorrow.getDay();
+		const weekDay = ["일","월","화","수","목","금","토"];
+		
+		arrivalDate.innerText = "내일(" + weekDay[day] + ") " + String(month).padStart(2,"0") + "/" + String(date).padStart(2,"0");
+		
+	</script>
+	
+	</script>
+	
     </body>
 </html>

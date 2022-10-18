@@ -4,7 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="true" %>
+
+
+<jsp:useBean id="CoupangServiceImpl" class="com.mayfw.infra.modules.coupang.CoupangServiceImpl"/>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -52,22 +54,22 @@
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     <div class="col mb-5">
-                        <div class="card h-100">
                         <input type='hidden' name="productSeq">
-                        <c:forEach items="${list }" var="list" varStatus="status">
-                        		<a href="javascript:goForm(<c:out value="${list.productSeq }"/>)">
+                        <c:forEach items="${list}" var="list" varStatus="status">
+                        <div class="col mb-5">
+                        <div class="card h-100">
+                        		<a href="javascript:goForm(<c:out value="${list.seq }"/>)">
                            			<img class="card-img-top" src="<c:out value="${list.path}"/><c:out value="${list.uuidName}"/>">
+                           		</a>
                             		<div class="card-body p-4" >
 	                                	<div class="text-center">
-		                                    <span><c:out value="${list.productName }"/></span>
-		                                    <span><c:out value="${list.productDiscountPercent }"/>%</span> <del><c:out value="${list.productOriginalPrice }"/></del>
-		                                    <br> <strong class="price-value"><c:out value="${list.productDiscountPrice }"/></strong>원
+		                                    <p style="font-size: 16px;"><c:out value="${list.productName }"/></p>
+		                                    <span class="instant-discount-rate" style="font-size: 14px; color: #999999"><c:out value="${list.productDiscountPercent }"/>%</span> <del class="base-price"style="font-size: 12px; color: #bcbcbc"><fmt:formatNumber value="${list.productOriginalPrice }" pattern="##,###"/></del>
+		                                    <br> <strong class="price-value"><fmt:formatNumber value="${list.productDiscountPrice }" pattern="##,###"/></strong>원
 	                               		</div>
                            			</div>
-                           		</a>
-                        </c:forEach>
-                        
-                            <!-- Product reviews-->
+                           			
+                           			                            <!-- Product reviews-->
                          	<div class="d-flex justify-content-center small text-warning mb-2">
 		                   		<div class="bi-star-fill"></div>
 		                        <div class="bi-star-fill"></div>
@@ -76,11 +78,16 @@
 		                        <div class="bi-star-fill"></div>
                            	</div>
                             <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="card-footer p-4 pt-0 border-top-0  bg-transparent">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/productView">상품 보러가기</a></div>
                             </div>
                         </div>
+                        </div>
+                        </c:forEach>
+                        
+                        </div>
                     </div>
+                 </div>
 <!--                     <div class="col mb-5"> -->
 <!--                         <div class="card h-100"> -->
 <!--                             Product image -->

@@ -22,12 +22,9 @@
 		,a.productCountryOfOrigin
 		,a.productNumber
 		,b.*
-		FROM 
-			product a
-		left join
-			productUploaded b
-		on a.seq = b.pseq
-		WHERE 1=1
+		
+		<include refid='basic' />
+		
 	</select>
 	
 	<insert id="insert">
@@ -78,5 +75,19 @@
 			AND a.seq = #{productSeq}
 	
 	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="basic" />
+	</select>
+	
+	<sql id='basic'>
+		FROM 
+			product a
+		left join
+			productUploaded b
+		on a.seq = b.pseq
+		WHERE 1=1
+	</sql>
 
 </mapper>

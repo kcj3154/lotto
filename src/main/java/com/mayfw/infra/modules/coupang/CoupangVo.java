@@ -1,6 +1,8 @@
 package com.mayfw.infra.modules.coupang;
 
-public class CoupangVo {
+import com.mayfw.infra.common.base.BaseVo;
+
+public class CoupangVo extends BaseVo {
 	
 	private String productSeq;
 

@@ -32,4 +32,8 @@ public class CoupangDao {
 		return result;
 	}
 	
+	public int selectOneCount(CoupangVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
+		
+
+	
 }

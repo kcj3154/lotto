@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.mayfw.infra.modules.codegroup.CodeGroupVo;
+
 @Controller
 public class CoupangController {
 	
@@ -24,11 +26,29 @@ public class CoupangController {
 		
 	}
 	
-	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String home(Model model, Coupang dto, @ModelAttribute("vo") CoupangVo vo){
+	@RequestMapping(value = "/productOrder")
+	public String ProductOrder(Model model, CoupangVo vo) throws Exception {
+		List<Coupang> list = service.selectList(vo);
+		model.addAttribute("list", list);
 		
+		return "infra/product/productOrder";
+		
+	}
+	
+	public void setSearchAndPaging(CoupangVo vo) throws Exception{
+			vo.setParamsPaging(service.selectOneCount(vo));
+	}
+	
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
+	public String home(Model model, @ModelAttribute("vo") CoupangVo vo) throws Exception{
+		vo.setParamsPaging(service.selectOneCount(vo));
+		
+		List<Coupang> list = service.selectList(vo);
+		model.addAttribute("list", list);
 		return "/home";
 	}
+	
+	
 	
 	@RequestMapping(value = "/")
 	public String indexView() throws Exception {

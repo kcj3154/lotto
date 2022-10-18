@@ -6,11 +6,11 @@
 		
 		
 		<sql id="selectListUpperForMysql">
-			select aa.* from(	
+			select b.* from(	
 		</sql>
 		
 		<sql id="selectListLowerForMysql">
-			) aa
+			) b
 			limit #{rowNumToShow} offset #{startRnumForMysql}
 		</sql>
 </mapper>
