@@ -15,7 +15,7 @@
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/resources/user/main/template/assets/favicon.ico" />
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
 
@@ -30,7 +30,7 @@
         <div class="card shadow-2-strong" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
 
-            <a href="/main"><div class="mb-5"><img src="/resources/images/coupang2.png"></div></a>
+            <div class="mb-5"><a href="/main"><img src="/resources/images/coupang2.png"></a></div>
 
             <div class="form-outline mb-4">
               <input type="text" id="id" onkeyup="enterkey();" class="form-control form-control-lg"  placeholder="아이디"/>
@@ -56,8 +56,10 @@
 <!-- end -->
 
 
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		<link rel="stylesheet" href="/resources/demos/style.css">
+
+
+
+		
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

@@ -281,16 +281,16 @@
 							<table class="table table-sm p-0">
 								<tr>
 									<td colspan="2" class="bg-light px-2">
-										<span id="arrivalDate" class="arrivalDate"></span>
-										<strong style="color: #1baa40">내일(목)</strong> 도착 보장
+										<strong><span style="color: #1a9e30" id="arrivalDate" class="arrivalDate"></span></strong> 
+										<span style="color: black;">도착 보장</span>
 									</td>
 								</tr>
 								
 									<tr>
 										<td class="productName px-2">
-											<input type="hidden" name="checkboxTrprArray" placeholder="시퀀스" value="82">
+											
 											<strong>아이시스 8.0 생수 2L, 24개</strong>
-											<input type="hidden" name="trprFullNameArray" placeholder="풀네임" value="아이시스 8.0 생수 2L, 24개">
+											
 										</td>
 										<td class="text-end px-2" style="font-weight: lighter;">
 											수량 1개 / 무료배송
@@ -379,9 +379,7 @@
 	
 <!-- end -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		<link rel="stylesheet" href="/resources/demos/style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -397,37 +395,46 @@
 
 <script type="text/javascript">
 
-goPurchase = function() {
+// goPurchase = function() {
 			
 			
-			if($("#paymentMethod1"){
+// 			if($("#paymentMethod1"){
 				
-				IMP.request_pay({ // param
-					pg: 'kakaopay',
-					pay_method : 'card',
-					merchant_uid : 'iamport_test_id' + new Date().getTime(), // 주문번호
-					name : '쿠팡 상품주문',
-					amount : "17,140"
-				}, function(rsp) {
-					if(rsp.success) {
-						console.log("빌링키 발급 성공", rsp);
-						$("#formCheck1").attr("action", "/infra/member/user/productOrder").submit();
-					} else {
-						var msg = "결제에 실패하였습니다.\n";
-						msg += rsp.error_msg;
-						alert(msg);
-						return false;
-					}
-				})
+// 				IMP.request_pay({ // param
+// 					pg: 'kakaopay',
+// 					pay_method : 'card',
+// 					merchant_uid : 'iamport_test_id' + new Date().getTime(), // 주문번호
+// 					name : '쿠팡 상품주문',
+// 					amount : "17,140"
+// 				}, function(rsp) {
+// 					if(rsp.success) {
+// 						console.log("빌링키 발급 성공", rsp);
+// 						$("#formCheck1").attr("action", "/infra/member/user/productOrder").submit();
+// 					} else {
+// 						var msg = "결제에 실패하였습니다.\n";
+// 						msg += rsp.error_msg;
+// 						alert(msg);
+// 						return false;
+// 					}
+// 				})
 				
-			} else {
-				alert("결제방법을 선택해주세요.");
-			}
+// 			} else {
+// 				alert("결제방법을 선택해주세요.");
+// 			}
+			
+// 		};
+		
+			const arrivalDate = document.querySelector("#arrivalDate");
+			const today = new Date();
+			const tomorrow = new Date(today.setDate(today.getDate() + 1));
+			const month = tomorrow.getMonth() + 1;
+			const date = tomorrow.getDate();
+			const day = tomorrow.getDay();
+			const weekDay = ["일","월","화","수","목","금","토"];
+			
+			arrivalDate.innerText = "내일(" + weekDay[day] + ") " + String(month).padStart(2,"0") + "/" + String(date).padStart(2,"0");
 			
 			
-			
-			
-		}
 	</script>
  
 	

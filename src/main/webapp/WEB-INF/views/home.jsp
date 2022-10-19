@@ -53,7 +53,6 @@
         <form name='form' method="get">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5">
                         <input type='hidden' name="productSeq">
                         <c:forEach items="${list}" var="list" varStatus="status">
                         <div class="col mb-5">
@@ -79,13 +78,12 @@
                            	</div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0  bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/productView">상품 보러가기</a></div>
+                                <div class="text-center"><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><button class="btn btn-outline-dark flex-shrink-0" type="button">상품 보러가기</button></a></div>
                             </div>
                         </div>
                         </div>
                         </c:forEach>
                         
-                        </div>
                     </div>
                  </div>
 <!--                     <div class="col mb-5"> -->

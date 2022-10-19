@@ -20,7 +20,8 @@ public class CoupangController {
 	@RequestMapping(value = "/productView")
 	public String ProductView(Model model, CoupangVo vo) throws Exception {
 		List<Coupang> list = service.selectList(vo);
-		model.addAttribute("list", list);
+		Coupang item = service.selectOne(vo);
+		model.addAttribute("list", list).addAttribute("item", item);
 		
 		return "infra/product/productView";
 		
@@ -29,7 +30,8 @@ public class CoupangController {
 	@RequestMapping(value = "/productOrder")
 	public String ProductOrder(Model model, CoupangVo vo) throws Exception {
 		List<Coupang> list = service.selectList(vo);
-		model.addAttribute("list", list);
+		Coupang item = service.selectOne(vo);
+		model.addAttribute("list", list).addAttribute("item", item);;
 		
 		return "infra/product/productOrder";
 		

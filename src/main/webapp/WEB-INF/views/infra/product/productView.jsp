@@ -31,39 +31,70 @@
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
-                	<p style="font-size: 12px;"><a class="link-dark" href="/main">쿠팡 홈</a>  >식품  >저탄고지  >생수/음료  >생수  >국산생수</p>
-                    <div class="col-md-4"><img class="card-img-top mb-5 mb-md-0" src="/resources/uploaded/product/icis.jpg" alt="..." /></div>
-                    <div class="col-md-8">
-                        <h5><strong>아이시스 8.0 생수 2L, 24개</strong></h5>
-                        	<div class="d-flex justify-content small text-warning mb-2">
-		                   		<div class="bi-star-fill"></div>
-		                        <div class="bi-star-fill"></div>
-		                        <div class="bi-star-fill"></div>
-		                        <div class="bi-star-fill"></div>
-		                        <div class="bi-star-fill"></div>
-                           	</div>
-                        <hr>
-                        <span class="instant-discount-rate" style="font-size: 14px; color: #999999">5%</span> <del class="base-price" style="font-size: 12px; color: #bcbcbc"> 18,200 </del>
-                                    <br> <strong class="total-price" style="color: #af1010;">17,140</strong>원
-                                    <hr>무료배송
-                        <p class="m-0" style="font-size: 12px; color: #1a9e30">
-									<strong>&#9702; <span id="arrivalDate" class="arrivalDate"></span></strong>
-									<span style="color:black;">도착 보장</span>
-						</p>
-                        <hr>
-                        <p style="font-size: 11px;">&bull; 원산지: 국내산</p>
-                        <p style="font-size: 11px;">&bull; 쿠팡상품번호: 6530515742 - 14502777312</p>
-                        <hr>
-                        <p class="lead"></p>
-                        <div class="d-flex">
-                            <input class="form-control text-center me-3" id="inputQuantity" type="number" min="1" max="100" step="1" value="1" style="max-width: 4rem" />
-                            <a href="/productOrder"><button class="btn btn-outline-dark flex-shrink-0" type="button"><i class="bi-cart-fill me-1"></i>구매하기</button></a>
-                    </div>
-                </div>
+                	<p style="font-size: 12px;"><a class="link-dark" href="/main">쿠팡 홈</a>  
+                	<input type="hidden" name="productSeq" value="<c:out value="${item.seq }"/>">
+                		<c:forEach items="${list}" var="list" varStatus="status">
+	                		<c:if test ="${list.seq eq item.seq}">
+		                		<div class="col-md-4">
+		                        	<img class="card-img-top" src="<c:out value="${list.path}"/><c:out value="${list.uuidName}"/>">
+		                        </div>
+	                        </c:if>
+                        </c:forEach>
+                         <div class="col-md-8">
+                         	<h5><strong><c:out value="${item.productName }"/></strong></h5>
+	                         	<div class="d-flex justify-content small text-warning mb-2">
+	 		                   		<div class="bi-star-fill"></div> 
+	 		                        <div class="bi-star-fill"></div> 
+			                        <div class="bi-star-fill"></div> 
+			                        <div class="bi-star-fill"></div> 
+			                        <div class="bi-star-fill"></div> 
+	                           	</div>
+	                           	<span class="instant-discount-rate" style="font-size: 14px; color: #999999"><c:out value="${item.productDiscountPercent }"/>%</span> <del class="base-price" style="font-size: 12px; color: #bcbcbc"><fmt:formatNumber value="${item.productOriginalPrice }" pattern="##,###"/></del>
+	                           	<br><strong class="total-price" style="color: #af1010;"><fmt:formatNumber value="${item.productDiscountPrice }" pattern="##,###"/></strong>원
+	                           	<hr><c:out value="${item.deliveryPrice }"/>
+	                           		<br>
+	 									<strong>&#9702; <span style="font-size: 12px; color: #1a9e30" id="arrivalDate" class="arrivalDate"></span></strong> 
+										<span style="font-size: 12px; color: black;">도착 보장</span>
+								</p>
+								<hr>
+								<p style="font-size: 11px;">&bull; 원산지: <c:out value="${item.productCountryOfOrigin }"/></p> 
+	                        	<p style="font-size: 11px;">&bull; 쿠팡상품번호: <c:out value="${item.productNumber }"/></p> 
+	                        	<hr> 
+	                    
+	                           	
+	<!--                     <div class="col-md-4"><img class="card-img-top mb-5 mb-md-0" src="/resources/uploaded/product/icis.jpg" alt="..." /></div> -->
+	<!--                     <div class="col-md-8"> -->
+	<!--                         <h5><strong>아이시스 8.0 생수 2L, 24개</strong></h5> -->
+	<!--                         	<div class="d-flex justify-content small text-warning mb-2"> -->
+	<!-- 		                   		<div class="bi-star-fill"></div> -->
+	<!-- 		                        <div class="bi-star-fill"></div> -->
+	<!-- 		                        <div class="bi-star-fill"></div> -->
+	<!-- 		                        <div class="bi-star-fill"></div> -->
+	<!-- 		                        <div class="bi-star-fill"></div> -->
+	<!--                            	</div> -->
+	<!--                         <hr> -->
+	<!--                         <span class="instant-discount-rate" style="font-size: 14px; color: #999999">5%</span> <del class="base-price" style="font-size: 12px; color: #bcbcbc"> 18,200 </del> -->
+	<!--                                     <br> <strong class="total-price" style="color: #af1010;">17,140</strong>원 -->
+	<!--                                     <hr>무료배송 -->
+	<!--                         <p class="m-0" style="font-size: 12px; color: #1a9e30"> -->
+	<!-- 									<strong>&#9702; <span id="arrivalDate" class="arrivalDate"></span></strong> -->
+	<!-- 									<span style="color:black;">도착 보장</span> -->
+	<!-- 						</p> -->
+	<!--                         <hr> -->
+	<!--                         <p style="font-size: 11px;">&bull; 원산지: 국내산</p> -->
+	<!--                         <p style="font-size: 11px;">&bull; 쿠팡상품번호: 6530515742 - 14502777312</p> -->
+	<!--                         <hr> -->
+		                        <p class="lead"></p>
+		                        <div class="d-flex">
+		                        	<input type='hidden' name="productSeq">
+		                            <input class="form-control text-center me-3" id="inputQuantity" type="number" min="1" max="100" step="1" value="1" style="max-width: 4rem" />
+		                            <a href="javascript:goForm(<c:out value="${item.seq }"/>)"><button class="btn btn-outline-dark flex-shrink-0" type="button"><i class="bi-cart-fill me-1"></i>구매하기</button></a>
+		                    	</div>
+	                		</div>
             </div>
         </section>
         <!-- Related items section-->
-        <section class="py-5 bg-light">
+        <form name="form" method="get" class="py-5 bg-light">
             <div class="container px-4 px-lg-5 mt-5">
                 <h2 class="fw-bolder mb-4">다른 상품들</h2>
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -112,7 +143,7 @@
                                         <div class="bi-star-fill"></div>
                                         <div class="bi-star-fill"></div>
                                         <div class="bi-star-fill"></div>
-                                    </div>
+                                    </div> 
                                     <!-- Product price-->
                                     <span class="text-muted text-decoration-line-through">27,900원</span>
                                     <strong style="color: #af1010">10,990원</strong>
@@ -186,7 +217,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </form>
         
         
         <!-- Footer-->
@@ -197,6 +228,11 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
 <!--         <script src="../../main/template/js/scripts.js"></script> -->
+
+
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 	<script type="text/javascript">
 	
@@ -210,9 +246,21 @@
 		
 		arrivalDate.innerText = "내일(" + weekDay[day] + ") " + String(month).padStart(2,"0") + "/" + String(date).padStart(2,"0");
 		
+		
+		
+		var goUrlView = "/productOrder";
+		var form = $("form[name=form]");
+		var seq = $("input:hidden[name=productSeq]");
+		
+ 		goForm = function(keyValue) {
+ 			
+ 		seq.val(keyValue);
+ 				form.attr("action", goUrlView).submit();
+ 		};
+		
 	</script>
 	
-	</script>
+	
 	
     </body>
 </html>
