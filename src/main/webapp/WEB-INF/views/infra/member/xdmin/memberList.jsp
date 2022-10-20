@@ -253,7 +253,7 @@
 
 <script type="text/javascript">
 				/* #-> */
-	var goUrlForm = "/member/memberForm";
+	var goUrlForm = "/member/test";
 	var seq = $("input:hidden[name=shSeq]");
 	
 	var form = $("form[name=formList]");

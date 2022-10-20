@@ -128,6 +128,42 @@
 		)
 	</insert>
 	
+	<insert id="testUploaded">
+		INSERT INTO memberUploaded(
+			type
+			,defaultNy
+			,sort
+			,path
+			,originalName
+			,uuidName
+			,ext
+			,size
+			,delNy	
+			,pseq
+			,regIp
+			,regSeq
+			,regDeviceCd
+			,regDateTime
+			,regDateTimeSvr
+		) values (
+			#{type}
+			,#{defaultNy}
+			,#{sort}
+			,#{path}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,0
+			,10
+			,#{regIp}
+			,#{regSeq}
+			,#{regDeviceCd}
+			,#{regDateTime}
+			,#{regDateTimeSvr}
+		)
+	</insert>
+	
 	<update id="update">
 		UPDATE member SET  
 			ifmmName = #{ifmmName}
@@ -188,5 +224,7 @@
     			and ifmmId = #{ifmmId}
     			<if test="ifmmPwd != null and !ifmmPwd.equals('')">and ifmmPwd = #{ifmmPwd}</if>
     	</select>
+    	
+    	
 
 </mapper>

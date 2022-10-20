@@ -59,6 +59,10 @@ public class MemberDao {
 	//login
 	public Member selectOneId(Member dto) { return sqlSession.selectOne(namespace+".selectOneId", dto); }
 	public Member selectOneLogin(Member dto) { return sqlSession.selectOne(namespace+".selectOneLogin", dto); }
+	
+	//업로드 테스트
+	public int testUploaded(Member dto) {return sqlSession.insert(namespace + ".testUploaded", dto);}
+
 
 		
 	}

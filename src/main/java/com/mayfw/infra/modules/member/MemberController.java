@@ -63,9 +63,9 @@ public void setSearchAndPaging(MemberVo vo) throws Exception{
 		int result = service.insert(dto);
 		System.out.println("controller result: " + result);
 		
-		redirectAttributes.addFlashAttribute("vo", vo);
+//		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "redirect:/member/memberForm";
+		return "redirect:/member/test";
 	}
 	
 	/*
