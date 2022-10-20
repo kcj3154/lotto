@@ -13,23 +13,23 @@
 		FROM member a
 		where 1=1
 		<choose>
-			<when test="shDate ==1">and a.regDate between #{startDate} and #{endDate}</when>
-			<when test="shDate ==2">and a.modDate between #{startDate} and #{endDate}</when>
+			<when test="shDate ==1">and a.ifmmRegDate between #{startDate} and #{endDate}</when>
+			<when test="shDate ==2">and a.ifmmModDate between #{startDate} and #{endDate}</when>
 			<otherwise></otherwise>
 		</choose>
 		<choose>
-			<when test="shOption ==1">and a.id = #{shValue}</when>
-			<when test="shOption ==2">and a.name LIKE CONCAT('%', #{shValue}, '%')
+			<when test="shOption ==1">and a.ifmmId = #{shValue}</when>
+			<when test="shOption ==2">and a.ifmmName LIKE CONCAT('%', #{shValue}, '%')
 			</when>
-			<when test="shOption ==3">and a.rating LIKE CONCAT('%', #{shValue}, '%')
+			<when test="shOption ==3">and a.ifmmRating LIKE CONCAT('%', #{shValue}, '%')
 			</when>
-			<when test="shOption ==4">and a.gender LIKE CONCAT('%', #{shValue}, '%')
+			<when test="shOption ==4">and a.ifmmGender LIKE CONCAT('%', #{shValue}, '%')
 			</when>
-			<when test="shOption ==5">and a.email LIKE CONCAT('%', #{shValue}, '%')
+			<when test="shOption ==5">and a.ifmmEmail LIKE CONCAT('%', #{shValue}, '%')
 			</when>
-			<when test="shOption ==6">and a.tel LIKE CONCAT('%', #{shValue}, '%')
+			<when test="shOption ==6">and a.ifmmTel LIKE CONCAT('%', #{shValue}, '%')
 			</when>
-			<when test="shOption ==7">and a.address LIKE CONCAT('%', #{shValue}, '%')
+			<when test="shOption ==7">and a.ifmmAddress LIKE CONCAT('%', #{shValue}, '%')
 			</when>
 <!-- 			<when test="shAdminNy ==0">and a.adminNy = #{shAdminNy}</when> -->
 <!-- 			<when test="shAdminNy ==1">and a.adminNy = #{shAdminNy}</when> -->
@@ -40,21 +40,21 @@
 	<select id="selectList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />
 		SELECT
-		a.seq
-		,a.id
-		,a.name
-		,a.dob
-		,a.adminNy
-		,a.rating
-		,a.gender
-		,a.email
-		,a.tel
-		,a.zipcode
-		,a.address
-		,a.detailedAddress
-		,a.regDate
-		,a.modDate
-		,a.delNy
+		a.ifmmSeq
+		,a.ifmmId
+		,a.ifmmName
+		,a.ifmmDob
+		,a.ifmmAdminNy
+		,a.ifmmRating
+		,a.ifmmGender
+		,a.ifmmEmail
+		,a.ifmmTel
+		,a.ifmmZipcode
+		,a.ifmmAddress
+		,a.ifmmDetailedAddress
+		,a.ifmmRegDate
+		,a.ifmmModDate
+		,a.ifmmDelNy
 		<include refid="selectCommon" />
 		<include refid="Base.selectListLowerForMysql" />
 		
@@ -63,24 +63,24 @@
 		
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-		a.seq
-		,a.id
-		,a.name
-		,a.dob
-		,a.adminNy
-		,a.rating
-		,a.gender
-		,a.email
-		,a.tel
-		,a.zipcode
-		,a.address
-		,a.detailedAddress
-		,a.regDate
-		,a.modDate
-		,a.delNy
+		a.ifmmSeq
+		,a.ifmmId
+		,a.ifmmName
+		,a.ifmmDob
+		,a.ifmmAdminNy
+		,a.ifmmRating
+		,a.ifmmGender
+		,a.ifmmEmail
+		,a.ifmmTel
+		,a.ifmmZipcode
+		,a.ifmmAddress
+		,a.ifmmDetailedAddress
+		,a.ifmmRegDate
+		,a.ifmmModDate
+		,a.ifmmDelNy
 		FROM member a
 		where 1=1
-			AND a.seq = #{shSeq}
+			AND a.ifmmSeq = #{shSeq}
 	</select>
 
 	<select id="selectOneCount" resultType="Integer">
@@ -89,61 +89,61 @@
 	</select>
 	
 	<select id="selectOneIdCheck" resultType="Integer">
-		SELECT COUNT(*) From member where id = #{id}
+		SELECT COUNT(*) From member where ifmmId = #{ifmmId}
 	</select>
 	
 	<insert id="insert">
-		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+		<selectKey resultType="String" keyProperty="ifmmSeq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 		insert into member(
-			id
-			,pwd
-		    ,name
-		    ,dob
-		    ,adminNy
-		    ,rating
-		    ,gender
-		    ,email
-		    ,tel
-		    ,zipcode
-		    ,address
-		    ,detailedAddress
-		    ,regDate
+			ifmmId
+			,ifmmPwd
+		    ,ifmmName
+		    ,ifmmDob
+		    ,ifmmAdminNy
+		    ,ifmmRating
+		    ,ifmmGender
+		    ,ifmmEmail
+		    ,ifmmTel
+		    ,ifmmZipcode
+		    ,ifmmAddress
+		    ,ifmmDetailedAddress
+		    ,ifmmRegDate
 		)
 		values(
-			#{id}
-			,#{pwd}
-			,#{name}
-			,#{dob}
-			,#{adminNy}
-			,#{rating}
-			,#{gender}
-			,#{email}
-			,#{tel}
-			,#{zipcode}
-			,#{address}
-			,#{detailedAddress}
+			#{ifmmId}
+			,#{ifmmPwd}
+			,#{ifmmName}
+			,#{ifmmDob}
+			,#{ifmmAdminNy}
+			,#{ifmmRating}
+			,#{ifmmGender}
+			,#{ifmmEmail}
+			,#{ifmmTel}
+			,#{ifmmZipcode}
+			,#{ifmmAddress}
+			,#{ifmmDetailedAddress}
 			,now()
 		)
 	</insert>
 	
 	<update id="update">
 		UPDATE member SET  
-			name = #{name}
-			,id = #{id}
-			,dob = #{dob}
-			,adminNy = #{adminNy}
-			,rating = #{rating}
-			,gender = #{gender}
-			,email = #{email}
-			,tel = #{tel}
-			,zipcode = #{zipcode}
-			,address = #{address}
-			,detailedAddress = #{detailedAddress}
-			,modDate = now()
+			ifmmName = #{ifmmName}
+			,ifmmId = #{ifmmId}
+			,ifmmDob = #{ifmmDob}
+			,ifmmAdminNy = #{ifmmAdminNy}
+			,ifmmRating = #{ifmmRating}
+			,ifmmGender = #{ifmmGender}
+			,ifmmEmail = #{ifmmEmail}
+			,ifmmTel = #{ifmmTel}
+			,ifmmZipcode = #{ifmmZipcode}
+			,ifmmAddress = #{ifmmAddress}
+			,ifmmDetailedAddress = #{ifmmDetailedAddress}
+			,ifmmModDate = now()
 		WHERE 1=1
-			AND seq = #{seq}
+			AND ifmmSeq = #{ifmmSeq}
 	</update>
 	
 	<!-- <delete id="delete">
@@ -168,25 +168,25 @@
  <!-- 로그 -->
     <select id="selectOneId" resultMap="resultMapObj">
    			select
-   				seq
-   				,id
+   				ifmmSeq
+   				,ifmmId
    			from
    				member 
    			WHERE 1=1
-   				and id = #{id}
+   				and ifmmId = #{ifmmId}
    		</select>    
    		
     	<select id="selectOneLogin" resultMap="resultMapObj">
     		select
-    			seq
-    			,id
-    			,name
-    			,adminNy
+    			ifmmSeq
+    			,ifmmId
+    			,ifmmName
+    			,ifmmAdminNy
     		from
     			member 
     		where 1=1
-    			and id = #{id}
-    			<if test="pwd != null and !pwd.equals('')">and pwd = #{pwd}</if>
+    			and ifmmId = #{ifmmId}
+    			<if test="ifmmPwd != null and !ifmmPwd.equals('')">and ifmmPwd = #{ifmmPwd}</if>
     	</select>
 
 </mapper>

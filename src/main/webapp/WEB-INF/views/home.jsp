@@ -6,7 +6,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 
-<jsp:useBean id="CoupangServiceImpl" class="com.mayfw.infra.modules.coupang.CoupangServiceImpl"/>
+<jsp:useBean id="ProductServiceImpl" class="com.mayfw.infra.modules.product.ProductServiceImpl"/>
 
 <!DOCTYPE html>
 <html lang="ko">

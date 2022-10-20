@@ -33,6 +33,7 @@
 			<exclude-mapping path="/member/login" />
 			<exclude-mapping path="/member/loginProc" />
 			<exclude-mapping path="/productView" />
+			<exclude-mapping path="/productOrder" />
 			<exclude-mapping path="/member/signupForm"/>
 			<exclude-mapping path="/member/signup"/>
 			<exclude-mapping path="/member/checkId"/>

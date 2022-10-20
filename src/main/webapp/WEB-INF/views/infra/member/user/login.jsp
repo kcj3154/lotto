@@ -33,11 +33,11 @@
             <div class="mb-5"><a href="/main"><img src="/resources/images/coupang2.png"></a></div>
 
             <div class="form-outline mb-4">
-              <input type="text" id="id" onkeyup="enterkey();" class="form-control form-control-lg"  placeholder="아이디"/>
+              <input type="text" id="ifmmId" onkeyup="enterkey();" class="form-control form-control-lg"  placeholder="아이디"/>
             </div>
 
             <div class="form-outline mb-4">
-              <input type="password" id="pwd" onkeyup="enterkey();" class="form-control form-control-lg" placeholder="비밀번호"/>
+              <input type="password" id="ifmmPwd" onkeyup="enterkey();" class="form-control form-control-lg" placeholder="비밀번호"/>
             </div>
 
             <!-- Checkbox -->
@@ -72,7 +72,7 @@
 			,cache: false
 			,type: "post"
 			,url: "/member/loginProc"
-			,data : { "id" : $("#id").val(), "pwd" : $("#pwd").val()}
+			,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPwd" : $("#ifmmPwd").val()}
 			,success: function(response) {
 				if(response.rt == "success") {
 					if(response.rtt =="1"){

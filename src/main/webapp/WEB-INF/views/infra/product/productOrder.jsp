@@ -22,7 +22,7 @@
 
 <div class="container px-4 px-lg-5">
 		<form id="formCheck1" method="post" action="">
-			<input type="hidden" name="ifmmSeq" value="1">
+			<input type="hidden" name="seq" value="1">
 			<input type="hidden" id="ifsaSeq" name="ifsaSeq">
 			<input type="hidden" id="trorRequest" name="trorRequest" value="문 앞">
 
@@ -50,7 +50,7 @@
 								<tr>
 									<th class="bg-light px-2">이름</th>
 									<td class="px-2">
-										관리자
+										<c:out value="${rt.ifmmName }"/>
 									</td>
 								</tr>
 								<tr>

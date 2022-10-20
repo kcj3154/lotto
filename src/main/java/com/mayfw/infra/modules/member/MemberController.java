@@ -86,7 +86,7 @@ public void setSearchAndPaging(MemberVo vo) throws Exception{
 	
 	@RequestMapping(value = "memberUpdt")
 	public String memberUpdt(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
-		dto.setSeq(vo.getShSeq());
+		dto.setIfmmSeq(vo.getShSeq());
 		service.update(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/member/memberList";
@@ -144,18 +144,18 @@ public void setSearchAndPaging(MemberVo vo) throws Exception{
 		Member rtMember = service.selectOneId(dto);
 
 		if (rtMember != null) {
-			dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
+			dto.setIfmmPwd(UtilSecurity.encryptSha256(dto.getIfmmPwd()));
 			Member rtMember2 = service.selectOneLogin(dto);
 			if (rtMember2 != null) {
 				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
-				httpSession.setAttribute("sessSeq", rtMember2.getSeq());
-				httpSession.setAttribute("sessId", rtMember2.getId());
-				httpSession.setAttribute("sessName", rtMember2.getName());
-				httpSession.setAttribute("sessAdminNy", rtMember2.getAdminNy());
+				httpSession.setAttribute("sessSeq", rtMember2.getIfmmSeq());
+				httpSession.setAttribute("sessId", rtMember2.getIfmmId());
+				httpSession.setAttribute("sessName", rtMember2.getIfmmName());
+				httpSession.setAttribute("sessAdminNy", rtMember2.getIfmmAdminNy());
 				returnMap.put("rtt",httpSession.getAttribute("sessAdminNy"));
 				returnMap.put("rt", "success");
 			} else {
-				dto.setSeq(rtMember.getSeq());
+				dto.setIfmmSeq(rtMember.getIfmmSeq());
 				returnMap.put("rt", "fail");
 			}
 		} else {

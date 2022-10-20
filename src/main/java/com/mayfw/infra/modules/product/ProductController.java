@@ -1,4 +1,4 @@
-package com.mayfw.infra.modules.coupang;
+package com.mayfw.infra.modules.product;
 
 import java.util.List;
 
@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.mayfw.infra.modules.codegroup.CodeGroupVo;
 
 @Controller
-public class CoupangController {
+public class ProductController {
 	
 	@Autowired
-	CoupangServiceImpl service;
+	ProductServiceImpl service;
 	
 	@RequestMapping(value = "/productView")
-	public String ProductView(Model model, CoupangVo vo) throws Exception {
-		List<Coupang> list = service.selectList(vo);
-		Coupang item = service.selectOne(vo);
+	public String ProductView(Model model, ProductVo vo) throws Exception {
+		List<Product> list = service.selectList(vo);
+		Product item = service.selectOne(vo);
 		model.addAttribute("list", list).addAttribute("item", item);
 		
 		return "infra/product/productView";
@@ -28,24 +28,25 @@ public class CoupangController {
 	}
 	
 	@RequestMapping(value = "/productOrder")
-	public String ProductOrder(Model model, CoupangVo vo) throws Exception {
-		List<Coupang> list = service.selectList(vo);
-		Coupang item = service.selectOne(vo);
+	public String ProductOrder(Model model, ProductVo vo) throws Exception {
+		List<Product> list = service.selectList(vo);
+		Product item = service.selectOne(vo);
+		model.addAttribute("rt", service.selectOneMember(vo));
 		model.addAttribute("list", list).addAttribute("item", item);;
 		
 		return "infra/product/productOrder";
 		
 	}
 	
-	public void setSearchAndPaging(CoupangVo vo) throws Exception{
+	public void setSearchAndPaging(ProductVo vo) throws Exception{
 			vo.setParamsPaging(service.selectOneCount(vo));
 	}
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String home(Model model, @ModelAttribute("vo") CoupangVo vo) throws Exception{
+	public String home(Model model, @ModelAttribute("vo") ProductVo vo) throws Exception{
 		vo.setParamsPaging(service.selectOneCount(vo));
 		
-		List<Coupang> list = service.selectList(vo);
+		List<Product> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		return "/home";
 	}

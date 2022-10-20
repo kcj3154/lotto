@@ -87,7 +87,7 @@
 	<form class="row g-3 needs-validation" method="post" action="/member/memberList" name="formList" id="formList">
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
-	<input type="hidden" name="shSeq" value="<c:out value="${seq }"/>"/>
+	<input type="hidden" name="shSeq" value="<c:out value="${ifmmSeq }"/>"/>
 	<input type="hidden" name="Sseq" value="<c:out value="${vo.shSeq}"/>"/>
 	
 	  <div class="col-md-2">
@@ -162,20 +162,20 @@
 			<c:otherwise>
 			   <c:forEach items="${list}" var="list" varStatus="status">
 			    <tr>
-			      <th scope="row"><input class="form-check-input" value="<c:out value="${list.seq}"/>" type="checkbox"></th>
-			      <td><c:out value="${list.seq }"/></td>
-			      <td><c:out value="${list.id }"/></td>
-			      <td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.name }"/></a></td>
-			      <td><c:out value="${list.dob }"/></td>
-			      <td><c:out value="${list.adminNy }"/></td>
-			      <td><c:out value="${list.rating }"/></td>
-			      <td><c:out value="${list.gender }"/></td>
-			      <td><c:out value="${list.email }"/></td>
-			      <td><c:out value="${list.tel }"/></td>
-			      <td><c:out value="${list.address }"/></td>
-			      <td><fmt:formatDate value="${list.regDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-			      <td><fmt:formatDate value="${list.modDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-			      <td><c:out value="${list.delNy }"/></td>
+			      <th scope="row"><input class="form-check-input" value="<c:out value="${list.ifmmSeq}"/>" type="checkbox"></th>
+			      <td><c:out value="${list.ifmmSeq }"/></td>
+			      <td><c:out value="${list.ifmmId }"/></td>
+			      <td><a href="javascript:goForm(<c:out value="${list.ifmmSeq }"/>)"><c:out value="${list.ifmmName }"/></a></td>
+			      <td><c:out value="${list.ifmmDob }"/></td>
+			      <td><c:out value="${list.ifmmAdminNy }"/></td>
+			      <td><c:out value="${list.ifmmRating }"/></td>
+			      <td><c:out value="${list.ifmmGender }"/></td>
+			      <td><c:out value="${list.ifmmEmail }"/></td>
+			      <td><c:out value="${list.ifmmTel }"/></td>
+			      <td><c:out value="${list.ifmmAddress }"/></td>
+			      <td><fmt:formatDate value="${list.ifmmRegDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+			      <td><fmt:formatDate value="${list.ifmmModDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+			      <td><c:out value="${list.ifmmDelNy }"/></td>
 			    </tr>
 			   </c:forEach>
 			 </c:otherwise>

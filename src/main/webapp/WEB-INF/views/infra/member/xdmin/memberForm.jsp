@@ -85,7 +85,7 @@
 <!-- 데이터 넘기려면 action 안 넘기려면 onsubmit -->
 <form name="form" id="form" method="post">
 		<!-- <form name="form" method="post" > -->
-		<input type="hidden" name="shSeq" value="<c:out value="${item.seq }"/>">
+		<input type="hidden" name="shSeq" value="<c:out value="${item.ifmmSeq }"/>">
 <%-- 		<input type="hidden" name="seq" value="<c:out value="${item.seq }"/>"> --%>
 <div class="container-fluid" style="width: 84%; font-size: 24px;">회원 정보</div>
 <br>
@@ -93,22 +93,22 @@
 	<div class="row">
 		<div class="col-4">
   			<label for="id" class="form-label"><span class="text-danger">*</span>아이디</label>
-  			<input type="text" id="id" name="id" class="form-control" value="<c:out value="${item.id}"/>">
+  			<input type="text" id="id" name="id" class="form-control" value="<c:out value="${item.ifmmId}"/>">
 		</div>
 		<div class="col-4">
 			<label for="name" class="form-label"><span class="text-danger">*</span>이름</label>
-  			<input type="text" id="name" name="name" class="form-control" value="<c:out value="${item.name}"/>">
+  			<input type="text" id="name" name="name" class="form-control" value="<c:out value="${item.ifmmName}"/>">
 		</div>
 		<div class="col-4">
 			<label for="tel" class="form-label"><span class="text-danger">*</span>휴대전화</label>
-  			<input type="tel" id="tel" name="tel" class="form-control" value="<c:out value="${item.tel}"/>">
+  			<input type="tel" id="tel" name="tel" class="form-control" value="<c:out value="${item.ifmmTel}"/>">
 		</div>
 	</div>
 	<br>
 	<div class="row">
 		<div class="col-4">
 			<label for="dob" class="form-label"><span class="text-danger">*</span>생년월일</label>
-  			<input type="date" id="dob" name="dob" class="form-control" value="<c:out value="${item.dob}"/>">
+  			<input type="date" id="dob" name="dob" class="form-control" value="<c:out value="${item.ifmmDob}"/>">
 		</div>
 	</div>
 	

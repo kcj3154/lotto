@@ -71,7 +71,7 @@ public class MemberServiceImpl implements MemberService{
 		
 		@Override
 		public int signup(Member dto) throws Exception { 
-		 	dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));    	
+		 	dto.setIfmmPwd(UtilSecurity.encryptSha256(dto.getIfmmPwd()));    	
 			return dao.insert(dto);
 		}
 		
