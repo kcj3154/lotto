@@ -9,8 +9,8 @@
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<!-- <property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
-		<property name="url" value="jdbc:log4jdbc:mysql://cj.chquartk7bht.ap-northeast-2.rds.amazonaws.com:33061/CJ2" />
-		<property name="username" value="v1178" />
+		<property name="url" value="jdbc:log4jdbc:mysql://kcj3154.criewlu4t1i9.ap-northeast-2.rds.amazonaws.com:33062/CJ2" />
+		<property name="username" value="vv1178" />
 		<property name="password" value="aZ1178za!" />
 	</bean>
 	    

@@ -37,6 +37,12 @@
 			<exclude-mapping path="/member/signupForm"/>
 			<exclude-mapping path="/member/signup"/>
 			<exclude-mapping path="/member/checkId"/>
+			<exclude-mapping path="/codeGroup/codeGroupList"/>
+			<exclude-mapping path="/codeGroup/codeGroupForm"/>
+			<exclude-mapping path="/code/codeList"/>
+			<exclude-mapping path="/code/codeForm"/>
+			<exclude-mapping path="/member/memberList"/>
+			<exclude-mapping path="/member/memberForm"/>
 			<!--  -->
 <!-- 			<exclude-mapping path="/codeGroup/codeGroupList"/> -->
 <!-- 			<exclude-mapping path="/codeGroup/codeGroupForm"/> -->

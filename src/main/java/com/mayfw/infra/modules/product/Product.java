@@ -28,10 +28,10 @@ public class Product extends Base{
 	private String ifmmRegMod;
 	
 	//상품
-	private String seq;
+	private String productSeq;
 	private String productCategory;
 	private String productName;
-	private String productRaiting;
+	private String productRating;
 	private String productDiscountPercent;
 	private String productOriginalPrice;
 	private String productDiscountPrice;
@@ -39,6 +39,8 @@ public class Product extends Base{
 	private String productCountryOfOrigin;
 	private String productNumber;
 	
+	
+	//멤버
 	public String getRtSeq() {
 		return rtSeq;
 	}
@@ -153,11 +155,14 @@ public class Product extends Base{
 	public void setIfmmRegMod(String ifmmRegMod) {
 		this.ifmmRegMod = ifmmRegMod;
 	}
-	public String getSeq() {
-		return seq;
+	
+	
+	//상품
+	public String getProductSeq() {
+		return productSeq;
 	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setProductSeq(String productSeq) {
+		this.productSeq = productSeq;
 	}
 	public String getProductCategory() {
 		return productCategory;
@@ -171,11 +176,11 @@ public class Product extends Base{
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public String getProductRaiting() {
-		return productRaiting;
+	public String getProductRating() {
+		return productRating;
 	}
-	public void setProductRaiting(String productRaiting) {
-		this.productRaiting = productRaiting;
+	public void setProductRating(String productRating) {
+		this.productRating = productRating;
 	}
 	public String getProductDiscountPercent() {
 		return productDiscountPercent;
