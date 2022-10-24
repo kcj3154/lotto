@@ -269,9 +269,6 @@
 		form.attr("action", goUrlForm).submit();
 	};
 
-	
-	
-
 </script>
  
 	
