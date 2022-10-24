@@ -65,7 +65,7 @@ public void setSearchAndPaging(MemberVo vo) throws Exception{
 		
 //		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "redirect:/member/test";
+		return "redirect:/member/memberForm";
 	}
 	
 	/*

@@ -34,28 +34,11 @@ public class MemberServiceImpl implements MemberService{
 		
 		@Override
 		public int insert(Member dto) throws Exception {
-//			int result = dao.insert(dto);
-//			System.out.println("service result: " + result);
-//			return result;
-			
-			int j = 0;
-			System.out.println();
-			for (MultipartFile multipartFile : dto.getUploadedImage()) {
-				if (!multipartFile.isEmpty()) {
-					String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-					UtilUpload.upload(multipartFile, pathModule, dto);
-//					dto.setType(2);
-//					dto.setDefaultNy(1);
-					dto.setSort(j + 1);
-					dto.setPseq(dto.getSeq());
-					dao.testUploaded(dto);
-				}
-				j++;
-			}
-			
-			int result = 0;
+			int result = dao.insert(dto);
+			System.out.println("service result: " + result);
 			return result;
 		}
+
 		
 		
 		

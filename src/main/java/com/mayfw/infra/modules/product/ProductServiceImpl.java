@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.mayfw.infra.common.util.UtilUpload;
 
 
 @Service
@@ -21,9 +24,28 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public int insert(Product dto) throws Exception {
-		int result = dao.insert(dto);
+//		int result = dao.insert(dto);
+//		return result;
+		
+		int j = 0;
+		System.out.println();
+		for (MultipartFile multipartFile : dto.getUploadedImage()) {
+			if (!multipartFile.isEmpty()) {
+				String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+				UtilUpload.upload(multipartFile, pathModule, dto);
+//				dto.setType(2);
+//				dto.setDefaultNy(1);
+				dto.setSort(j + 1);
+				dto.setPseq(dto.getProductSeq());
+				dao.productUploaded(dto);
+			}
+			j++;
+		}
+		
+		int result = 0;
 		return result;
 	}
+	
 	
 	@Override
 	public Product selectOne(ProductVo vo) throws Exception {

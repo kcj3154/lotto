@@ -4,14 +4,14 @@ import com.mayfw.infra.common.base.BaseVo;
 
 public class ProductVo extends BaseVo {
 	
-	private String productSeq;
+	private String productSseq;
 
 	public String getProductSeq() {
-		return productSeq;
+		return productSseq;
 	}
 
 	public void setProductSeq(String productSeq) {
-		this.productSeq = productSeq;
+		this.productSseq = productSeq;
 	}
 	
 	

@@ -57,7 +57,7 @@
                         <c:forEach items="${list}" var="list" varStatus="status">
                         <div class="col mb-5">
                         <div class="card h-100">
-                        		<a href="javascript:goForm(<c:out value="${list.seq }"/>)">
+                        		<a href="javascript:goForm(<c:out value="${list.productSeq }"/>)">
                            			<img class="card-img-top" src="<c:out value="${list.path}"/><c:out value="${list.uuidName}"/>">
                            		</a>
                             		<div class="card-body p-4" >
@@ -78,7 +78,7 @@
                            	</div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0  bg-transparent">
-                                <div class="text-center"><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><button class="btn btn-outline-dark flex-shrink-0" type="button">상품 보러가기</button></a></div>
+                                <div class="text-center"><a href="javascript:goForm(<c:out value="${list.productSeq }"/>)"><button class="btn btn-outline-dark flex-shrink-0" type="button">상품 보러가기</button></a></div>
                             </div>
                         </div>
                         </div>
@@ -332,6 +332,8 @@
 		
 		
  </script>
+ 
+
  
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.mayfw.infra.modules.product;
 
 import java.util.Date;
 
+
 import com.mayfw.infra.common.base.Base;
 
 public class Product extends Base{
@@ -35,9 +36,10 @@ public class Product extends Base{
 	private String productDiscountPercent;
 	private String productOriginalPrice;
 	private String productDiscountPrice;
-	private String deliveryPrice;
+	private String deliveryFee;
 	private String productCountryOfOrigin;
 	private String productNumber;
+	
 	
 	
 	//멤버
@@ -200,11 +202,11 @@ public class Product extends Base{
 	public void setProductDiscountPrice(String productDiscountPrice) {
 		this.productDiscountPrice = productDiscountPrice;
 	}
-	public String getDeliveryPrice() {
-		return deliveryPrice;
+	public String getDeliveryFee() {
+		return deliveryFee;
 	}
-	public void setDeliveryPrice(String deliveryPrice) {
-		this.deliveryPrice = deliveryPrice;
+	public void setDeliveryFee(String deliveryFee) {
+		this.deliveryFee = deliveryFee;
 	}
 	public String getProductCountryOfOrigin() {
 		return productCountryOfOrigin;

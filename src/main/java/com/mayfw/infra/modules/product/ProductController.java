@@ -8,8 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.mayfw.infra.modules.codegroup.CodeGroupVo;
+
+
+
 
 @Controller
 public class ProductController {
@@ -51,12 +54,29 @@ public class ProductController {
 		return "/home";
 	}
 	
+	@RequestMapping(value = "productInst")
+	public String memberInst(ProductVo vo, Product dto, RedirectAttributes redirectAttributes) throws Exception {
+
+		int result = service.insert(dto);
+		System.out.println("controller result: " + result);
+		
+//		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/main";
+	}
+	
 	
 	
 	@RequestMapping(value = "/")
 	public String indexView() throws Exception {
 		
 		return "/index/indexView";
+	}
+	
+	@RequestMapping(value = "/test")
+	public String test() throws Exception {
+		
+		return "infra/product/test";
 	}
 	
 	

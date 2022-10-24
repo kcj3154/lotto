@@ -6,10 +6,10 @@ import java.util.UUID;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mayfw.infra.common.constants.Constants;
-import com.mayfw.infra.modules.member.Member;
+import com.mayfw.infra.modules.product.Product;
 
 public class UtilUpload {
-		public static void upload(MultipartFile multipartFile, String className, Member dto) throws Exception{
+		public static void upload(MultipartFile multipartFile, String className, Product dto) throws Exception{
 			String fileName = multipartFile.getOriginalFilename();
 			String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
 			String uuid = UUID.randomUUID().toString();
@@ -39,6 +39,8 @@ public class UtilUpload {
 				// by pass
 			}
 		}
+		
+		
 	}
 
 

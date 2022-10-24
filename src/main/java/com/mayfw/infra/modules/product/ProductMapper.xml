@@ -11,14 +11,14 @@
 		
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
-		a.seq
+		a.productSeq
 		,a.productCategory
 		,a.productName
 		,a.productRating
 		,a.productDiscountPercent
 		,a.productOriginalPrice
 		,a.productDiscountPrice
-		,a.deliveryPrice
+		,a.deliveryFee
 		,a.productCountryOfOrigin
 		,a.productNumber
 		,b.*
@@ -30,26 +30,26 @@
 	<insert id="insert">
 		
 		insert into product(
-			seq
+			productSeq
 			,productCategory
 			,productName
 			,productRating
 			,productDiscountPercent
 			,productOriginalPrice
 			,productDiscountPirce
-			,deliveryPrice
+			,deliveryFee
 			,productCountryOfOrigin
 			,productNumber
 		)
 		values(
-			#{seq}
+			#{productSeq}
 			,#{productCategory}
 			,#{prodcutName}
 			,#{productRating}
 			,#{productDiscountPercent}
 			,#{productOriginalPrice}
 			,#{productDiscountPirce}
-			,#{deliveryPrice}
+			,#{deliveryFee}
 			,#{productCountryOfOrigin}
 			,#{productNumber}
 		)
@@ -60,20 +60,20 @@
 
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-		a.seq
+		a.productSeq
 		,a.productCategory
 		,a.productName
 		,a.productRating
 		,a.productDiscountPercent
 		,a.productOriginalPrice
 		,a.productDiscountPrice
-		,a.deliveryPrice
+		,a.deliveryFee
 		,a.productCountryOfOrigin
 		,a.productNumber
 		
 		from product a
 		where 1=1
-			AND a.seq = #{productSeq}
+			AND a.productSeq = #{productSseq}
 	
 	</select>
 	
@@ -87,25 +87,68 @@
 			product a
 		left join
 			productUploaded b
-		on a.seq = b.pseq
+		on a.productSeq = b.pseq
 		WHERE 1=1
 	</sql>
 	
-	<select id="selectOneMember" resultMap="resultMapObj">
-		SELECT
-		a.ifmmSeq
-		,a.ifmmName
-		,a.ifmmEmail
-		,a.ifmmTel
+<!-- 	<select id="selectOneMember" resultMap="resultMapObj"> -->
+<!-- 		SELECT -->
+<!-- 		a.ifmmSeq -->
+<!-- 		,a.ifmmName -->
+<!-- 		,a.ifmmEmail -->
+<!-- 		,a.ifmmTel -->
 		
-		from 
-			member a
-		left join
-			product b
-		on a.ifmmSeq = b.seq
-		where 1=1
+<!-- 		from  -->
+<!-- 			member a -->
+<!-- 		left join -->
+<!-- 			product b -->
+<!-- 		on a.ifmmSeq = b.productSeq -->
+<!-- 		where 1=1 -->
 			
 	
-	</select>
+<!-- 	</select> -->
+
+<!-- 	<update id="update"> -->
+		
+	
+<!-- 	</update> -->
+
+	<insert id="productUploaded">
+		INSERT INTO productUploaded(
+			type
+			,defaultNy
+			,sort
+			,path
+			,originalName
+			,uuidName
+			,ext
+			,size
+			,delNy	
+			,pseq
+			,regIp
+			,regSeq
+			,regDeviceCd
+			,regDateTime
+			,modDateTime
+			,regDateTimeSvr
+		) values (
+			#{type}
+			,#{defaultNy}
+			,#{sort}
+			,#{path}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,0
+			,10
+			,#{regIp}
+			,#{regSeq}
+			,#{regDeviceCd}
+			,#{regDateTime}
+			,#{modDateTime}
+			,#{regDateTimeSvr}
+		)
+	</insert>
 
 </mapper>

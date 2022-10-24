@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.mayfw.infra.modules.member.Member;
+
 @Repository
 public class ProductDao {
 	
@@ -39,7 +41,10 @@ public class ProductDao {
 	
 	public int selectOneCount(ProductVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
 	
-		
+	
+	//상품 업로드
+	public int productUploaded(Product dto) {return sqlSession.insert(namespace + ".productUploaded", dto);}
+
 
 	
 }

@@ -32,9 +32,9 @@
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
                 	<p style="font-size: 12px;"><a class="link-dark" href="/main">쿠팡 홈</a>  
-                	<input type="hidden" name="productSeq" value="<c:out value="${item.seq }"/>">
+                	<input type="hidden" name="productSeq" value="<c:out value="${item.productSeq }"/>">
                 		<c:forEach items="${list}" var="list" varStatus="status">
-	                		<c:if test ="${list.seq eq item.seq}">
+	                		<c:if test ="${list.productSeq eq item.productSeq}">
 		                		<div class="col-md-4">
 		                        	<img class="card-img-top" src="<c:out value="${list.path}"/><c:out value="${list.uuidName}"/>">
 		                        </div>
@@ -51,7 +51,7 @@
 	                           	</div>
 	                           	<span class="instant-discount-rate" style="font-size: 14px; color: #999999"><c:out value="${item.productDiscountPercent }"/>%</span> <del class="base-price" style="font-size: 12px; color: #bcbcbc"><fmt:formatNumber value="${item.productOriginalPrice }" pattern="##,###"/></del>
 	                           	<br><strong class="total-price" style="color: #af1010;"><fmt:formatNumber value="${item.productDiscountPrice }" pattern="##,###"/></strong>원
-	                           	<hr><c:out value="${item.deliveryPrice }"/>
+	                           	<hr><c:out value="${item.deliveryFee }"/>
 	                           		<br>
 	 									<strong>&#9702; <span style="font-size: 12px; color: #1a9e30" id="arrivalDate" class="arrivalDate"></span></strong> 
 										<span style="font-size: 12px; color: black;">도착 보장</span>
@@ -88,7 +88,7 @@
 		                        <div class="d-flex">
 		                        	<input type='hidden' name="productSeq">
 		                            <input class="form-control text-center me-3" id="inputQuantity" type="number" min="1" max="100" step="1" value="1" style="max-width: 4rem" />
-		                            <a href="javascript:goForm(<c:out value="${item.seq }"/>)"><button class="btn btn-outline-dark flex-shrink-0" type="button"><i class="bi-cart-fill me-1"></i>구매하기</button></a>
+		                            <a href="javascript:goForm(<c:out value="${item.productSeq }"/>)"><button class="btn btn-outline-dark flex-shrink-0" type="button"><i class="bi-cart-fill me-1"></i>구매하기</button></a>
 		                    	</div>
 	                		</div>
             </div>
