@@ -180,10 +180,6 @@ height: 100%;
 					<div class="row border p-3 mb-2">
 						<div class="col">
 							<h6 class="fw-bold">옵션</h6>
-							<div class="input-group input-group-sm mb-2">
-								<input type="radio" class="btn-check" name="optionMethod" value="1" id="optionPlural" autocomplete="off" checked>
-								<label class="btn btn-outline-primary" for="optionPlural">상품 등록</label>
-							</div>
 							<div id="optionPluralForm">
 								<table id="optionPluralTable" class="table table-borderless">
 									<tr>
@@ -203,11 +199,6 @@ height: 100%;
 					<div class="row border p-3 mb-2">
 						<div class="col">
 							<h6 class="fw-bold">상품 이미지</h6>
-							<div class="input-group input-group-sm mb-2">
-								<input type="radio" class="btn-check" name="descMethod" id="descImage" autocomplete="off" checked>
-								<label class="btn btn-outline-primary" for="descImage">이미지 업로드</label>
-							</div>
-							
 							<div id="descImageForm">
 								<div class="upload__box border">
 									<div class="upload__btn-box text-center">
@@ -258,13 +249,43 @@ height: 100%;
 			var form = $("form[name=form]")
 			var formVo = $("form[name=formVo]");
 			
-			$("#btnSubmit").on("click", function() {
+			$('#btnSubmit').on("click", function() {
 				if(seq.val() == "0" || seq.val() == "") {
 					form.attr("action", goUrlInst).submit();
 				}
+				
+				$("#form").attr("action", "productInst");
+				$("#form").submit();
+				
+				alert("상품 '" + $("#productName").val() + "'을 등록하였습니다.");
 			});
 			
+			
 	</script>
+	
+	<script type="text/javascript">
+		logOut = function() {
+			$.ajax({
+				async : true,
+				cache : false,
+				type : "post",
+				url : "/member/logOutProc",
+				success : function(response) {
+					if (response.rt == "success") {
+						location.href = "/";
+					} else {
+						alert("로그아웃 실패");
+					}
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					alert("ajaxUpdate " + jqXHR.textStatus + " : "
+							+ jqXHR.errorThrown);
+				}
+			});
+		}
+		
+		
+ </script>
 	
 
 </body>
