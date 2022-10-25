@@ -46,7 +46,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String home(Model model, @ModelAttribute("vo") ProductVo vo) throws Exception{
+	public String main(Model model, @ModelAttribute("vo") ProductVo vo) throws Exception{
 		vo.setParamsPaging(service.selectOneCount(vo));
 		
 		List<Product> list = service.selectList(vo);
@@ -55,7 +55,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "productInst")
-	public String memberInst(ProductVo vo, Product dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String productInst(ProductVo vo, Product dto, RedirectAttributes redirectAttributes) throws Exception {
 
 		int result = service.insert(dto);
 		System.out.println("controller result: " + result);
@@ -76,7 +76,7 @@ public class ProductController {
 	@RequestMapping(value = "/test")
 	public String test() throws Exception {
 		
-		return "infra/product/test";
+		return "/test";
 	}
 	
 	
